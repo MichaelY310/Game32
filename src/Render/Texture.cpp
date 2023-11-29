@@ -1,4 +1,6 @@
 #include <GL/glut.h>
+#include <iostream>
+
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -8,6 +10,9 @@ Texture::Texture(const char* filePath)
 {
     int width, height, channels;
     unsigned char* image = stbi_load(filePath, &width, &height, &channels, 0);
+
+    if (!image) { std::cout << "failed to create texture" << std::endl; }
+    if (image) { std::cout << "create texture" << std::endl; }
 
     glGenTextures(1, &m_RendererID);
     glBindTexture(GL_TEXTURE_2D, m_RendererID);
@@ -31,8 +36,7 @@ Texture::Texture(const char* filePath)
         dataFormat = GL_RGB;
     }
     dataFormat = GL_RGB;
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-    // glGenerateMipmap(GL_TEXTURE_2D);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 
     stbi_image_free(image);
     glBindTexture(GL_TEXTURE_2D, 0);
