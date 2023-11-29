@@ -129,6 +129,54 @@ Game32/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/build
 .PHONY : Game32/fast
 
+src/Render/Renderer.o: src/Render/Renderer.cpp.o
+.PHONY : src/Render/Renderer.o
+
+# target to build an object file
+src/Render/Renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o
+.PHONY : src/Render/Renderer.cpp.o
+
+src/Render/Renderer.i: src/Render/Renderer.cpp.i
+.PHONY : src/Render/Renderer.i
+
+# target to preprocess a source file
+src/Render/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Renderer.cpp.i
+.PHONY : src/Render/Renderer.cpp.i
+
+src/Render/Renderer.s: src/Render/Renderer.cpp.s
+.PHONY : src/Render/Renderer.s
+
+# target to generate assembly for a file
+src/Render/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Renderer.cpp.s
+.PHONY : src/Render/Renderer.cpp.s
+
+src/Render/Texture.o: src/Render/Texture.cpp.o
+.PHONY : src/Render/Texture.o
+
+# target to build an object file
+src/Render/Texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.o
+.PHONY : src/Render/Texture.cpp.o
+
+src/Render/Texture.i: src/Render/Texture.cpp.i
+.PHONY : src/Render/Texture.i
+
+# target to preprocess a source file
+src/Render/Texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.i
+.PHONY : src/Render/Texture.cpp.i
+
+src/Render/Texture.s: src/Render/Texture.cpp.s
+.PHONY : src/Render/Texture.s
+
+# target to generate assembly for a file
+src/Render/Texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
+.PHONY : src/Render/Texture.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Game32"
+	@echo "... src/Render/Renderer.o"
+	@echo "... src/Render/Renderer.i"
+	@echo "... src/Render/Renderer.s"
+	@echo "... src/Render/Texture.o"
+	@echo "... src/Render/Texture.i"
+	@echo "... src/Render/Texture.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

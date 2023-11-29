@@ -1,1 +1,1 @@
-/usr/lib64/ccache/c++ CMakeFiles/Game32.dir/src/main.cpp.o -o Game32  /usr/lib64/libGL.so /usr/lib64/libGLU.so /usr/lib64/libglut.so 
+/usr/lib64/ccache/c++ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o CMakeFiles/Game32.dir/src/Render/Texture.cpp.o CMakeFiles/Game32.dir/src/main.cpp.o -o Game32  /usr/lib64/libGL.so /usr/lib64/libGLU.so /usr/lib64/libglut.so 
