@@ -5,7 +5,7 @@ project(Game32)
 set(CMAKE_CXX_STANDARD 11)
 
 # Add the source files to the project
-file(GLOB SOURCES "src/Core/*.cpp" "src/Render/*.cpp" "src/*.cpp" "Dependeicies/Glad/*.c")
+file(GLOB SOURCES "src/Scene/*.cpp" "src/Core/*.cpp" "src/Render/*.cpp" "src/*.cpp" "Dependeicies/Glad/*.c")
 
 # Set the path to the GLUT headers
 include_directories("Dependencies/" "Dependencies/Glad" "src")

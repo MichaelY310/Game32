@@ -3,6 +3,12 @@
 class vec2
 {
 public:
+    vec2()
+    {
+        x = 0.0f;
+        y = 0.0f;
+    };
+
     vec2(double xx, double yy)
     {
         x = xx;
@@ -24,6 +30,13 @@ public:
 class vec3
 {
 public:
+    vec3()
+    {
+        x = 0.0f;
+        y = 0.0f;
+        z = 0.0f;
+    };
+
     vec3(double xx, double yy, double zz)
     {
         x = xx;

@@ -44,6 +44,7 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color)
 
 void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> texture)
 {
+    
     // d c
     // a b
     vec2 a(0, 0);
@@ -61,12 +62,21 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     c = c + position;
     d = d + position;
 
-    glBegin(GL_QUADS);
     glBindTexture(GL_TEXTURE_2D, texture->m_RendererID);
+
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.0f, 0.0f);
     glVertex2f(a.x, a.y);
+    glTexCoord2f(1.0f, 0.0f);
     glVertex2f(b.x, b.y);
+    glTexCoord2f(1.0f, 1.0f);
     glVertex2f(c.x, c.y);
+    glTexCoord2f(0.0f, 1.0f);
     glVertex2f(d.x, d.y);
 
+    // glBindTexture(GL_TEXTURE_2D, 0);
+
     glEnd();
+
+    glutSwapBuffers();
 }

@@ -1,21 +1,28 @@
 #include <GL/glut.h>
-#include "Render/Renderer.h"
+#include <chrono>
+#include <iostream>
 
-std::shared_ptr<Texture> texture;
+#include "Scene/Scene.h"
+#include "Render/Renderer.h"
+#include "Core/Input.h"
+
+
+Scene scene;
+double deltaTime;
+auto lastTime = std::chrono::high_resolution_clock::now();
+
+void idle() {
+    auto currentTime = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> fs = currentTime - lastTime;
+    deltaTime = fs.count();
+    lastTime = currentTime;
+
+    scene.OnUpdate(deltaTime);
+}
 
 void display() {
-    // Set up the camera position and orientation
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    gluLookAt(0.0, 0.0, 1.0,  // Camera position
-              0.0, 0.0, 0.0,   // Look at the origin
-              0.0, 1.0, 0.0);   // Up vector
-
-    Renderer::Init();
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    // Renderer::DrawQuad({ 0.0, 0.0 }, 0.1, { 0.2, 0.3, 0.4 });
-    Renderer::DrawQuad({ 0.0, 0.0 }, 0.1, texture);
-    Renderer::Flush();
+    idle();
+    scene.OnDisplay();
 }
 
 void reshape(int width, int height) {
@@ -40,10 +47,14 @@ int main(int argc, char** argv) {
 
     glEnable(GL_DEPTH_TEST);
 
-    texture = Texture::Create("C:/Users/86166/Desktop/cs32/Game32/src/Asset/yan.jpg");
-
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
+    glutIdleFunc(display);
+    glutKeyboardFunc(Input::keyboardDownCallback);
+    glutKeyboardUpFunc(Input::keyboardUpCallback);
+    glutSpecialFunc(Input::specialKeyCallback);
+    glutSpecialUpFunc(Input::specialKeyUpCallback);
+
 
     glutMainLoop();
 

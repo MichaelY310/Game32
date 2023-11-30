@@ -1,5 +1,5 @@
 CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
- /mnt/c/Users/86166/Desktop/cs32/game32/src/Render/Renderer.cpp \
+ /mnt/c/Users/86166/Desktop/cs32/Game32/src/Render/Renderer.cpp \
  /usr/include/stdc-predef.h /usr/include/GL/glut.h \
  /usr/include/GL/freeglut_std.h /usr/include/GL/gl.h \
  /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
@@ -52,9 +52,9 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/c++/11/bits/std_abs.h \
- /mnt/c/Users/86166/Desktop/cs32/game32/src/Render/Renderer.h \
- /mnt/c/Users/86166/Desktop/cs32/game32/src/Render/DataTypes.h \
- /mnt/c/Users/86166/Desktop/cs32/game32/src/Render/Texture.h \
+ /mnt/c/Users/86166/Desktop/cs32/Game32/src/Render/Renderer.h \
+ /mnt/c/Users/86166/Desktop/cs32/Game32/src/Render/DataTypes.h \
+ /mnt/c/Users/86166/Desktop/cs32/Game32/src/Render/Texture.h \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/c++/11/bits/functexcept.h \
  /usr/include/c++/11/bits/exception_defines.h \
