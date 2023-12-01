@@ -27,5 +27,6 @@ Game32 is a bullet hell shoot 'em up video game. Player need to control the char
 ```
 cd build
 cmake ..
+make
 ./Game32
 ```
