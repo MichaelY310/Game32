@@ -1,4 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Game32.dir/src/Core/Application.cpp.o"
+  "CMakeFiles/Game32.dir/src/Core/Application.cpp.o.d"
+  "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o"
+  "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d"
+  "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o"
+  "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o.d"
   "CMakeFiles/Game32.dir/src/main.cpp.o"
   "CMakeFiles/Game32.dir/src/main.cpp.o.d"
   "Game32"

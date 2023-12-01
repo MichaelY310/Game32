@@ -1,5 +1,5 @@
-CMakeFiles/Game32.dir/src/main.cpp.o: \
- /mnt/c/Users/86166/Desktop/cs32/game32/src/main.cpp \
+CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
+ /mnt/c/Users/86166/Desktop/cs32/game32/src/Render/Renderer.cpp \
  /usr/include/stdc-predef.h /usr/include/GL/glut.h \
  /usr/include/GL/freeglut_std.h /usr/include/GL/gl.h \
  /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
