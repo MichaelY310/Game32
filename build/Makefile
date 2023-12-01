@@ -129,6 +129,174 @@ Game32/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/build
 .PHONY : Game32/fast
 
+src/Core/Application.o: src/Core/Application.cpp.o
+.PHONY : src/Core/Application.o
+
+# target to build an object file
+src/Core/Application.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Application.cpp.o
+.PHONY : src/Core/Application.cpp.o
+
+src/Core/Application.i: src/Core/Application.cpp.i
+.PHONY : src/Core/Application.i
+
+# target to preprocess a source file
+src/Core/Application.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Application.cpp.i
+.PHONY : src/Core/Application.cpp.i
+
+src/Core/Application.s: src/Core/Application.cpp.s
+.PHONY : src/Core/Application.s
+
+# target to generate assembly for a file
+src/Core/Application.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Application.cpp.s
+.PHONY : src/Core/Application.cpp.s
+
+src/Core/Input.o: src/Core/Input.cpp.o
+.PHONY : src/Core/Input.o
+
+# target to build an object file
+src/Core/Input.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.o
+.PHONY : src/Core/Input.cpp.o
+
+src/Core/Input.i: src/Core/Input.cpp.i
+.PHONY : src/Core/Input.i
+
+# target to preprocess a source file
+src/Core/Input.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.i
+.PHONY : src/Core/Input.cpp.i
+
+src/Core/Input.s: src/Core/Input.cpp.s
+.PHONY : src/Core/Input.s
+
+# target to generate assembly for a file
+src/Core/Input.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.s
+.PHONY : src/Core/Input.cpp.s
+
+src/Render/DataTypes.o: src/Render/DataTypes.cpp.o
+.PHONY : src/Render/DataTypes.o
+
+# target to build an object file
+src/Render/DataTypes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o
+.PHONY : src/Render/DataTypes.cpp.o
+
+src/Render/DataTypes.i: src/Render/DataTypes.cpp.i
+.PHONY : src/Render/DataTypes.i
+
+# target to preprocess a source file
+src/Render/DataTypes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.i
+.PHONY : src/Render/DataTypes.cpp.i
+
+src/Render/DataTypes.s: src/Render/DataTypes.cpp.s
+.PHONY : src/Render/DataTypes.s
+
+# target to generate assembly for a file
+src/Render/DataTypes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.s
+.PHONY : src/Render/DataTypes.cpp.s
+
+src/Render/Renderer.o: src/Render/Renderer.cpp.o
+.PHONY : src/Render/Renderer.o
+
+# target to build an object file
+src/Render/Renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o
+.PHONY : src/Render/Renderer.cpp.o
+
+src/Render/Renderer.i: src/Render/Renderer.cpp.i
+.PHONY : src/Render/Renderer.i
+
+# target to preprocess a source file
+src/Render/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Renderer.cpp.i
+.PHONY : src/Render/Renderer.cpp.i
+
+src/Render/Renderer.s: src/Render/Renderer.cpp.s
+.PHONY : src/Render/Renderer.s
+
+# target to generate assembly for a file
+src/Render/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Renderer.cpp.s
+.PHONY : src/Render/Renderer.cpp.s
+
+src/Render/Texture.o: src/Render/Texture.cpp.o
+.PHONY : src/Render/Texture.o
+
+# target to build an object file
+src/Render/Texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.o
+.PHONY : src/Render/Texture.cpp.o
+
+src/Render/Texture.i: src/Render/Texture.cpp.i
+.PHONY : src/Render/Texture.i
+
+# target to preprocess a source file
+src/Render/Texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.i
+.PHONY : src/Render/Texture.cpp.i
+
+src/Render/Texture.s: src/Render/Texture.cpp.s
+.PHONY : src/Render/Texture.s
+
+# target to generate assembly for a file
+src/Render/Texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
+.PHONY : src/Render/Texture.cpp.s
+
+src/Scene/Entity.o: src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.o
+
+# target to build an object file
+src/Scene/Entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.cpp.o
+
+src/Scene/Entity.i: src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.i
+
+# target to preprocess a source file
+src/Scene/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.cpp.i
+
+src/Scene/Entity.s: src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.s
+
+# target to generate assembly for a file
+src/Scene/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.cpp.s
+
+src/Scene/Scene.o: src/Scene/Scene.cpp.o
+.PHONY : src/Scene/Scene.o
+
+# target to build an object file
+src/Scene/Scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o
+.PHONY : src/Scene/Scene.cpp.o
+
+src/Scene/Scene.i: src/Scene/Scene.cpp.i
+.PHONY : src/Scene/Scene.i
+
+# target to preprocess a source file
+src/Scene/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i
+.PHONY : src/Scene/Scene.cpp.i
+
+src/Scene/Scene.s: src/Scene/Scene.cpp.s
+.PHONY : src/Scene/Scene.s
+
+# target to generate assembly for a file
+src/Scene/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s
+.PHONY : src/Scene/Scene.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +330,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Game32"
+	@echo "... src/Core/Application.o"
+	@echo "... src/Core/Application.i"
+	@echo "... src/Core/Application.s"
+	@echo "... src/Core/Input.o"
+	@echo "... src/Core/Input.i"
+	@echo "... src/Core/Input.s"
+	@echo "... src/Render/DataTypes.o"
+	@echo "... src/Render/DataTypes.i"
+	@echo "... src/Render/DataTypes.s"
+	@echo "... src/Render/Renderer.o"
+	@echo "... src/Render/Renderer.i"
+	@echo "... src/Render/Renderer.s"
+	@echo "... src/Render/Texture.o"
+	@echo "... src/Render/Texture.i"
+	@echo "... src/Render/Texture.s"
+	@echo "... src/Scene/Entity.o"
+	@echo "... src/Scene/Entity.i"
+	@echo "... src/Scene/Entity.s"
+	@echo "... src/Scene/Scene.o"
+	@echo "... src/Scene/Scene.i"
+	@echo "... src/Scene/Scene.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
