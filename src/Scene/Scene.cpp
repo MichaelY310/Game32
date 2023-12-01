@@ -35,7 +35,7 @@ void Scene::OnDisplay()
     // Draw Player
     for (int i=0; i<m_EntityList.size(); i++)
     {
-        std::shared_ptr<Entity> entity = m_EntityList[0];
+        std::shared_ptr<Entity> entity = m_EntityList[i];
         Renderer::DrawQuad(entity->m_Position, entity->m_Size, texture);
     }
     Renderer::Flush();
