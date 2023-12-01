@@ -16,10 +16,10 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color)
 {
     // d c
     // a b
-    vec2 a(0, 0);
-    vec2 b(1, 0);
-    vec2 c(1, 1);
-    vec2 d(0, 1);
+    vec2 a(-0.5, -0.5);
+    vec2 b(0.5, -0.5);
+    vec2 c(0.5, 0.5);
+    vec2 d(-0.5, 0.5);
 
     a = a * scale;
     b = b * scale;
@@ -47,10 +47,10 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     
     // d c
     // a b
-    vec2 a(0, 0);
-    vec2 b(1, 0);
-    vec2 c(1, 1);
-    vec2 d(0, 1);
+    vec2 a(-0.5, -0.5);
+    vec2 b(0.5, -0.5);
+    vec2 c(0.5, 0.5);
+    vec2 d(-0.5, 0.5);
 
     a = a * scale;
     b = b * scale;
