@@ -1033,6 +1033,17 @@ CMakeFiles/Game32.dir/src/main.cpp.o
  /usr/include/c++/11/bits/ostream.tcc
  /usr/include/c++/11/istream
  /usr/include/c++/11/bits/istream.tcc
+ /usr/include/c++/11/thread
+ /usr/include/c++/11/bits/std_thread.h
+ /usr/include/c++/11/tuple
+ /usr/include/c++/11/utility
+ /usr/include/c++/11/bits/stl_relops.h
+ /usr/include/c++/11/array
+ /usr/include/c++/11/bits/uses_allocator.h
+ /usr/include/c++/11/bits/invoke.h
+ /usr/include/c++/11/bits/refwrap.h
+ /usr/include/c++/11/bits/unique_ptr.h
+ /usr/include/c++/11/bits/this_thread_sleep.h
  /mnt/c/Users/86166/Desktop/cs32/Game32/src/Scene/Scene.h
  /usr/include/c++/11/vector
  /usr/include/c++/11/bits/stl_uninitialized.h
@@ -1044,17 +1055,9 @@ CMakeFiles/Game32.dir/src/main.cpp.o
  /usr/include/c++/11/bits/stl_raw_storage_iter.h
  /usr/include/c++/11/bits/align.h
  /usr/include/c++/11/bit
- /usr/include/c++/11/bits/uses_allocator.h
- /usr/include/c++/11/bits/unique_ptr.h
- /usr/include/c++/11/utility
- /usr/include/c++/11/bits/stl_relops.h
- /usr/include/c++/11/tuple
- /usr/include/c++/11/array
- /usr/include/c++/11/bits/invoke.h
  /usr/include/c++/11/bits/shared_ptr.h
  /usr/include/c++/11/bits/shared_ptr_base.h
  /usr/include/c++/11/bits/allocated_ptr.h
- /usr/include/c++/11/bits/refwrap.h
  /usr/include/c++/11/ext/aligned_buffer.h
  /usr/include/c++/11/ext/concurrence.h
  /usr/include/c++/11/bits/shared_ptr_atomic.h
