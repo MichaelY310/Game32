@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp" "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d"
-  "/cs/student/yang335/Desktop/Game32/src/Render/Texture.cpp" "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o.d"
-  "/cs/student/yang335/Desktop/Game32/src/main.cpp" "CMakeFiles/Game32.dir/src/main.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/main.cpp.o.d"
+  "/Users/ruitong/Desktop/CS/CS32/Game32/src/Render/Renderer.cpp" "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d"
+  "/Users/ruitong/Desktop/CS/CS32/Game32/src/Render/Texture.cpp" "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o.d"
+  "/Users/ruitong/Desktop/CS/CS32/Game32/src/main.cpp" "CMakeFiles/Game32.dir/src/main.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
