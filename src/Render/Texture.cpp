@@ -1,5 +1,5 @@
-#include <GL/glut.h>
-#define STB_IMAGE_IMPLEMENTATION
+#include <GLUT/glut.h>
+// #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 #include "Texture.h"
