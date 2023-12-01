@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Game32.dir/src/Core/Application.cpp.o.d"
   "CMakeFiles/Game32.dir/src/Core/Input.cpp.o"
   "CMakeFiles/Game32.dir/src/Core/Input.cpp.o.d"
+  "CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o"
+  "CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o.d"
   "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o"
   "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d"
   "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o"
