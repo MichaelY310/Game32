@@ -26,8 +26,8 @@ void sceneDisplay() {
 }
 
 void display() {
+    sceneDisplay();
     idle();
-    scene.OnDisplay();
 
     // std::thread updateThread(idle);
     // std::thread displayThread(sceneDisplay);
@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
 
     glEnable(GL_DEPTH_TEST);
 
-    // glutDisplayFunc(display);
+    glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutIdleFunc(display);
     glutKeyboardFunc(Input::keyboardDownCallback);

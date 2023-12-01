@@ -9,6 +9,7 @@ void Renderer::Init()
 
 void Renderer::Flush()
 {   
+    glutSwapBuffers();
     glFlush();
 }
 
@@ -77,6 +78,4 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     // glBindTexture(GL_TEXTURE_2D, 0);
 
     glEnd();
-
-    glutSwapBuffers();
 }
