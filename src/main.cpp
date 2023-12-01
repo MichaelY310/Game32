@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include <chrono>
 #include <iostream>
+#include <thread>
 
 #include "Scene/Scene.h"
 #include "Render/Renderer.h"
@@ -20,9 +21,19 @@ void idle() {
     scene.OnUpdate(deltaTime);
 }
 
+void sceneDisplay() {
+    scene.OnDisplay();
+}
+
 void display() {
     idle();
     scene.OnDisplay();
+
+    // std::thread updateThread(idle);
+    // std::thread displayThread(sceneDisplay);
+
+    // updateThread.join();
+    // displayThread.join();
 }
 
 void reshape(int width, int height) {
@@ -47,7 +58,7 @@ int main(int argc, char** argv) {
 
     glEnable(GL_DEPTH_TEST);
 
-    glutDisplayFunc(display);
+    // glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutIdleFunc(display);
     glutKeyboardFunc(Input::keyboardDownCallback);

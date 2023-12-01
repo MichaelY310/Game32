@@ -13,7 +13,6 @@ Scene::Scene()
 
 void Scene::OnUpdate(double timestep)
 {
-    m_CurrentStageTime += timestep;
     if (m_CurrentStage == SceneStage::TITLE)
     { Scene::OnUpdateTitle(timestep); }
     else if (m_CurrentStage == SceneStage::CHOOSE_CHARACTER)
@@ -47,6 +46,7 @@ void Scene::OnUpdateTitle(double timestep)
     m_CurrentStageTime = 0;
 }
 
+// Player Created
 void Scene::OnUpdateChooseCharacter(double timestep)
 {
     m_CurrentStage = SceneStage::CONVERSATION1;
@@ -58,10 +58,23 @@ void Scene::OnUpdateChooseCharacter(double timestep)
 void Scene::OnUpdateConversation1(double timestep)
 {
     // Boss1 Move in
-    
-    m_CurrentStage = SceneStage::BOSSFIGHT1;
-    m_CurrentStageTime = 0;
+    if (m_CurrentStageTime == 0)
+    {
+        m_Boss1 = std::make_shared<Entity>(vec2(2.0, 1.0), 0.0f, 0.1f, EntityType::BOSS);
+        m_EntityList.push_back(m_Boss1);
+    }
 
+    vec2 a = vec2(0.0, 0.5);
+    if (m_Boss1->m_Position.x > a.x && m_Boss1->m_Position.y > a.y)
+    {
+        m_Boss1->m_Position = m_Boss1->m_Position + (vec2(0.0, 0.5) - vec2(2.0, 1.0)) * 0.01;
+        m_CurrentStageTime += timestep;
+    }
+    else
+    {
+        m_CurrentStage = SceneStage::BOSSFIGHT1;
+        m_CurrentStageTime = 0;
+    }
 }
 
 void Scene::OnUpdateBossfight1(double timestep)
@@ -108,7 +121,9 @@ void Scene::OnUpdateBossfight1(double timestep)
         m_EntityList.erase(m_EntityList.begin() + removeIndexList[i] - i);
     }
 
-    std::cout << m_EntityList.size() << std::endl;
+    m_CurrentStageTime += timestep;
+
+    // std::cout << m_EntityList.size() << std::endl;
 
     // m_CurrentStageTime = 0;
 
