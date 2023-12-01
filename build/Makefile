@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.27.9/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /opt/homebrew/Cellar/cmake/3.27.9/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ruitong/Desktop/CS/CS32/Game32
+CMAKE_SOURCE_DIR = /cs/student/ruitong/Desktop/CS32/Game32
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ruitong/Desktop/CS/CS32/Game32/build
+CMAKE_BINARY_DIR = /cs/student/ruitong/Desktop/CS32/Game32/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/ruitong/Desktop/CS/CS32/Game32/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/opt/homebrew/Cellar/cmake/3.27.9/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/opt/homebrew/Cellar/cmake/3.27.9/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles /Users/ruitong/Desktop/CS/CS32/Game32/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles /cs/student/ruitong/Desktop/CS32/Game32/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,6 +128,78 @@ Game32: cmake_check_build_system
 Game32/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/build
 .PHONY : Game32/fast
+
+src/Core/Application.o: src/Core/Application.cpp.o
+.PHONY : src/Core/Application.o
+
+# target to build an object file
+src/Core/Application.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Application.cpp.o
+.PHONY : src/Core/Application.cpp.o
+
+src/Core/Application.i: src/Core/Application.cpp.i
+.PHONY : src/Core/Application.i
+
+# target to preprocess a source file
+src/Core/Application.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Application.cpp.i
+.PHONY : src/Core/Application.cpp.i
+
+src/Core/Application.s: src/Core/Application.cpp.s
+.PHONY : src/Core/Application.s
+
+# target to generate assembly for a file
+src/Core/Application.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Application.cpp.s
+.PHONY : src/Core/Application.cpp.s
+
+src/Core/Input.o: src/Core/Input.cpp.o
+.PHONY : src/Core/Input.o
+
+# target to build an object file
+src/Core/Input.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.o
+.PHONY : src/Core/Input.cpp.o
+
+src/Core/Input.i: src/Core/Input.cpp.i
+.PHONY : src/Core/Input.i
+
+# target to preprocess a source file
+src/Core/Input.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.i
+.PHONY : src/Core/Input.cpp.i
+
+src/Core/Input.s: src/Core/Input.cpp.s
+.PHONY : src/Core/Input.s
+
+# target to generate assembly for a file
+src/Core/Input.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.s
+.PHONY : src/Core/Input.cpp.s
+
+src/Render/DataTypes.o: src/Render/DataTypes.cpp.o
+.PHONY : src/Render/DataTypes.o
+
+# target to build an object file
+src/Render/DataTypes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o
+.PHONY : src/Render/DataTypes.cpp.o
+
+src/Render/DataTypes.i: src/Render/DataTypes.cpp.i
+.PHONY : src/Render/DataTypes.i
+
+# target to preprocess a source file
+src/Render/DataTypes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.i
+.PHONY : src/Render/DataTypes.cpp.i
+
+src/Render/DataTypes.s: src/Render/DataTypes.cpp.s
+.PHONY : src/Render/DataTypes.s
+
+# target to generate assembly for a file
+src/Render/DataTypes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.s
+.PHONY : src/Render/DataTypes.cpp.s
 
 src/Render/Renderer.o: src/Render/Renderer.cpp.o
 .PHONY : src/Render/Renderer.o
@@ -177,6 +249,54 @@ src/Render/Texture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
 .PHONY : src/Render/Texture.cpp.s
 
+src/Scene/Entity.o: src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.o
+
+# target to build an object file
+src/Scene/Entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.cpp.o
+
+src/Scene/Entity.i: src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.i
+
+# target to preprocess a source file
+src/Scene/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.cpp.i
+
+src/Scene/Entity.s: src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.s
+
+# target to generate assembly for a file
+src/Scene/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.cpp.s
+
+src/Scene/Scene.o: src/Scene/Scene.cpp.o
+.PHONY : src/Scene/Scene.o
+
+# target to build an object file
+src/Scene/Scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o
+.PHONY : src/Scene/Scene.cpp.o
+
+src/Scene/Scene.i: src/Scene/Scene.cpp.i
+.PHONY : src/Scene/Scene.i
+
+# target to preprocess a source file
+src/Scene/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i
+.PHONY : src/Scene/Scene.cpp.i
+
+src/Scene/Scene.s: src/Scene/Scene.cpp.s
+.PHONY : src/Scene/Scene.s
+
+# target to generate assembly for a file
+src/Scene/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s
+.PHONY : src/Scene/Scene.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -210,12 +330,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Game32"
+	@echo "... src/Core/Application.o"
+	@echo "... src/Core/Application.i"
+	@echo "... src/Core/Application.s"
+	@echo "... src/Core/Input.o"
+	@echo "... src/Core/Input.i"
+	@echo "... src/Core/Input.s"
+	@echo "... src/Render/DataTypes.o"
+	@echo "... src/Render/DataTypes.i"
+	@echo "... src/Render/DataTypes.s"
 	@echo "... src/Render/Renderer.o"
 	@echo "... src/Render/Renderer.i"
 	@echo "... src/Render/Renderer.s"
 	@echo "... src/Render/Texture.o"
 	@echo "... src/Render/Texture.i"
 	@echo "... src/Render/Texture.s"
+	@echo "... src/Scene/Entity.o"
+	@echo "... src/Scene/Entity.i"
+	@echo "... src/Scene/Entity.s"
+	@echo "... src/Scene/Scene.o"
+	@echo "... src/Scene/Scene.i"
+	@echo "... src/Scene/Scene.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

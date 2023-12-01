@@ -1,125 +1,100 @@
-#include <GLUT/glut.h>
-// #include "Render/Renderer.h"
-
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h" 
-
+#include <GL/glut.h>
+// #include <GLUT/glut.h>
+#include <chrono>
 #include <iostream>
+#include <thread>
 
-GLuint texture;
+#include "Scene/Scene.h"
+#include "Render/Renderer.h"
+#include "Core/Input.h"
 
-// void display() {
-//     Renderer::Init();
-//     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-//     // Renderer::DrawQuad({ 0.0, 0.0 }, 0.1, { 0.2, 0.3, 0.4 });
-//     std::shared_ptr<Texture> texture = Texture::Create("Asset/yan.h");
-//     Renderer::DrawQuad({ 0.0, 0.0 }, 0.1, texture);
-//     Renderer::Flush();
-// }
 
-void loadTexture() {
-    int width, height, channels;
-    unsigned char* image = stbi_load("Asset/yan.png", &width, &height, &channels, 4);
-    
-    glGenTextures(1, &texture);
-    
-    // glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texture);
+float xposition2 = -0.5; 
+float xposition3 = 0.5; 
+float yposition = -0.1;
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    
-    
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-    glBindTexture(GL_TEXTURE_2D,0);
-    // glGenerateMipmap(GL_TEXTURE_2D);
-   
-    if (image) {
-        stbi_image_free(image);
-    }
-    
+int direction1 = 1;
+int direction2 = -1;
+int direction3 = 1;
+int direction4 = 1;
+
+void DrawBullet();
+void timer(int );
+
+Scene scene;
+double deltaTime;
+auto lastTime = std::chrono::high_resolution_clock::now();
+
+void idle() {
+    auto currentTime = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> fs = currentTime - lastTime;
+    deltaTime = fs.count();
+    lastTime = currentTime;
+
+    scene.OnUpdate(deltaTime);
 }
 
-void dis() {
-    glClear(GL_COLOR_BUFFER_BIT |  GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, texture);
-
-    glBegin(GL_QUADS);
-        // glColor3d(1,0,0);
-        // glVertex2f(-1,-1);
-        // glColor3d(1,1,0);
-        // glVertex2f(1,-1);
-        // glColor3d(1,1,0);
-        // glVertex2f(1,1);
-        // glColor3d(0,1,0);
-        // glVertex2f(-1,1);
-
-        glTexCoord2f(0.0f, 0.0f); glVertex2f(-0.5f, -0.5f); // Bottom-left vertex
-        glTexCoord2f(1.0f, 0.0f); glVertex2f(0.5f, -0.5f);   // Bottom-right vertex
-        glTexCoord2f(1.0f, 1.0f); glVertex2f(0.5f, 0.5f);    // Top-right vertex
-        glTexCoord2f(0.0f, 1.0f); glVertex2f(-0.5f, 0.5f);  // Top-left vertex
-
-        // glVertex2f(0.0, 5.0);
-        // glVertex2f(4.0, -3.0);
-        // glVertex2f(-4.0, -3.0);
-
-    glEnd();
-
-    glDisable(GL_TEXTURE_2D);
-
-    // glFlush();
-
-    glutSwapBuffers();
+void sceneDisplay() {
+    scene.OnDisplay();
 }
 
-void reshape(int w, int h) {
-    glViewport(0,0,(GLsizei)w, (GLsizei)h);
+float xposition1 = -0.7; 
+
+
+void display() {
+    idle();
+    Renderer::Init();
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    scene.OnDisplay();
+    DrawBullet();
+    // std::thread updateThread(idle);
+    // std::thread displayThread(sceneDisplay);
+
+    // updateThread.join();
+    // displayThread.join();
+}
+
+
+void reshape(int width, int height) {
+    glViewport(0, 0, width, height);
+    
+    // glViewport(0, 0, 10, 10);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(-10,10,-10,10);
+
+    if (width <= height) {
+        glOrtho(-1.0, 1.0, -1.0 * (GLfloat)height / width, 1.0 * (GLfloat)height / width, -1.0, 1.0);
+    } else {
+        glOrtho(-1.0 * (GLfloat)width / height, 1.0 * (GLfloat)width / height, -1.0, 1.0, -1.0, 1.0);
+    }
+    // gluOrtho2D(-1,1,-1,1);
+
+
     glMatrixMode(GL_MODELVIEW);
 }
 
 int main(int argc, char** argv) {
-    // glutInit(&argc, argv);
-    // glutInitDisplayMode(GLUT_RGB);
-    // glutInitWindowPosition(100,200);
-    // glutInitWindowSize(600, 600);
-
-    // glutCreateWindow("Torry");
-
-    // // loadTexture();
-
-    // glutDisplayFunc(dis);
-    // glutReshapeFunc(reshape);
-    // glClearColor(0.0, 0.0, 0.0, 1.0);
-    // // loadTexture();
-
-    // glDeleteTextures(1,&texture);
-   
-    // glutMainLoop();
-   
+    // std::cout << "e231" <<std::endl;
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE); // Use GLUT_DOUBLE for double buffering
-    glutInitWindowPosition(100, 200);
-    glutInitWindowSize(500, 500);
+    glutInitWindowSize(800, 600);
+    glutCreateWindow("Game32");
+    
+    glEnable(GL_DEPTH_TEST);
 
-    glutCreateWindow("Torry");
+    glutDisplayFunc(display);
 
-    glutDisplayFunc(dis);
     glutReshapeFunc(reshape);
-    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glutIdleFunc(display);
+    
+    
+    
+    glutKeyboardFunc(Input::keyboardDownCallback);
+    glutKeyboardUpFunc(Input::keyboardUpCallback);
+    glutSpecialFunc(Input::specialKeyCallback);
+    glutSpecialUpFunc(Input::specialKeyUpCallback);
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture);
-
-    loadTexture();
-
+    glutTimerFunc(0,timer,0);
+    // glClearColor(0,0,0,1);
     glutMainLoop();
 
 
@@ -134,3 +109,118 @@ int main(int argc, char** argv) {
 
 
 
+void DrawBullet()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    glPointSize(10.0);
+
+    glBegin(GL_POINTS);
+    glColor3f(1, 1, 0); // Red
+    //   std::cout << xposition1 << " " <<xposition2 << " " <<xposition3 <<std::endl;
+    glVertex2f(xposition1, -0.5);
+    glVertex2f(xposition2, -0.3);
+    glVertex2f(xposition3, 0.7);
+    glVertex2f((xposition1 + xposition2 - xposition3)/2, yposition);
+   
+
+    glEnd();
+
+    
+    glutSwapBuffers();
+    glFlush();
+}
+
+void timer(int )
+{
+    glutPostRedisplay();
+    glutTimerFunc(1000/60, timer, 0);
+
+    // std::cout << direction1 << " " <<xposition2 << " " <<xposition3 <<std::endl;
+    switch(direction1)
+    {
+        case 1:
+            if (xposition1 < 1) 
+                // std::cout << "r" <<std::endl;
+                xposition1 += 0.05;
+            
+            else 
+                // std::cout << "r" <<std::endl;
+                direction1 = -1;
+            
+            break;
+        case -1:
+            if (xposition1 > -1) 
+                xposition1 -= 0.05;
+            
+            else 
+                direction1 = 1;
+            
+            break;
+    }
+
+    switch(direction2)
+    {
+        case 1:
+            if (xposition2 < 1) {
+                // std::cout << "r" <<std::endl;
+                xposition2 += 0.05;
+            }
+            else {
+                direction2 = -1;
+            }
+            break;
+        case -1:
+            if (xposition2 > -1) {
+                xposition2 -= 0.05;
+            }
+            else {
+                direction2 = 1;
+            }
+            break;
+    }
+
+    switch(direction3)
+    {
+        case 1:
+            if (xposition3 < 1) {
+                // std::cout << "r" <<std::endl;
+                xposition3 += 0.05;
+            }
+            else {
+                direction3 = -1;
+            }
+            break;
+        case -1:
+            if (xposition3 > -1) {
+                xposition3 -= 0.05;
+            }
+            else {
+                direction3 = 1;
+            }
+            break;
+    }
+
+    switch(direction4)
+    {
+        case 1:
+            if (yposition < 1) {
+                // std::cout << "r" <<std::endl;
+                yposition += 0.05;
+            }
+            else {
+                direction4 = -1;
+            }
+            break;
+        case -1:
+            if (yposition > -1) {
+                yposition -= 0.05;
+            }
+            else {
+                direction4 = 1;
+            }
+            break;
+    }
+
+    
+}
