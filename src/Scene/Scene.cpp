@@ -3,12 +3,15 @@
 #include "Render/Renderer.h"
 #include "Core/Input.h"
 #include <GL/glut.h>
+// #include <GLUT/glut.h>
 #include <iostream>
 #include <cmath>
 
 Scene::Scene()
 {
-    texture = Texture::Create("/mnt/c/Users/86166/Desktop/cs32/Game32/src/Asset/wall.jpg");
+    // std::cout << "1" <<std::endl;
+    // texture = Texture::Create("/mnt/c/Users/86166/Desktop/cs32/Game32/src/Asset/wall.jpg");
+    texture = Texture::Create("/Users/ruitong/Desktop/CS/CS32/Game32/src/Asset/wall.jpg");
 }
 
 void Scene::OnUpdate(double timestep)
@@ -32,7 +35,7 @@ void Scene::OnDisplay()
     // Draw Player
     for (int i=0; i<m_EntityList.size(); i++)
     {
-        std::shared_ptr<Entity> entity = m_EntityList[i];
+        std::shared_ptr<Entity> entity = m_EntityList[0];
         Renderer::DrawQuad(entity->m_Position, entity->m_Size, texture);
     }
     Renderer::Flush();

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Game32 is a bullet hell shoot 'em up video game. Player need to control the character to elude bullets while defeating the boss by shooting bullets.
+Game32 is a bullet hell shoot 'em up video game. Player need to control the character to elude bullets while defeating the boss by shooting bullets. Also Player need to avoid the attack from meteorites and debris in space.
 
 ## Control
 
