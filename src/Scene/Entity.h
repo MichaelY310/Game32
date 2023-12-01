@@ -5,10 +5,9 @@ enum class EntityType
 {
     NONE = 0,
     PLAYER,
-    ENEMY,
     BOSS,
     PLAYER_BULLET,
-    ENEMY_BULLET,
+    BOSS_BULLET,
 
 };
 

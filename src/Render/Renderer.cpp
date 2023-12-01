@@ -11,6 +11,7 @@ void Renderer::Flush()
 {   
     glutSwapBuffers();
     glFlush();
+    glutSwapBuffers();
 }
 
 void Renderer::DrawQuad(vec2 position, double scale, vec3 color)
