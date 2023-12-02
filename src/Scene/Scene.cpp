@@ -117,12 +117,15 @@ void Scene::OnUpdateBossfight1(double timestep)
     std::vector<int> removeIndexList;
     for (int i = 0; i < m_EntityList.size(); i++)
     {
+        bool deleted = false;
         std::shared_ptr<Entity> entity = m_EntityList[i];
 
         // Player Move
         if (entity->m_EntityType == EntityType::PLAYER)
         {
             playerEntity = entity;
+
+            // Stop moving if Boss or Player is dead
             if (playerLives > 0)
             {
                 if (Boss1HP > 0) {
@@ -133,9 +136,10 @@ void Scene::OnUpdateBossfight1(double timestep)
                 PlayerDie(playerEntity, timestep);
                 if (PLAYERDEAD)
                 {
-                    if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                    if (!deleted)
                     {
                         removeIndexList.push_back(i);
+                        deleted = true;
                     }
                 }
             }
@@ -143,14 +147,14 @@ void Scene::OnUpdateBossfight1(double timestep)
         // Player Bullet Move
         else if (entity->m_EntityType == EntityType::PLAYER_BULLET)
         {
-            if (Boss1HP > 0) {
-                if (bossEntity->m_Position.DistanceTo(entity->m_Position) < PLAYER_BULLET_RADIUS + BOSS_RADIUS)
+            // Cause damage if the Boss is not dead
+            if (Boss1HP > 0 && bossEntity->m_Position.DistanceTo(entity->m_Position) < PLAYER_BULLET_RADIUS + BOSS_RADIUS)
+            {
+                Boss1HP -= 1;
+                if (!deleted)
                 {
-                    Boss1HP -= 1;
-                    if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
-                    {
-                        removeIndexList.push_back(i);
-                    }
+                    removeIndexList.push_back(i);
+                    deleted = true;
                 }
             }
             PlayerBulletMove(entity, timestep);
@@ -158,17 +162,18 @@ void Scene::OnUpdateBossfight1(double timestep)
         // Boss Move
         else if (entity->m_EntityType == EntityType::BOSS)
         {
+            bossEntity = entity;
             if (Boss1HP > 0) {
-                bossEntity = entity;
                 Boss1Move(entity, timestep);
             } 
             else {
                 Boss1Die(entity, timestep);
                 if (BOSS1DEAD)
                 {
-                    if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                    if (!deleted)
                     {
                         removeIndexList.push_back(i);
+                        deleted = true;
                     }
                 }
             }
@@ -176,43 +181,55 @@ void Scene::OnUpdateBossfight1(double timestep)
         // Boss Big Bullet Move
         else if (entity->m_EntityType == EntityType::BOSS_BIG_BULLET)
         {
-            if (Boss1HP > 0) {
-                if (playerEntity->m_Position.DistanceTo(entity->m_Position) < BOSS_BIG_BULLET_RADIUS + PLAYER_RADIUS)
+            // Delete if Boss is dead
+            if (Boss1HP <= 0) {
+                if (!deleted)
                 {
-                    // Ineffective time out     the last one should not flash
-                    if (flashUnit == 0)
+                    removeIndexList.push_back(i);
+                    deleted = true;
+                }
+            }
+            else 
+            {
+                // Cause damage if player is alive
+                if (playerEntity) {
+                    if (playerEntity->m_Position.DistanceTo(entity->m_Position) < BOSS_BIG_BULLET_RADIUS + PLAYER_RADIUS)
                     {
-                        playerLives -= 1;
-                        if (playerLives > 1) { flashUnit = 100; } 
-
-                        if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                        // Ineffective time out     the last one should not flash
+                        if (flashUnit == 0)
                         {
-                            removeIndexList.push_back(i);
+                            playerLives -= 1;
+                            if (playerLives > 1) { flashUnit = 100; } 
+
+                            if (!deleted)
+                            {
+                                removeIndexList.push_back(i);
+                                deleted = true;
+                            }
                         }
                     }
                 }
                 Boss1BulletMove(entity, timestep);
-            } else {
-                if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
-                {
-                    removeIndexList.push_back(i);
-                }
             }
         }
 
         // Delete Entity
         if (entity->m_Position.x > 2.0f || entity->m_Position.x < -2.0f || entity->m_Position.y > 1.1f || entity->m_Position.y < -1.1f)
         {
-            if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+            if (!deleted)
             {
                 removeIndexList.push_back(i);
+                deleted = true;
             }
         }
     }
-    // PlayerShoot Bullet
-    Scene::PlayerShootBullet(playerEntity, timestep);
+
+    // Add Bullet
+    if (playerEntity) {
+        if (playerLives > 0) { Scene::PlayerShootBullet(playerEntity, timestep); }
+    }
     if (bossEntity) { 
-        if (Boss1HP > 0) {Scene::Boss1ShootBullet(bossEntity, timestep); }
+        if (Boss1HP > 0) { Scene::Boss1ShootBullet(bossEntity, timestep); }
     }
 
     // Delete Entity
