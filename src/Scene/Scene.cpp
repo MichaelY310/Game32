@@ -13,8 +13,8 @@ Scene::Scene()
 
 void Scene::OnUpdate(double timestep)
 {
-    Scene::OnUpdateTest(timestep); 
-    return;
+    // Scene::OnUpdateTest(timestep); 
+    // return;
 
     if (m_CurrentStage == SceneStage::TITLE)
     { Scene::OnUpdateTitle(timestep); }
