@@ -41,17 +41,39 @@ void Scene::OnDisplay()
     Renderer::Flush();
 }
 
-
+bool menuRemove = false;
+bool stage = false;
 
 void Scene::OnUpdateTitle(double timestep)
 {
-    m_CurrentStage = SceneStage::CHOOSE_CHARACTER;
-    m_CurrentStageTime = 0;
+    std::cout << "running" << std::endl;
+    if (m_CurrentStageTime == 0 && stage == false) {
+        // std::cout << "yes" <<std::endl;
+        m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, 0.5f, EntityType::MENU);
+        m_EntityList.push_back(m_Player);
+
+        m_CurrentStageTime += timestep;
+        stage = true;
+    }
+    
+    if (Input::isKeyPressed('w'))
+    {
+        m_CurrentStage = SceneStage::CHOOSE_CHARACTER;
+        m_CurrentStageTime = 0;
+    }
+    else if (Input::isKeyPressed('q')) {
+        exit(1);
+    }
 }
 
 // Player Created
 void Scene::OnUpdateChooseCharacter(double timestep)
 {
+    if (menuRemove == false){
+      
+        m_EntityList.erase(m_EntityList.begin() + m_EntityList.size()-1);
+        menuRemove = true;
+    }
     m_CurrentStage = SceneStage::CONVERSATION1;
     m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, 0.04f, EntityType::PLAYER);
     m_EntityList.push_back(m_Player);
@@ -105,7 +127,12 @@ void Scene::OnUpdateBossfight1(double timestep)
         else if (entity->m_EntityType == EntityType::BOSS)
         {
             bossEntity = entity;
-            // Boss1Move(entity, timestep);
+            Boss1Move(entity, timestep);
+        }
+        // Boss Bullet Move
+        else if (entity->m_EntityType == EntityType::BOSS_BULLET)
+        {
+            Boss1BulletMove(entity, timestep);
         }
 
         // Delete Entity
@@ -116,7 +143,7 @@ void Scene::OnUpdateBossfight1(double timestep)
     }
     // PlayerShoot Bullet
     Scene::PlayerShootBullet(playerEntity, timestep);
-    if (bossEntity) { Scene::PlayerShootBullet(playerEntity, timestep); }
+    if (bossEntity) { Scene::Boss1ShootBullet(bossEntity, timestep); }
 
     // Delete Entity
     for (int i = 0; i < removeIndexList.size(); i++)
@@ -133,7 +160,6 @@ void Scene::OnUpdateBossfight1(double timestep)
 }
 
 
-
 void Scene::PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep)
 {
     if (Input::isKeyPressed('z')) { 
@@ -143,31 +169,31 @@ void Scene::PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep)
 
     if (Input::isKeyPressed(GLUT_KEY_UP) && Input::isKeyPressed(GLUT_KEY_LEFT))
     {
-        if (playerEntity->m_Position.y < 0.95) { playerEntity->m_Position.y += timestep * playerSpeed; }
+        if (playerEntity->m_Position.y < 1.0) { playerEntity->m_Position.y += timestep * playerSpeed; }
         if (playerEntity->m_Position.x > -1.9) { playerEntity->m_Position.x -= timestep * playerSpeed; }
     }
     else if (Input::isKeyPressed(GLUT_KEY_DOWN) && Input::isKeyPressed(GLUT_KEY_LEFT))
     {
-        if (playerEntity->m_Position.y > -1.05) { playerEntity->m_Position.y -= timestep * playerSpeed; }
+        if (playerEntity->m_Position.y > -1.00) { playerEntity->m_Position.y -= timestep * playerSpeed; }
         if (playerEntity->m_Position.x > -1.9) { playerEntity->m_Position.x -= timestep * playerSpeed; }
     }
     else if (Input::isKeyPressed(GLUT_KEY_UP) && Input::isKeyPressed(GLUT_KEY_RIGHT))
     {
-        if (playerEntity->m_Position.y > -1.05) { playerEntity->m_Position.y -= timestep * playerSpeed; }
+        if (playerEntity->m_Position.y > -1.00) { playerEntity->m_Position.y -= timestep * playerSpeed; }
         if (playerEntity->m_Position.x < 1.9) { playerEntity->m_Position.x += timestep * playerSpeed; }
     }
     else if (Input::isKeyPressed(GLUT_KEY_DOWN) && Input::isKeyPressed(GLUT_KEY_RIGHT))
     {
-        if (playerEntity->m_Position.y > -1.05) { playerEntity->m_Position.y -= timestep * playerSpeed; }
+        if (playerEntity->m_Position.y > -1.00) { playerEntity->m_Position.y -= timestep * playerSpeed; }
         if (playerEntity->m_Position.x < 1.9) { playerEntity->m_Position.x += timestep * playerSpeed; }
     }
     else if (Input::isKeyPressed(GLUT_KEY_UP))
     {
-        if (playerEntity->m_Position.y < 0.95) { playerEntity->m_Position.y += timestep * playerSpeed; }
+        if (playerEntity->m_Position.y < 1.0) { playerEntity->m_Position.y += timestep * playerSpeed; }
     }
     else if (Input::isKeyPressed(GLUT_KEY_DOWN))
     {
-        if (playerEntity->m_Position.y > -1.05) { playerEntity->m_Position.y -= timestep * playerSpeed; }
+        if (playerEntity->m_Position.y > -1.00) { playerEntity->m_Position.y -= timestep * playerSpeed; }
     }            
     else if (Input::isKeyPressed(GLUT_KEY_LEFT))
     {
@@ -178,6 +204,7 @@ void Scene::PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep)
         if (playerEntity->m_Position.x < 1.9) { playerEntity->m_Position.x += timestep * playerSpeed; }
     }
 }
+
 
 void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double timestep)
 {
@@ -201,10 +228,63 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
     }
 }
 
+
 void Scene::PlayerBulletMove(std::shared_ptr<Entity> playerBulletEntity, double timestep)
 {
     float angleRadians = playerBulletEntity->m_Angle * (M_PI / 180.0);
 
     playerBulletEntity->m_Position.x += 2 * std::cos(angleRadians) * timestep;
     playerBulletEntity->m_Position.y += 2 * std::sin(angleRadians) * timestep;
+}
+
+
+void Scene::Boss1Move(std::shared_ptr<Entity> bossEntity, double timestep)
+{
+    if (Boss1Wait <= 0)
+    {
+        float angleRadians = bossEntity->m_Angle * (M_PI / 180.0);
+        bossEntity->m_Position.x += 1 * std::cos(angleRadians) * timestep;
+        bossEntity->m_Position.y += 1 * std::sin(angleRadians) * timestep;
+
+        if (bossEntity->m_Position.x >= 1.0)
+        {
+            bossEntity->m_Angle = 180;
+            Boss1Wait = 2;
+        }
+        else if (bossEntity->m_Position.x <= -1.0)
+        {
+            bossEntity->m_Angle = 0;
+            Boss1Wait = 2;
+        }
+    }
+    else 
+    {
+        Boss1Wait -= timestep;
+    }
+
+    // std::cout << Boss1Wait << std::endl;
+}
+
+
+void Scene::Boss1ShootBullet(std::shared_ptr<Entity> boss1Entity, double timestep)
+{
+    Boss1currentBigBulletTime += timestep;
+    if (Boss1Wait > 0 && (Boss1prevBigBulletTime == 0 || Boss1currentBigBulletTime - Boss1prevBigBulletTime >= 0.5))
+    {
+        int bulletCount = 9;
+        for (int i = 0; i < bulletCount; i++)
+        {
+            std::shared_ptr<Entity> boss1BigBullet = std::make_shared<Entity>(boss1Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, 0.08f, EntityType::BOSS_BULLET);
+            m_EntityList.push_back(boss1BigBullet);
+        }
+        Boss1prevBigBulletTime = Boss1currentBigBulletTime;
+    }
+}
+
+void Scene::Boss1BulletMove(std::shared_ptr<Entity> boss1BulletEntity, double timestep)
+{
+    float angleRadians = boss1BulletEntity->m_Angle * (M_PI / 180.0);
+
+    boss1BulletEntity->m_Position.x += 2 * std::cos(angleRadians) * timestep;
+    boss1BulletEntity->m_Position.y += 2 * std::sin(angleRadians) * timestep;
 }

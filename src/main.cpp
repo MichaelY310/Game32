@@ -42,11 +42,9 @@ float xposition1 = -0.7;
 
 
 void display() {
+    sceneDisplay();
     idle();
-    Renderer::Init();
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    scene.OnDisplay();
-    DrawBullet();
+
     // std::thread updateThread(idle);
     // std::thread displayThread(sceneDisplay);
 
@@ -73,16 +71,26 @@ void reshape(int width, int height) {
     glMatrixMode(GL_MODELVIEW);
 }
 
+void Game_Menu(int id) 
+{  
+    std::cout << "runnin g" <<std::endl;
+    if (id == 2)
+    {
+        exit(1);
+    }
+    glutPostRedisplay();
+}
+
 int main(int argc, char** argv) {
     // std::cout << "e231" <<std::endl;
     glutInit(&argc, argv);
     glutInitWindowSize(800, 600);
     glutCreateWindow("Game32");
     
+
     glEnable(GL_DEPTH_TEST);
 
     glutDisplayFunc(display);
-
     glutReshapeFunc(reshape);
     glutIdleFunc(display);
     
@@ -93,16 +101,15 @@ int main(int argc, char** argv) {
     glutSpecialFunc(Input::specialKeyCallback);
     glutSpecialUpFunc(Input::specialKeyUpCallback);
 
-    glutTimerFunc(0,timer,0);
-    // glClearColor(0,0,0,1);
+    // glutCreateMenu(Game_Menu);
+    // glutAddMenuEntry("START",1);
+    // glutAddMenuEntry("QUIT",2);
+    // glutAddMenuEntry("TEST",3);
+    // glutAttachMenu(GLUT_RIGHT_BUTTON);
+
+
     glutMainLoop();
 
-
-    // glutInit(&argc, argv);
-    // glutInitWindowSize(800, 600);
-    // glutCreateWindow("GameTorry");
-    // glutDisplayFunc(display);
-    // glutMainLoop();
 
     return 0;
 }

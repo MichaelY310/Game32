@@ -33,11 +33,12 @@ public:
     void OnUpdateConversation1(double timestep);
     void OnUpdateBossfight1(double timestep);
 
-
     void PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep);
     void PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double timestep);
     void PlayerBulletMove(std::shared_ptr<Entity> playerBulletEntity, double timestep);
-    void Boss1Move(std::shared_ptr<Entity> playerEntity, double timestep);
+    void Boss1Move(std::shared_ptr<Entity> bossEntity, double timestep);
+    void Boss1ShootBullet(std::shared_ptr<Entity> boss1Entity, double timestep);
+    void Boss1BulletMove(std::shared_ptr<Entity> boss1BulletEntity, double timestep);
 
 
 
@@ -51,9 +52,12 @@ public:
     std::vector<std::shared_ptr<Entity>> m_PlayerBullets;
 
     std::shared_ptr<Entity> m_Boss1;
-    int Boss1HP = 100;
+    double Boss1HP = 100;
     int Boss1MaxMode = 3;
     int Boss1Mode = 0;
+    double Boss1Wait = 0;  // Wait 
+    double Boss1prevBigBulletTime = 0;
+    double Boss1currentBigBulletTime = 0;
 
 
     double playerSpeed = 1.5;
