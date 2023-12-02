@@ -162,6 +162,7 @@ CMakeFiles/Game32.dir/src/main.cpp.o: \
  /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
  /usr/include/bits/iscanonical.h \
  /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
+ /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.h \
  /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h \
  /cs/student/yang335/Desktop/Game32/src/Core/Input.h \
  /usr/include/c++/13/unordered_set \

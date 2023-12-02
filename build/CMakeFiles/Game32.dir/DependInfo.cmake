@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/cs/student/yang335/Desktop/Game32/src/Render/DataTypes.cpp" "CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o.d"
   "/cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp" "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d"
   "/cs/student/yang335/Desktop/Game32/src/Render/Texture.cpp" "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o.d"
+  "/cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.cpp" "CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o.d"
   "/cs/student/yang335/Desktop/Game32/src/Scene/Entity.cpp" "CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o.d"
   "/cs/student/yang335/Desktop/Game32/src/Scene/Scene.cpp" "CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o.d"
   "/cs/student/yang335/Desktop/Game32/src/main.cpp" "CMakeFiles/Game32.dir/src/main.cpp.o" "gcc" "CMakeFiles/Game32.dir/src/main.cpp.o.d"

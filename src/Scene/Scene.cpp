@@ -13,14 +13,25 @@ Scene::Scene()
 
 void Scene::OnUpdate(double timestep)
 {
+    Scene::OnUpdateTest(timestep); 
+    return;
+
     if (m_CurrentStage == SceneStage::TITLE)
     { Scene::OnUpdateTitle(timestep); }
     else if (m_CurrentStage == SceneStage::CHOOSE_CHARACTER)
     { Scene::OnUpdateChooseCharacter(timestep); }
+
     else if (m_CurrentStage == SceneStage::CONVERSATION1)
     { Scene::OnUpdateConversation1(timestep); }
     else if (m_CurrentStage == SceneStage::BOSSFIGHT1)
     { Scene::OnUpdateBossfight1(timestep); }
+
+    else if (m_CurrentStage == SceneStage::CONVERSATION2)
+    { exit(0); }
+
+
+    else if (m_CurrentStage == SceneStage::FAILED)
+    { Scene::OnUpdateFailed(timestep); }
 }
 
 
@@ -29,11 +40,32 @@ void Scene::OnDisplay()
     Renderer::Init();
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
+    if (flashUnit > 0)
+    {
+        flashUnit -= 1;
+    }
+
+    if (Boss1HPPanel)
+    {
+        Boss1HPPanel->Display();
+    }
+
     // Draw Player
     for (int i=0; i<m_EntityList.size(); i++)
     {
         std::shared_ptr<Entity> entity = m_EntityList[i];
-        Renderer::DrawQuad(entity->m_Position, entity->m_Size, texture);
+
+        // player flash
+        if (entity->m_EntityType == EntityType::PLAYER && playerLives > 1) {
+            if (flashUnit % 10 == 0)
+            {
+                entity->m_Alpha = 1.0f;
+            }
+            else {
+                entity->m_Alpha = 0.0f;
+            }
+        }
+        Renderer::DrawQuad(entity->m_Position, entity->m_Size, { 1.0, 1.0, 1.0}, entity->m_Alpha);
     }
     Renderer::Flush();
 }
@@ -50,7 +82,7 @@ void Scene::OnUpdateTitle(double timestep)
 void Scene::OnUpdateChooseCharacter(double timestep)
 {
     m_CurrentStage = SceneStage::CONVERSATION1;
-    m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, 0.04f, EntityType::PLAYER);
+    m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, PLAYER_RADIUS * 2, EntityType::PLAYER);
     m_EntityList.push_back(m_Player);
     m_CurrentStageTime = 0;
 }
@@ -60,7 +92,7 @@ void Scene::OnUpdateConversation1(double timestep)
     // Boss1 Move in
     if (m_CurrentStageTime == 0)
     {
-        m_Boss1 = std::make_shared<Entity>(vec2(2.0, 1.0), 0.0f, 0.1f, EntityType::BOSS);
+        m_Boss1 = std::make_shared<Entity>(vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, EntityType::BOSS);
         m_EntityList.push_back(m_Boss1);
     }
 
@@ -91,34 +123,97 @@ void Scene::OnUpdateBossfight1(double timestep)
         if (entity->m_EntityType == EntityType::PLAYER)
         {
             playerEntity = entity;
-            PlayerMove(playerEntity, timestep);
+            if (playerLives > 0)
+            {
+                if (Boss1HP > 0) {
+                    PlayerMove(playerEntity, timestep);
+                }
+            }
+            else {
+                PlayerDie(playerEntity, timestep);
+                if (PLAYERDEAD)
+                {
+                    if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                    {
+                        removeIndexList.push_back(i);
+                    }
+                }
+            }
         }
         // Player Bullet Move
         else if (entity->m_EntityType == EntityType::PLAYER_BULLET)
         {
+            if (Boss1HP > 0) {
+                if (bossEntity->m_Position.DistanceTo(entity->m_Position) < PLAYER_BULLET_RADIUS + BOSS_RADIUS)
+                {
+                    Boss1HP -= 1;
+                    if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                    {
+                        removeIndexList.push_back(i);
+                    }
+                }
+            }
             PlayerBulletMove(entity, timestep);
         }
         // Boss Move
         else if (entity->m_EntityType == EntityType::BOSS)
         {
-            bossEntity = entity;
-            Boss1Move(entity, timestep);
+            if (Boss1HP > 0) {
+                bossEntity = entity;
+                Boss1Move(entity, timestep);
+            } 
+            else {
+                Boss1Die(entity, timestep);
+                if (BOSS1DEAD)
+                {
+                    if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                    {
+                        removeIndexList.push_back(i);
+                    }
+                }
+            }
         }
-        // Boss Bullet Move
-        else if (entity->m_EntityType == EntityType::BOSS_BULLET)
+        // Boss Big Bullet Move
+        else if (entity->m_EntityType == EntityType::BOSS_BIG_BULLET)
         {
-            Boss1BulletMove(entity, timestep);
+            if (Boss1HP > 0) {
+                if (playerEntity->m_Position.DistanceTo(entity->m_Position) < BOSS_BIG_BULLET_RADIUS + PLAYER_RADIUS)
+                {
+                    // Ineffective time out     the last one should not flash
+                    if (flashUnit == 0)
+                    {
+                        playerLives -= 1;
+                        if (playerLives > 1) { flashUnit = 100; } 
+
+                        if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                        {
+                            removeIndexList.push_back(i);
+                        }
+                    }
+                }
+                Boss1BulletMove(entity, timestep);
+            } else {
+                if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+                {
+                    removeIndexList.push_back(i);
+                }
+            }
         }
 
         // Delete Entity
         if (entity->m_Position.x > 2.0f || entity->m_Position.x < -2.0f || entity->m_Position.y > 1.1f || entity->m_Position.y < -1.1f)
         {
-            removeIndexList.push_back(i);
+            if (removeIndexList.size() == 0 || removeIndexList[removeIndexList.size()-1] != i)
+            {
+                removeIndexList.push_back(i);
+            }
         }
     }
     // PlayerShoot Bullet
     Scene::PlayerShootBullet(playerEntity, timestep);
-    if (bossEntity) { Scene::Boss1ShootBullet(bossEntity, timestep); }
+    if (bossEntity) { 
+        if (Boss1HP > 0) {Scene::Boss1ShootBullet(bossEntity, timestep); }
+    }
 
     // Delete Entity
     for (int i = 0; i < removeIndexList.size(); i++)
@@ -128,10 +223,26 @@ void Scene::OnUpdateBossfight1(double timestep)
 
     m_CurrentStageTime += timestep;
 
-    // std::cout << m_EntityList.size() << std::endl;
+    // std::cout << playerLives << std::endl;
+    // std::cout << playerLives << std::endl;
+    // std::cout << flashUnit << std::endl;
 
-    // m_CurrentStageTime = 0;
+    if (BOSS1DEAD)
+    {
+        m_CurrentStageTime = 0;
+        m_CurrentStage = SceneStage::CONVERSATION2;
+    }
+    else if (PLAYERDEAD)
+    {
+        m_CurrentStageTime = 0;
+        m_CurrentStage = SceneStage::FAILED;
+    }
+}
 
+void Scene::OnUpdateFailed(double timestep)
+{
+    std::cout << "failed" << std::endl;
+    exit(0);
 }
 
 
@@ -195,7 +306,7 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
 
                 double xOffset = (double)i-((double)bulletCount - 1)/2;
                 pos = pos + vec2(xOffset * playerSpeed * 0.05, 0.05);
-                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(pos, 90.0f, 0.03f, EntityType::PLAYER_BULLET);
+                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(pos, 90.0f, PLAYER_BULLET_RADIUS * 2, EntityType::PLAYER_BULLET);
                 m_EntityList.push_back(playerBullet);
             }
             prevBulletTime = currentBulletTime;
@@ -223,11 +334,13 @@ void Scene::Boss1Move(std::shared_ptr<Entity> bossEntity, double timestep)
 
         if (bossEntity->m_Position.x >= 1.0)
         {
+            bossEntity->m_Position.x = 0.999;
             bossEntity->m_Angle = 180;
             Boss1Wait = 2;
         }
         else if (bossEntity->m_Position.x <= -1.0)
         {
+            bossEntity->m_Position.x = -0.999;
             bossEntity->m_Angle = 0;
             Boss1Wait = 2;
         }
@@ -237,7 +350,7 @@ void Scene::Boss1Move(std::shared_ptr<Entity> bossEntity, double timestep)
         Boss1Wait -= timestep;
     }
 
-    std::cout << Boss1Wait << std::endl;
+    // std::cout << Boss1Wait << std::endl;
 }
 
 
@@ -249,7 +362,7 @@ void Scene::Boss1ShootBullet(std::shared_ptr<Entity> boss1Entity, double timeste
         int bulletCount = 9;
         for (int i = 0; i < bulletCount; i++)
         {
-            std::shared_ptr<Entity> boss1BigBullet = std::make_shared<Entity>(boss1Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, 0.08f, EntityType::BOSS_BULLET);
+            std::shared_ptr<Entity> boss1BigBullet = std::make_shared<Entity>(boss1Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, BOSS_BIG_BULLET_RADIUS * 2, EntityType::BOSS_BIG_BULLET);
             m_EntityList.push_back(boss1BigBullet);
         }
         Boss1prevBigBulletTime = Boss1currentBigBulletTime;
@@ -262,4 +375,33 @@ void Scene::Boss1BulletMove(std::shared_ptr<Entity> boss1BulletEntity, double ti
 
     boss1BulletEntity->m_Position.x += 2 * std::cos(angleRadians) * timestep;
     boss1BulletEntity->m_Position.y += 2 * std::sin(angleRadians) * timestep;
+}
+
+void Scene::Boss1Die(std::shared_ptr<Entity> boss1Entity, double timestep)
+{
+    boss1Entity->m_Alpha -= 1 * timestep;
+    if (boss1Entity->m_Alpha <= 0.01)
+    {
+        BOSS1DEAD = true;
+    }
+}
+
+void Scene::PlayerDie(std::shared_ptr<Entity> playerEntity, double timestep)
+{
+    playerEntity->m_Alpha -= 1 * timestep;
+    if (playerEntity->m_Alpha <= 0.01)
+    {
+        PLAYERDEAD = true;
+    }
+}
+
+
+
+
+
+
+void Scene::OnUpdateTest(double timestep)
+{
+    m_Boss1 = std::make_shared<Entity>(vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, EntityType::BOSS);
+    Boss1HPPanel = std::make_shared<BossHPPanel>(m_Boss1);
 }

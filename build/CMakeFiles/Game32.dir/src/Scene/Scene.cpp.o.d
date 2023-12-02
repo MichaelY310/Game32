@@ -117,6 +117,7 @@ CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: \
  /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/KHR/khrplatform.h /usr/include/GL/glu.h \
  /usr/include/c++/13/stdlib.h /usr/include/c++/13/cstdlib \
+ /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.h \
  /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h \
  /cs/student/yang335/Desktop/Game32/src/Core/Input.h \
  /usr/include/c++/13/unordered_set \

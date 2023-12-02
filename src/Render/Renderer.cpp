@@ -1,19 +1,24 @@
 #include <GL/glut.h>
+#include <cmath>
 
 #include "Renderer.h"
+
+const float PI = 3.14159265359;
 
 void Renderer::Init()
 {   
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void Renderer::Flush()
-{   
+{
     glFlush();
     glutSwapBuffers();
 }
 
-void Renderer::DrawQuad(vec2 position, double scale, vec3 color)
+void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha)
 {
     // d c
     // a b
@@ -33,7 +38,7 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color)
     d = d + position;
 
     glBegin(GL_QUADS);
-    glColor3f(color.x, color.y, color.z); // Red
+    glColor4f(color.x, color.y, color.z, alpha);
     glVertex2f(a.x, a.y);
     glVertex2f(b.x, b.y);
     glVertex2f(c.x, c.y);
@@ -76,6 +81,28 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     glVertex2f(d.x, d.y);
 
     // glBindTexture(GL_TEXTURE_2D, 0);
+
+    glEnd();
+}
+
+void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha)
+{
+    glColor4f(color.x, color.y, color.z, alpha);
+
+    const float radius = 1.0;
+    const float startAngle = 30.0;
+    const float endAngle = startAngle + 120.0;
+
+    glBegin(GL_TRIANGLE_STRIP);
+
+    for (float angle = startAngle; angle <= endAngle; angle += 1.0) {
+        float radians = angle * (PI / 180.0);
+        float x = radius * cos(radians);
+        float y = radius * sin(radians);
+
+        glVertex2f(x, y);
+        glVertex2f(0.0, 0.0);
+    }
 
     glEnd();
 }

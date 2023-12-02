@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 
 class vec2
 {
@@ -36,6 +37,10 @@ public:
 
     bool operator!=(vec2 vector) const {
         return x != vector.x || y != vector.y;
+    };
+
+    double DistanceTo(vec2 vector) const {
+        return std::sqrt((vector.x - x) * (vector.x - x) + (vector.y - y) * (vector.y - y));
     };
 };
 
