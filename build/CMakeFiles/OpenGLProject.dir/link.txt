@@ -1,1 +1,0 @@
-/usr/lib64/ccache/c++ CMakeFiles/OpenGLProject.dir/main.cpp.o CMakeFiles/OpenGLProject.dir/Dependencies/Glad/glad.c.o -o OpenGLProject 

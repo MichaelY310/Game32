@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/mnt/c/Users/86166/Desktop/cs32/game32/Dependencies -I/mnt/c/Users/86166/Desktop/cs32/game32/Dependencies/Glad -I/mnt/c/Users/86166/Desktop/cs32/game32/src
+CXX_INCLUDES = -I"/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32/Dependencies" -I"/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32/Dependencies/Glad" -I"/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32/src"
 
 CXX_FLAGS = -std=gnu++11
 

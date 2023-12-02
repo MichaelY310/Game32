@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Users/86166/Desktop/cs32/game32
+CMAKE_SOURCE_DIR = "/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Users/86166/Desktop/cs32/game32/build
+CMAKE_BINARY_DIR = "/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/86166/Desktop/cs32/game32/build/CMakeFiles /mnt/c/Users/86166/Desktop/cs32/game32/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32/build/CMakeFiles" "/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/86166/Desktop/cs32/game32/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Users/a1434/Desktop/documents/2023 Fall/CMPSC 32/Game32/Game32/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -153,6 +153,54 @@ src/Core/Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Application.cpp.s
 .PHONY : src/Core/Application.cpp.s
 
+src/Core/Input.o: src/Core/Input.cpp.o
+.PHONY : src/Core/Input.o
+
+# target to build an object file
+src/Core/Input.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.o
+.PHONY : src/Core/Input.cpp.o
+
+src/Core/Input.i: src/Core/Input.cpp.i
+.PHONY : src/Core/Input.i
+
+# target to preprocess a source file
+src/Core/Input.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.i
+.PHONY : src/Core/Input.cpp.i
+
+src/Core/Input.s: src/Core/Input.cpp.s
+.PHONY : src/Core/Input.s
+
+# target to generate assembly for a file
+src/Core/Input.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Core/Input.cpp.s
+.PHONY : src/Core/Input.cpp.s
+
+src/Render/DataTypes.o: src/Render/DataTypes.cpp.o
+.PHONY : src/Render/DataTypes.o
+
+# target to build an object file
+src/Render/DataTypes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o
+.PHONY : src/Render/DataTypes.cpp.o
+
+src/Render/DataTypes.i: src/Render/DataTypes.cpp.i
+.PHONY : src/Render/DataTypes.i
+
+# target to preprocess a source file
+src/Render/DataTypes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.i
+.PHONY : src/Render/DataTypes.cpp.i
+
+src/Render/DataTypes.s: src/Render/DataTypes.cpp.s
+.PHONY : src/Render/DataTypes.s
+
+# target to generate assembly for a file
+src/Render/DataTypes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.s
+.PHONY : src/Render/DataTypes.cpp.s
+
 src/Render/Renderer.o: src/Render/Renderer.cpp.o
 .PHONY : src/Render/Renderer.o
 
@@ -201,6 +249,78 @@ src/Render/Texture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
 .PHONY : src/Render/Texture.cpp.s
 
+src/Scene/BossHPPanel.o: src/Scene/BossHPPanel.cpp.o
+.PHONY : src/Scene/BossHPPanel.o
+
+# target to build an object file
+src/Scene/BossHPPanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o
+.PHONY : src/Scene/BossHPPanel.cpp.o
+
+src/Scene/BossHPPanel.i: src/Scene/BossHPPanel.cpp.i
+.PHONY : src/Scene/BossHPPanel.i
+
+# target to preprocess a source file
+src/Scene/BossHPPanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i
+.PHONY : src/Scene/BossHPPanel.cpp.i
+
+src/Scene/BossHPPanel.s: src/Scene/BossHPPanel.cpp.s
+.PHONY : src/Scene/BossHPPanel.s
+
+# target to generate assembly for a file
+src/Scene/BossHPPanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s
+.PHONY : src/Scene/BossHPPanel.cpp.s
+
+src/Scene/Entity.o: src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.o
+
+# target to build an object file
+src/Scene/Entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o
+.PHONY : src/Scene/Entity.cpp.o
+
+src/Scene/Entity.i: src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.i
+
+# target to preprocess a source file
+src/Scene/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i
+.PHONY : src/Scene/Entity.cpp.i
+
+src/Scene/Entity.s: src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.s
+
+# target to generate assembly for a file
+src/Scene/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s
+.PHONY : src/Scene/Entity.cpp.s
+
+src/Scene/Scene.o: src/Scene/Scene.cpp.o
+.PHONY : src/Scene/Scene.o
+
+# target to build an object file
+src/Scene/Scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o
+.PHONY : src/Scene/Scene.cpp.o
+
+src/Scene/Scene.i: src/Scene/Scene.cpp.i
+.PHONY : src/Scene/Scene.i
+
+# target to preprocess a source file
+src/Scene/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i
+.PHONY : src/Scene/Scene.cpp.i
+
+src/Scene/Scene.s: src/Scene/Scene.cpp.s
+.PHONY : src/Scene/Scene.s
+
+# target to generate assembly for a file
+src/Scene/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s
+.PHONY : src/Scene/Scene.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -237,12 +357,27 @@ help:
 	@echo "... src/Core/Application.o"
 	@echo "... src/Core/Application.i"
 	@echo "... src/Core/Application.s"
+	@echo "... src/Core/Input.o"
+	@echo "... src/Core/Input.i"
+	@echo "... src/Core/Input.s"
+	@echo "... src/Render/DataTypes.o"
+	@echo "... src/Render/DataTypes.i"
+	@echo "... src/Render/DataTypes.s"
 	@echo "... src/Render/Renderer.o"
 	@echo "... src/Render/Renderer.i"
 	@echo "... src/Render/Renderer.s"
 	@echo "... src/Render/Texture.o"
 	@echo "... src/Render/Texture.i"
 	@echo "... src/Render/Texture.s"
+	@echo "... src/Scene/BossHPPanel.o"
+	@echo "... src/Scene/BossHPPanel.i"
+	@echo "... src/Scene/BossHPPanel.s"
+	@echo "... src/Scene/Entity.o"
+	@echo "... src/Scene/Entity.i"
+	@echo "... src/Scene/Entity.s"
+	@echo "... src/Scene/Scene.o"
+	@echo "... src/Scene/Scene.i"
+	@echo "... src/Scene/Scene.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
