@@ -204,7 +204,70 @@ CMakeFiles/Game32.dir/src/Core/Input.cpp.o: /cs/student/yang335/Desktop/Game32/s
 
 CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o: /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.cpp \
   /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
-  /usr/include/stdc-predef.h
+  /usr/include/alloca.h \
+  /usr/include/bits/atomic_wide_counter.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/endianness.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/bits/struct_mutex.h \
+  /usr/include/bits/struct_rwlock.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/c++/13/bits/cpp_type_traits.h \
+  /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/cmath \
+  /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/c++/13/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/13/x86_64-redhat-linux/bits/os_defines.h \
+  /usr/include/endian.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/math.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdlib.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/sys/select.h \
+  /usr/include/sys/types.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
 
 CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: /cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp \
   /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
@@ -224,8 +287,17 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: /cs/student/yang335/Desktop/Gam
   /usr/include/bits/endianness.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
@@ -314,6 +386,7 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: /cs/student/yang335/Desktop/Gam
   /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/utility.h \
+  /usr/include/c++/13/cmath \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cwchar \
   /usr/include/c++/13/debug/assertions.h \
@@ -344,6 +417,7 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: /cs/student/yang335/Desktop/Gam
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
+  /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -598,7 +672,70 @@ CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: /cs/student/yang335/Desktop/Game
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: /cs/student/yang335/Desktop/Game32/src/Scene/Entity.cpp \
   /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
   /cs/student/yang335/Desktop/Game32/src/Scene/Entity.h \
-  /usr/include/stdc-predef.h
+  /usr/include/alloca.h \
+  /usr/include/bits/atomic_wide_counter.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/endianness.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/bits/struct_mutex.h \
+  /usr/include/bits/struct_rwlock.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/c++/13/bits/cpp_type_traits.h \
+  /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/cmath \
+  /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/c++/13/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/13/x86_64-redhat-linux/bits/os_defines.h \
+  /usr/include/endian.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/math.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdlib.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/sys/select.h \
+  /usr/include/sys/types.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
 
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: /cs/student/yang335/Desktop/Game32/src/Scene/Scene.cpp \
   /cs/student/yang335/Desktop/Game32/src/Core/Input.h \
@@ -858,9 +995,18 @@ CMakeFiles/Game32.dir/src/main.cpp.o: /cs/student/yang335/Desktop/Game32/src/mai
   /usr/include/bits/errno.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/iscanonical.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
   /usr/include/bits/locale.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/mathcalls.h \
   /usr/include/bits/pthread_stack_min-dynamic.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
@@ -991,6 +1137,7 @@ CMakeFiles/Game32.dir/src/main.cpp.o: /cs/student/yang335/Desktop/Game32/src/mai
   /usr/include/c++/13/cerrno \
   /usr/include/c++/13/chrono \
   /usr/include/c++/13/clocale \
+  /usr/include/c++/13/cmath \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
@@ -1048,6 +1195,7 @@ CMakeFiles/Game32.dir/src/main.cpp.o: /cs/student/yang335/Desktop/Game32/src/mai
   /usr/include/gnu/stubs.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -1516,6 +1664,34 @@ CMakeFiles/Game32.dir/src/main.cpp.o: /cs/student/yang335/Desktop/Game32/src/mai
 
 /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h:
 
+/usr/include/wctype.h:
+
+/usr/include/sched.h:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/include/bits/iscanonical.h:
+
+/usr/include/c++/13/bits/stl_function.h:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
+
+/usr/include/bits/uio_lim.h:
+
+/usr/include/bits/math-vector.h:
+
+/usr/include/bits/mathcalls-helper-functions.h:
+
+/usr/include/string.h:
+
+/usr/include/c++/13/stdexcept:
+
+/usr/include/bits/mathcalls-narrow.h:
+
+/usr/include/c++/13/cmath:
+
+/usr/include/bits/xopen_lim.h:
+
 /usr/include/c++/13/bits/functexcept.h:
 
 /cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp:
@@ -1546,39 +1722,11 @@ CMakeFiles/Game32.dir/src/main.cpp.o: /cs/student/yang335/Desktop/Game32/src/mai
 
 /usr/include/assert.h:
 
-/usr/include/wctype.h:
-
-/usr/include/sched.h:
-
-/usr/include/bits/fp-fast.h:
-
-/usr/include/bits/iscanonical.h:
-
-/usr/include/c++/13/bits/stl_function.h:
-
-/usr/include/bits/libm-simd-decl-stubs.h:
-
-/usr/include/bits/uio_lim.h:
-
-/usr/include/bits/math-vector.h:
-
-/usr/include/bits/mathcalls-helper-functions.h:
-
-/usr/include/string.h:
-
-/usr/include/c++/13/stdexcept:
-
-/usr/include/bits/mathcalls-narrow.h:
-
 /usr/include/c++/13/bits/shared_ptr_base.h:
 
 /usr/include/wchar.h:
 
 /usr/include/bits/posix1_lim.h:
-
-/usr/include/bits/xopen_lim.h:
-
-/usr/include/c++/13/cmath:
 
 /usr/include/c++/13/bits/std_thread.h:
 

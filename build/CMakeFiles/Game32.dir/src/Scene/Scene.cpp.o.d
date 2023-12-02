@@ -99,18 +99,24 @@ CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /cs/student/yang335/Desktop/Game32/src/Scene/Entity.h \
  /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
- /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
- /usr/include/GL/glut.h /usr/include/GL/freeglut_std.h \
- /usr/include/GL/gl.h /usr/include/GL/glext.h \
- /usr/include/KHR/khrplatform.h /usr/include/GL/glu.h \
- /usr/include/c++/13/stdlib.h /usr/include/c++/13/cstdlib \
+ /usr/include/c++/13/cmath /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h /usr/include/c++/13/bits/std_abs.h \
  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
  /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
  /usr/include/endian.h /usr/include/bits/byteswap.h \
  /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
  /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
  /usr/include/alloca.h /usr/include/bits/stdlib-float.h \
- /usr/include/c++/13/bits/std_abs.h \
+ /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
+ /usr/include/GL/glut.h /usr/include/GL/freeglut_std.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/KHR/khrplatform.h /usr/include/GL/glu.h \
+ /usr/include/c++/13/stdlib.h /usr/include/c++/13/cstdlib \
  /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h \
  /cs/student/yang335/Desktop/Game32/src/Core/Input.h \
  /usr/include/c++/13/unordered_set \
@@ -155,11 +161,4 @@ CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/cmath \
- /usr/include/math.h /usr/include/bits/math-vector.h \
- /usr/include/bits/libm-simd-decl-stubs.h \
- /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
- /usr/include/bits/fp-fast.h \
- /usr/include/bits/mathcalls-helper-functions.h \
- /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
- /usr/include/bits/iscanonical.h
+ /usr/include/c++/13/bits/istream.tcc

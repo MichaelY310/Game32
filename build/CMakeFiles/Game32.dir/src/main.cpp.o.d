@@ -154,6 +154,13 @@ CMakeFiles/Game32.dir/src/main.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /cs/student/yang335/Desktop/Game32/src/Scene/Entity.h \
  /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
+ /usr/include/c++/13/cmath /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h \
  /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
  /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h \
  /cs/student/yang335/Desktop/Game32/src/Core/Input.h \

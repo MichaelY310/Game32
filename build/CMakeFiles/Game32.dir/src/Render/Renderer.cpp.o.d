@@ -38,6 +38,15 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
  /usr/include/bits/stdlib-float.h /usr/include/c++/13/bits/std_abs.h \
  /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h \
  /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
+ /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
+ /usr/include/c++/13/bits/cpp_type_traits.h \
+ /usr/include/c++/13/ext/type_traits.h /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h \
  /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/c++/13/bits/allocator.h \
@@ -55,8 +64,6 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
  /usr/include/c++/13/debug/assertions.h \
  /usr/include/c++/13/bits/stl_pair.h /usr/include/c++/13/bits/utility.h \
  /usr/include/c++/13/ext/numeric_traits.h \
- /usr/include/c++/13/bits/cpp_type_traits.h \
- /usr/include/c++/13/ext/type_traits.h \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_algobase.h \
  /usr/include/c++/13/bits/stl_iterator.h \
@@ -74,7 +81,6 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
  /usr/include/c++/13/bits/functional_hash.h \
  /usr/include/c++/13/bits/hash_bytes.h \
  /usr/include/c++/13/bits/shared_ptr.h /usr/include/c++/13/iosfwd \
- /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/bits/stringfwd.h /usr/include/c++/13/bits/postypes.h \
  /usr/include/c++/13/cwchar /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
