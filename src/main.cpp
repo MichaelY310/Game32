@@ -51,10 +51,21 @@ void reshape(int width, int height) {
     glMatrixMode(GL_MODELVIEW);
 }
 
+void Game_Menu(int id) 
+{  
+    std::cout << "runnin g" <<std::endl;
+    if (id == 2)
+    {
+        exit(1);
+    }
+    glutPostRedisplay();
+}
+
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitWindowSize(800, 600);
     glutCreateWindow("Game32");
+    
 
     glEnable(GL_DEPTH_TEST);
 
@@ -65,6 +76,12 @@ int main(int argc, char** argv) {
     glutKeyboardUpFunc(Input::keyboardUpCallback);
     glutSpecialFunc(Input::specialKeyCallback);
     glutSpecialUpFunc(Input::specialKeyUpCallback);
+
+    // glutCreateMenu(Game_Menu);
+    // glutAddMenuEntry("START",1);
+    // glutAddMenuEntry("QUIT",2);
+    // glutAddMenuEntry("TEST",3);
+    // glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 
     glutMainLoop();

@@ -39,7 +39,7 @@ Texture::Texture(const char* filePath)
     glBindTexture(GL_TEXTURE_2D, 0);
     stbi_image_free(image);
 
-    std::cout << "m_RendererID "<<m_RendererID<<std::endl; 
+    // std::cout << "m_RendererID "<<m_RendererID<<std::endl; 
 }
 
 std::shared_ptr<Texture> Texture::Create(const char* filePath)

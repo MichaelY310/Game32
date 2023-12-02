@@ -38,17 +38,39 @@ void Scene::OnDisplay()
     Renderer::Flush();
 }
 
-
+bool menuRemove = false;
+bool stage = false;
 
 void Scene::OnUpdateTitle(double timestep)
 {
-    m_CurrentStage = SceneStage::CHOOSE_CHARACTER;
-    m_CurrentStageTime = 0;
+    std::cout << "running" << std::endl;
+    if (m_CurrentStageTime == 0 && stage == false) {
+        // std::cout << "yes" <<std::endl;
+        m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, 0.5f, EntityType::MENU);
+        m_EntityList.push_back(m_Player);
+
+        m_CurrentStageTime += timestep;
+        stage = true;
+    }
+    
+    if (Input::isKeyPressed('w'))
+    {
+        m_CurrentStage = SceneStage::CHOOSE_CHARACTER;
+        m_CurrentStageTime = 0;
+    }
+    else if (Input::isKeyPressed('q')) {
+        exit(1);
+    }
 }
 
 // Player Created
 void Scene::OnUpdateChooseCharacter(double timestep)
 {
+    if (menuRemove == false){
+      
+        m_EntityList.erase(m_EntityList.begin() + m_EntityList.size()-1);
+        menuRemove = true;
+    }
     m_CurrentStage = SceneStage::CONVERSATION1;
     m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, 0.04f, EntityType::PLAYER);
     m_EntityList.push_back(m_Player);
@@ -237,7 +259,7 @@ void Scene::Boss1Move(std::shared_ptr<Entity> bossEntity, double timestep)
         Boss1Wait -= timestep;
     }
 
-    std::cout << Boss1Wait << std::endl;
+    // std::cout << Boss1Wait << std::endl;
 }
 
 
