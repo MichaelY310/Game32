@@ -45,6 +45,9 @@ public:
     void OnUpdateChooseCharacter(double timestep);
     void OnUpdateConversation1(double timestep);
     void OnUpdateBossfight1(double timestep);
+    void OnUpdateConversation2(double timestep);
+    void OnUpdateBossfight2(double timestep);
+
     void OnUpdateVictory1(double timestep);
     void OnUpdateFailed(double timestep);
 
@@ -52,10 +55,16 @@ public:
     void PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double timestep);
     void PlayerBulletMove(std::shared_ptr<Entity> playerBulletEntity, double timestep);
     void PlayerDie(std::shared_ptr<Entity> playerEntity, double timestep);
+
     void Boss1Move(std::shared_ptr<Entity> bossEntity, double timestep);
     void Boss1ShootBullet(std::shared_ptr<Entity> boss1Entity, double timestep);
     void Boss1BulletMove(std::shared_ptr<Entity> boss1BulletEntity, double timestep);
     void Boss1Die(std::shared_ptr<Entity> boss1BulletEntity, double timestep);
+
+    void Boss2Move(std::shared_ptr<Entity> bossEntity, double timestep);
+    void Boss2ShootBullet(std::shared_ptr<Entity> boss2Entity, double timestep);
+    void Boss2BulletMove(std::shared_ptr<Entity> boss2BulletEntity, double timestep);
+    void Boss2Die(std::shared_ptr<Entity> boss2BulletEntity, double timestep);
 
     // Collision volume
     double PLAYER_RADIUS = 0.02;
@@ -76,7 +85,10 @@ public:
     std::vector<std::shared_ptr<Entity>> m_PlayerBullets;
 
     std::shared_ptr<Entity> m_Boss1;
+    std::shared_ptr<Entity> m_Boss2;
     std::shared_ptr<BossHPPanel> Boss1HPPanel;
+    std::shared_ptr<BossHPPanel> Boss2HPPanel;
+    
     double Boss1HP = 100;
     int Boss1MaxMode = 3;
     int Boss1Mode = 0;
@@ -85,9 +97,18 @@ public:
     double Boss1currentBigBulletTime = 0;
     bool BOSS1DEAD = false;
 
+    double Boss2HP = 100;
+    int Boss2MaxMode = 3;
+    int Boss2Mode = 0;
+    double Boss2Wait = 0;  // Wait 
+    double Boss2prevBigBulletTime = 0;
+    double Boss2currentBigBulletTime = 0;
+    bool BOSS2DEAD = false;
+
 
     bool PLAYERDEAD = false;
     int playerLives = 2;
+    int playerATK = 10;
     double playerSpeed = 1.5;
     double prevBulletTime = 0;
     double currentBulletTime = 0;
