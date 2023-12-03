@@ -43,9 +43,9 @@ void reshape(int width, int height) {
     glLoadIdentity();
 
     if (width <= height) {
-        glOrtho(-1.0, 1.0, -1.0 * (GLfloat)height / width, 1.0 * (GLfloat)height / width, -1.0, 1.0);
+        glOrtho(-1.0, 1.0, -1.0 * (GLfloat)height / width, 1.0 * (GLfloat)height / width, -100000.0, 100000.0);
     } else {
-        glOrtho(-1.0 * (GLfloat)width / height, 1.0 * (GLfloat)width / height, -1.0, 1.0, -1.0, 1.0);
+        glOrtho(-1.0 * (GLfloat)width / height, 1.0 * (GLfloat)width / height, -1.0, 1.0, -100000.0, 100000.0);
     }
 
     glMatrixMode(GL_MODELVIEW);
@@ -57,6 +57,8 @@ int main(int argc, char** argv) {
     glutCreateWindow("Game32");
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);

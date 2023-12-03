@@ -87,11 +87,11 @@ public:
 
 
     bool PLAYERDEAD = false;
-    int playerLives = 1;
+    int playerLives = 2;
     double playerSpeed = 1.5;
     double prevBulletTime = 0;
     double currentBulletTime = 0;
-    int flashUnit = 100;
+    int flashUnit = 0;
 
     std::shared_ptr<Texture> texture;
 };

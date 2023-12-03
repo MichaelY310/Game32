@@ -8,8 +8,6 @@ const float PI = 3.14159265359;
 void Renderer::Init()
 {   
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void Renderer::Flush()
@@ -18,7 +16,7 @@ void Renderer::Flush()
     glutSwapBuffers();
 }
 
-void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha)
+void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, double depth)
 {
     // d c
     // a b
@@ -39,16 +37,16 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha)
 
     glBegin(GL_QUADS);
     glColor4f(color.x, color.y, color.z, alpha);
-    glVertex2f(a.x, a.y);
-    glVertex2f(b.x, b.y);
-    glVertex2f(c.x, c.y);
-    glVertex2f(d.x, d.y);
+    glVertex3f(a.x, a.y, depth);
+    glVertex3f(b.x, b.y, depth);
+    glVertex3f(c.x, c.y, depth);
+    glVertex3f(d.x, d.y, depth);
 
     glEnd();
 }
 
 
-void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> texture)
+void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> texture, double depth)
 {
     
     // d c
@@ -72,26 +70,26 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
 
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 0.0f);
-    glVertex2f(a.x, a.y);
+    glVertex3f(a.x, a.y, depth);
     glTexCoord2f(1.0f, 0.0f);
-    glVertex2f(b.x, b.y);
+    glVertex3f(b.x, b.y, depth);
     glTexCoord2f(1.0f, 1.0f);
-    glVertex2f(c.x, c.y);
+    glVertex3f(c.x, c.y, depth);
     glTexCoord2f(0.0f, 1.0f);
-    glVertex2f(d.x, d.y);
+    glVertex3f(d.x, d.y, depth);
 
     // glBindTexture(GL_TEXTURE_2D, 0);
 
     glEnd();
 }
 
-void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha)
+void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha, double depth, double angle)
 {
     glColor4f(color.x, color.y, color.z, alpha);
 
-    const float radius = 1.0;
-    const float startAngle = 30.0;
-    const float endAngle = startAngle + 120.0;
+    const float radius = scale;
+    const float startAngle = angle;
+    const float endAngle = 270;
 
     glBegin(GL_TRIANGLE_STRIP);
 
@@ -100,8 +98,8 @@ void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha)
         float x = radius * cos(radians);
         float y = radius * sin(radians);
 
-        glVertex2f(x, y);
-        glVertex2f(0.0, 0.0);
+        glVertex3f(position.x + x, position.y + y, depth);
+        glVertex3f(position.x, position.y, depth);
     }
 
     glEnd();

@@ -47,7 +47,7 @@ void Scene::OnDisplay()
 
     if (Boss1HPPanel)
     {
-        Boss1HPPanel->Display();
+        Boss1HPPanel->Display(Boss1HP);
     }
 
     // Draw Player
@@ -56,7 +56,7 @@ void Scene::OnDisplay()
         std::shared_ptr<Entity> entity = m_EntityList[i];
 
         // player flash
-        if (entity->m_EntityType == EntityType::PLAYER && playerLives > 1) {
+        if (entity->m_EntityType == EntityType::PLAYER && playerLives > 0) {
             if (flashUnit % 10 == 0)
             {
                 entity->m_Alpha = 1.0f;
@@ -65,7 +65,7 @@ void Scene::OnDisplay()
                 entity->m_Alpha = 0.0f;
             }
         }
-        Renderer::DrawQuad(entity->m_Position, entity->m_Size, { 1.0, 1.0, 1.0}, entity->m_Alpha);
+        Renderer::DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
     }
     Renderer::Flush();
 }
@@ -82,7 +82,7 @@ void Scene::OnUpdateTitle(double timestep)
 void Scene::OnUpdateChooseCharacter(double timestep)
 {
     m_CurrentStage = SceneStage::CONVERSATION1;
-    m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, PLAYER_RADIUS * 2, EntityType::PLAYER);
+    m_Player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, 0.0), 0.0f, PLAYER_RADIUS * 2, vec3(1.0, 0.5, 0.5), 1.0, 100.0);
     m_EntityList.push_back(m_Player);
     m_CurrentStageTime = 0;
 }
@@ -92,7 +92,7 @@ void Scene::OnUpdateConversation1(double timestep)
     // Boss1 Move in
     if (m_CurrentStageTime == 0)
     {
-        m_Boss1 = std::make_shared<Entity>(vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, EntityType::BOSS);
+        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, vec3(0.5, 1.0, 0.5), 1.0, 90.0);
         m_EntityList.push_back(m_Boss1);
     }
 
@@ -111,6 +111,11 @@ void Scene::OnUpdateConversation1(double timestep)
 
 void Scene::OnUpdateBossfight1(double timestep)
 {
+    if (m_CurrentStageTime == 0)
+    {
+        Boss1HPPanel = std::make_shared<BossHPPanel>(m_Boss1);
+    }
+
     std::shared_ptr<Entity> playerEntity;
     std::shared_ptr<Entity> bossEntity;
 
@@ -199,7 +204,7 @@ void Scene::OnUpdateBossfight1(double timestep)
                         if (flashUnit == 0)
                         {
                             playerLives -= 1;
-                            if (playerLives > 1) { flashUnit = 100; } 
+                            if (playerLives > 0) { flashUnit = 100; } 
 
                             if (!deleted)
                             {
@@ -238,14 +243,19 @@ void Scene::OnUpdateBossfight1(double timestep)
         m_EntityList.erase(m_EntityList.begin() + removeIndexList[i] - i);
     }
 
+    // Boss1HP = 0;
+    // playerLives = 0;
+
     m_CurrentStageTime += timestep;
 
     // std::cout << playerLives << std::endl;
     // std::cout << playerLives << std::endl;
     // std::cout << flashUnit << std::endl;
+    // exit(0);
 
     if (BOSS1DEAD)
     {
+        Boss1HPPanel = nullptr;
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::CONVERSATION2;
     }
@@ -259,7 +269,7 @@ void Scene::OnUpdateBossfight1(double timestep)
 void Scene::OnUpdateFailed(double timestep)
 {
     std::cout << "failed" << std::endl;
-    exit(0);
+    // exit(0);
 }
 
 
@@ -323,7 +333,7 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
 
                 double xOffset = (double)i-((double)bulletCount - 1)/2;
                 pos = pos + vec2(xOffset * playerSpeed * 0.05, 0.05);
-                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(pos, 90.0f, PLAYER_BULLET_RADIUS * 2, EntityType::PLAYER_BULLET);
+                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, pos, 90.0f, PLAYER_BULLET_RADIUS * 2, vec3(0.5, 0.5, 0.8), 1.0, 70.0);
                 m_EntityList.push_back(playerBullet);
             }
             prevBulletTime = currentBulletTime;
@@ -379,7 +389,7 @@ void Scene::Boss1ShootBullet(std::shared_ptr<Entity> boss1Entity, double timeste
         int bulletCount = 9;
         for (int i = 0; i < bulletCount; i++)
         {
-            std::shared_ptr<Entity> boss1BigBullet = std::make_shared<Entity>(boss1Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, BOSS_BIG_BULLET_RADIUS * 2, EntityType::BOSS_BIG_BULLET);
+            std::shared_ptr<Entity> boss1BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss1Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, BOSS_BIG_BULLET_RADIUS * 2, vec3(0.8, 0.8, 0.5), 1.0, 80.0);
             m_EntityList.push_back(boss1BigBullet);
         }
         Boss1prevBigBulletTime = Boss1currentBigBulletTime;
@@ -419,6 +429,10 @@ void Scene::PlayerDie(std::shared_ptr<Entity> playerEntity, double timestep)
 
 void Scene::OnUpdateTest(double timestep)
 {
-    m_Boss1 = std::make_shared<Entity>(vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, EntityType::BOSS);
-    Boss1HPPanel = std::make_shared<BossHPPanel>(m_Boss1);
+    if (m_CurrentStageTime == 0)
+    {
+        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, vec3(1.0, 0.3, 0.3), 1.0, 70.0);
+        Boss1HPPanel = std::make_shared<BossHPPanel>(m_Boss1);
+    }
+    Boss1HP -= 0.1;
 }
