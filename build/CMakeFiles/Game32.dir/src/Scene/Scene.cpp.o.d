@@ -650,6 +650,7 @@ CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gltypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glext.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
+  /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/BossHPPanel.h \
   /Users/ruitong/Desktop/CS/CS32/Game32/src/Render/Renderer.h \
   /Users/ruitong/Desktop/CS/CS32/Game32/src/Core/Input.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/unordered_set \

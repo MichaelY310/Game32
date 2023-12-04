@@ -1,8 +1,9 @@
-// #include <GL/glut.h>
 #include <GLUT/glut.h>
+// #include <GL/glut.h>
 #include <chrono>
 #include <iostream>
 #include <thread>
+#include <filesystem>
 
 #include "Scene/Scene.h"
 #include "Render/Renderer.h"
@@ -44,12 +45,14 @@ float xposition1 = -0.7;
 void display() {
     sceneDisplay();
     idle();
+    scene.OnDisplay();
 
-    // std::thread updateThread(idle);
-    // std::thread displayThread(sceneDisplay);
-
-    // updateThread.join();
-    // displayThread.join();
+    // Renderer::Init();
+    // glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    // std::shared_ptr<Texture> texture = Texture::Create("wall.jpg");
+    // std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, vec2(0.0, 0.0), 90.0f, 0.5, vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
+    // Renderer::DrawQuad(playerBullet);
+    // Renderer::Flush();
 }
 
 
@@ -61,9 +64,9 @@ void reshape(int width, int height) {
     glLoadIdentity();
 
     if (width <= height) {
-        glOrtho(-1.0, 1.0, -1.0 * (GLfloat)height / width, 1.0 * (GLfloat)height / width, -1.0, 1.0);
+        glOrtho(-1.0, 1.0, -1.0 * (GLfloat)height / width, 1.0 * (GLfloat)height / width, -100000.0, 100000.0);
     } else {
-        glOrtho(-1.0 * (GLfloat)width / height, 1.0 * (GLfloat)width / height, -1.0, 1.0, -1.0, 1.0);
+        glOrtho(-1.0 * (GLfloat)width / height, 1.0 * (GLfloat)width / height, -1.0, 1.0, -100000.0, 100000.0);
     }
     // gluOrtho2D(-1,1,-1,1);
 
@@ -89,6 +92,8 @@ int main(int argc, char** argv) {
     
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);

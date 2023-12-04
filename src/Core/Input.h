@@ -1,7 +1,8 @@
 #include <unordered_set>
 #include <iostream>
-// #include <GL/glut.h>
 #include <GLUT/glut.h>
+// #include <GL/glut.h>
+
 class Input
 {
 public:

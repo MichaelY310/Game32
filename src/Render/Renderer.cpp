@@ -1,7 +1,12 @@
-// #include <GL/glut.h>
 #include <GLUT/glut.h>
+// #include <GL/glut.h>
+#include <cmath>
+
 #include "Renderer.h"
+#include "Scene/Entity.h"
 #include <iostream>
+
+const float PI = 3.14159265359;
 
 void Renderer::Init()
 {   
@@ -9,13 +14,25 @@ void Renderer::Init()
 }
 
 void Renderer::Flush()
-{   
-    glutSwapBuffers();
+{
     glFlush();
     glutSwapBuffers();
 }
 
-void Renderer::DrawQuad(vec2 position, double scale, vec3 color)
+void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
+{
+    if (!entity->m_Texture)
+    {
+        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
+    }
+    else 
+    {
+        std::cout << "aaa" << std::endl;
+        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
+    }
+}
+
+void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, double depth)
 {
     // d c
     // a b
@@ -35,17 +52,17 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color)
     d = d + position;
 
     glBegin(GL_QUADS);
-    glColor3f(color.x, color.y, color.z); // Red
-    glVertex2f(a.x, a.y);
-    glVertex2f(b.x, b.y);
-    glVertex2f(c.x, c.y);
-    glVertex2f(d.x, d.y);
+    glColor4f(color.x, color.y, color.z, alpha);
+    glVertex3f(a.x, a.y, depth);
+    glVertex3f(b.x, b.y, depth);
+    glVertex3f(c.x, c.y, depth);
+    glVertex3f(d.x, d.y, depth);
 
     glEnd();
 }
 
 
-void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> texture)
+void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> texture, double depth)
 {
     // std::cout << "running" <<std::endl;
     // d c
@@ -65,23 +82,44 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     c = c + position;
     d = d + position;
 
+    glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture->m_RendererID);
+    
 
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 0.0f);
-    glVertex2f(a.x, a.y);
-    glColor3f(1,0,0);
+    glVertex3f(a.x, a.y, depth);
     glTexCoord2f(1.0f, 0.0f);
-    glVertex2f(b.x, b.y);
-    glColor3f(0,1,0);
+    glVertex3f(b.x, b.y, depth);
     glTexCoord2f(1.0f, 1.0f);
-    glVertex2f(c.x, c.y);
-    glColor3f(0,0,1);
+    glVertex3f(c.x, c.y, depth);
     glTexCoord2f(0.0f, 1.0f);
-    glVertex2f(d.x, d.y);
-    glColor3f(1,1,1);
+    glVertex3f(d.x, d.y, depth);
 
-    // glBindTexture(GL_TEXTURE_2D, 0);
+    glEnd();
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glDisable(GL_TEXTURE_2D);
+}
+
+void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha, double depth, double angle)
+{
+    glColor4f(color.x, color.y, color.z, alpha);
+
+    const float radius = scale;
+    const float startAngle = angle;
+    const float endAngle = 270;
+
+    glBegin(GL_TRIANGLE_STRIP);
+
+    for (float angle = startAngle; angle <= endAngle; angle += 1.0) {
+        float radians = angle * (PI / 180.0);
+        float x = radius * cos(radians);
+        float y = radius * sin(radians);
+
+        glVertex3f(position.x + x, position.y + y, depth);
+        glVertex3f(position.x, position.y, depth);
+    }
 
     glEnd();
 }

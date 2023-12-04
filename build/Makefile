@@ -249,6 +249,30 @@ src/Render/Texture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
 .PHONY : src/Render/Texture.cpp.s
 
+src/Scene/BossHPPanel.o: src/Scene/BossHPPanel.cpp.o
+.PHONY : src/Scene/BossHPPanel.o
+
+# target to build an object file
+src/Scene/BossHPPanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o
+.PHONY : src/Scene/BossHPPanel.cpp.o
+
+src/Scene/BossHPPanel.i: src/Scene/BossHPPanel.cpp.i
+.PHONY : src/Scene/BossHPPanel.i
+
+# target to preprocess a source file
+src/Scene/BossHPPanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i
+.PHONY : src/Scene/BossHPPanel.cpp.i
+
+src/Scene/BossHPPanel.s: src/Scene/BossHPPanel.cpp.s
+.PHONY : src/Scene/BossHPPanel.s
+
+# target to generate assembly for a file
+src/Scene/BossHPPanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Game32.dir/build.make CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s
+.PHONY : src/Scene/BossHPPanel.cpp.s
+
 src/Scene/Entity.o: src/Scene/Entity.cpp.o
 .PHONY : src/Scene/Entity.o
 
@@ -345,6 +369,9 @@ help:
 	@echo "... src/Render/Texture.o"
 	@echo "... src/Render/Texture.i"
 	@echo "... src/Render/Texture.s"
+	@echo "... src/Scene/BossHPPanel.o"
+	@echo "... src/Scene/BossHPPanel.i"
+	@echo "... src/Scene/BossHPPanel.s"
 	@echo "... src/Scene/Entity.o"
 	@echo "... src/Scene/Entity.i"
 	@echo "... src/Scene/Entity.s"

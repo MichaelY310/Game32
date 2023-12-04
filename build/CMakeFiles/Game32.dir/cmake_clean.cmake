@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d"
   "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o"
   "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o.d"
+  "CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o"
+  "CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o.d"
   "CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o"
   "CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o.d"
   "CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o"

@@ -1,8 +1,9 @@
 #pragma once
 
 #include <memory>
-// #include <GL/glut.h>
 #include <GLUT/glut.h>
+// #include <GL/glut.h>
+
 class Texture
 {
 public:

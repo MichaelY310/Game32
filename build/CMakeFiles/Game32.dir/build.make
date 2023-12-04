@@ -139,10 +139,24 @@ CMakeFiles/Game32.dir/src/Render/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Render/Texture.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ruitong/Desktop/CS/CS32/Game32/src/Render/Texture.cpp -o CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
 
+CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: CMakeFiles/Game32.dir/flags.make
+CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/BossHPPanel.cpp
+CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o -c /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/BossHPPanel.cpp
+
+CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/BossHPPanel.cpp > CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i
+
+CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/BossHPPanel.cpp -o CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s
+
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: CMakeFiles/Game32.dir/flags.make
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/Entity.cpp
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o -c /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/Entity.cpp
 
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s: cmake_force
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: CMakeFiles/Game32.dir/flags.make
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/Scene.cpp
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o -c /Users/ruitong/Desktop/CS/CS32/Game32/src/Scene/Scene.cpp
 
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s: cmake_force
 CMakeFiles/Game32.dir/src/main.cpp.o: CMakeFiles/Game32.dir/flags.make
 CMakeFiles/Game32.dir/src/main.cpp.o: /Users/ruitong/Desktop/CS/CS32/Game32/src/main.cpp
 CMakeFiles/Game32.dir/src/main.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Game32.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Game32.dir/src/main.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/main.cpp.o -MF CMakeFiles/Game32.dir/src/main.cpp.o.d -o CMakeFiles/Game32.dir/src/main.cpp.o -c /Users/ruitong/Desktop/CS/CS32/Game32/src/main.cpp
 
 CMakeFiles/Game32.dir/src/main.cpp.i: cmake_force
@@ -188,6 +202,7 @@ Game32_OBJECTS = \
 "CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o" \
 "CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o" \
 "CMakeFiles/Game32.dir/src/Render/Texture.cpp.o" \
+"CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o" \
 "CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o" \
 "CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o" \
 "CMakeFiles/Game32.dir/src/main.cpp.o"
@@ -200,12 +215,13 @@ Game32: CMakeFiles/Game32.dir/src/Core/Input.cpp.o
 Game32: CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o
 Game32: CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o
 Game32: CMakeFiles/Game32.dir/src/Render/Texture.cpp.o
+Game32: CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o
 Game32: CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o
 Game32: CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o
 Game32: CMakeFiles/Game32.dir/src/main.cpp.o
 Game32: CMakeFiles/Game32.dir/build.make
 Game32: CMakeFiles/Game32.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Game32"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ruitong/Desktop/CS/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Game32"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Game32.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
