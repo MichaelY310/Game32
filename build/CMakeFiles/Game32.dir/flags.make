@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/mnt/c/Users/86166/Desktop/cs32/Game32/Dependencies -I/mnt/c/Users/86166/Desktop/cs32/Game32/Dependencies/Glad -I/mnt/c/Users/86166/Desktop/cs32/Game32/src
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS = 
 

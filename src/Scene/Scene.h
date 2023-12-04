@@ -88,7 +88,7 @@ public:
     std::shared_ptr<Entity> m_Boss2;
     std::shared_ptr<BossHPPanel> Boss1HPPanel;
     std::shared_ptr<BossHPPanel> Boss2HPPanel;
-    
+
     double Boss1HP = 100;
     int Boss1MaxMode = 3;
     int Boss1Mode = 0;
@@ -108,11 +108,15 @@ public:
 
     bool PLAYERDEAD = false;
     int playerLives = 2;
-    int playerATK = 10;
+    int playerATK = 100;
     double playerSpeed = 1.5;
     double prevBulletTime = 0;
     double currentBulletTime = 0;
     int flashUnit = 0;
 
-    std::shared_ptr<Texture> texture;
+    double BlackCoverTime = 0;
+    double MaxBlackCoverTime = 400;
+
+
+    std::shared_ptr<Texture> PlayerBulletTexture;
 };

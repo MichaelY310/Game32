@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(Game32)
 
 # Set the C++ standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 # Add the source files to the project
 file(GLOB SOURCES "src/Scene/*.cpp" "src/Core/*.cpp" "src/Render/*.cpp" "src/*.cpp" "Dependeicies/Glad/*.c")

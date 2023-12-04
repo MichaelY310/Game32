@@ -2,6 +2,8 @@
 #include <cmath>
 
 #include "Renderer.h"
+#include "Scene/Entity.h"
+#include <iostream>
 
 const float PI = 3.14159265359;
 
@@ -14,6 +16,19 @@ void Renderer::Flush()
 {
     glFlush();
     glutSwapBuffers();
+}
+
+void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
+{
+    if (!entity->m_Texture)
+    {
+        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
+    }
+    else 
+    {
+        std::cout << "aaa" << std::endl;
+        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
+    }
 }
 
 void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, double depth)
@@ -66,7 +81,9 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     c = c + position;
     d = d + position;
 
+    glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture->m_RendererID);
+    
 
     glBegin(GL_QUADS);
     glTexCoord2f(0.0f, 0.0f);
@@ -78,9 +95,10 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     glTexCoord2f(0.0f, 1.0f);
     glVertex3f(d.x, d.y, depth);
 
-    // glBindTexture(GL_TEXTURE_2D, 0);
-
     glEnd();
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glDisable(GL_TEXTURE_2D);
 }
 
 void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha, double depth, double angle)

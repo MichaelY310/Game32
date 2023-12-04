@@ -8,7 +8,7 @@
 
 Scene::Scene()
 {
-    texture = Texture::Create("/mnt/c/Users/86166/Desktop/cs32/Game32/src/Asset/wall.jpg");
+    PlayerBulletTexture = Texture::Create("wall.jpg");
 }
 
 void Scene::OnUpdate(double timestep)
@@ -47,6 +47,15 @@ void Scene::OnDisplay()
     Renderer::Init();
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
+    if (BlackCoverTime > 0)
+    {
+        double transition = 20;
+        if (BlackCoverTime >= MaxBlackCoverTime - transition) { Renderer::DrawQuad(vec2(0, 0), 4.0, vec3(0.0, 0.0, 0.0), (MaxBlackCoverTime - BlackCoverTime) / transition, 10000); }
+        else if (BlackCoverTime <= 20) { Renderer::DrawQuad(vec2(0, 0), 4.0, vec3(0.0, 0.0, 0.0), BlackCoverTime / transition, 10000); }
+        else { Renderer::DrawQuad(vec2(0, 0), 4.0, vec3(0.0, 0.0, 0.0), 1.0, 10000); }
+        BlackCoverTime -= 1;
+    }
+
     if (flashUnit > 0)
     {
         flashUnit -= 1;
@@ -77,7 +86,7 @@ void Scene::OnDisplay()
                 entity->m_Alpha = 0.0f;
             }
         }
-        Renderer::DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
+        Renderer::DrawQuad(entity);
     }
     Renderer::Flush();
 }
@@ -102,10 +111,18 @@ void Scene::OnUpdateConversation1(double timestep)
     // Boss1 Move in
     if (m_CurrentStageTime == 0)
     {
-        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, 0.0), 0.0f, PLAYER_RADIUS * 2, vec3(1.0, 0.5, 0.5), 1.0, 100.0);
+        BlackCoverTime = MaxBlackCoverTime;
+        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, PLAYER_RADIUS * 2, vec3(1.0, 0.5, 0.5), 1.0, 100.0);
         m_EntityList.push_back(player);
-        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, vec3(0.5, 1.0, 0.5), 1.0, 90.0);
+        std::shared_ptr<Texture> texture = Texture::Create("wall.jpg");
+        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, vec3(0.5, 1.0, 0.5), 1.0, 90.0, texture);
         m_EntityList.push_back(m_Boss1);
+    }
+
+    if (BlackCoverTime > 0)
+    {
+        m_CurrentStageTime += timestep;
+        return;
     }
 
     vec2 a = vec2(0.0, 0.5);
@@ -285,12 +302,19 @@ void Scene::OnUpdateConversation2(double timestep)
     // Boss2 Move in
     if (m_CurrentStageTime == 0)
     {
+        BlackCoverTime = MaxBlackCoverTime;
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
 
-        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, 0.0), 0.0f, PLAYER_RADIUS * 2, vec3(1.0, 0.5, 0.5), 1.0, 100.0);
+        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, PLAYER_RADIUS * 2, vec3(1.0, 0.5, 0.5), 1.0, 100.0);
         m_EntityList.push_back(player);
         m_Boss2 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, BOSS_RADIUS * 2, vec3(0.5, 1.0, 0.5), 1.0, 90.0);
         m_EntityList.push_back(m_Boss2);
+    }
+
+    if (BlackCoverTime > 0)
+    {
+        m_CurrentStageTime += timestep;
+        return;
     }
 
     vec2 a = vec2(0.0, 0.5);
@@ -517,6 +541,7 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
     {
         if (prevBulletTime == 0 || currentBulletTime - prevBulletTime >= 0.3)
         {
+            std::shared_ptr<Texture> texture = Texture::Create("wall.jpg");
             int bulletCount = 4;
             for (int i = 0; i < bulletCount; i++)
             {
@@ -524,7 +549,7 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
 
                 double xOffset = (double)i-((double)bulletCount - 1)/2;
                 pos = pos + vec2(xOffset * playerSpeed * 0.05, 0.05);
-                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, pos, 90.0f, PLAYER_BULLET_RADIUS * 2, vec3(0.5, 0.5, 0.8), 1.0, 70.0);
+                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, pos, 90.0f, PLAYER_BULLET_RADIUS * 2, vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
                 m_EntityList.push_back(playerBullet);
             }
             prevBulletTime = currentBulletTime;
