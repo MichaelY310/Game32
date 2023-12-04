@@ -2,8 +2,8 @@
 
 #include "Render/Renderer.h"
 #include "Core/Input.h"
-#include <GL/glut.h>
-// #include <GLUT/glut.h>
+// #include <GL/glut.h>
+#include <GLUT/glut.h>
 #include <iostream>
 #include <cmath>
 
@@ -46,7 +46,7 @@ bool stage = false;
 
 void Scene::OnUpdateTitle(double timestep)
 {
-    std::cout << "running" << std::endl;
+    // std::cout << "running" << std::endl;
     if (m_CurrentStageTime == 0 && stage == false) {
         // std::cout << "yes" <<std::endl;
         m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, 0.5f, EntityType::MENU);

@@ -1,5 +1,5 @@
-#include <GL/glut.h>
-// #include <GLUT/glut.h>
+// #include <GL/glut.h>
+#include <GLUT/glut.h>
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -73,7 +73,7 @@ void reshape(int width, int height) {
 
 void Game_Menu(int id) 
 {  
-    std::cout << "runnin g" <<std::endl;
+    // std::cout << "runnin g" <<std::endl;
     if (id == 2)
     {
         exit(1);
