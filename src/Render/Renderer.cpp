@@ -26,12 +26,11 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
     }
     else 
     {
-        std::cout << "aaa" << std::endl;
         DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
     }
 }
 
-void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, double depth)
+void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, double depth)
 {
     // d c
     // a b
@@ -61,7 +60,7 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, d
 }
 
 
-void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> texture, double depth)
+void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture, double depth)
 {
     
     // d c
@@ -101,11 +100,11 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     glDisable(GL_TEXTURE_2D);
 }
 
-void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha, double depth, double angle)
+void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, double depth, double angle)
 {
     glColor4f(color.x, color.y, color.z, alpha);
 
-    const float radius = scale;
+    const float radius = scale.x;
     const float startAngle = angle;
     const float endAngle = 270;
 

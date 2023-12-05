@@ -14,16 +14,15 @@ enum class SceneStage
 
     CONVERSATION1,
     BOSSFIGHT1,
-    VICTORY1,
 
     CONVERSATION2,
     BOSSFIGHT2,
-    VICTORY2,
 
     CONVERSATION3,
     BOSSFIGHT3,
-    VICTORY3,
 
+    SUCCEED,
+    RESTART,
     FAILED,
 
     BADEND,
@@ -48,7 +47,7 @@ public:
     void OnUpdateConversation2(double timestep);
     void OnUpdateBossfight2(double timestep);
 
-    void OnUpdateVictory1(double timestep);
+    void OnUpdateSucceed(double timestep);
     void OnUpdateFailed(double timestep);
 
     void PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep);
@@ -76,6 +75,8 @@ public:
 
 
     SceneStage m_CurrentStage = SceneStage::TITLE;
+    // SceneStage m_CurrentStage = SceneStage::SUCCEED;
+
     double m_CurrentStageTime = 0;
 
 
@@ -114,6 +115,10 @@ public:
     double currentBulletTime = 0;
     int flashUnit = 0;
 
+
+    // GameUI
+    int m_Choice = 0;
+    double lastClick = 0;
     double BlackCoverTime = 0;
     double MaxBlackCoverTime = 400;
 

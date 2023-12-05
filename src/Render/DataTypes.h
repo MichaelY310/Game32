@@ -23,6 +23,10 @@ public:
         return vec2(x * scalar, y * scalar);
     };
 
+    vec2 operator*(vec2 vector) const {
+        return vec2(x * vector.x, y * vector.y);
+    };
+
     vec2 operator+(vec2 vector) const {
         return vec2(x + vector.x, y + vector.y);
     };
