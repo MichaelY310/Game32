@@ -1,5 +1,5 @@
-#include <GLUT/glut.h>
-// #include <GL/glut.h>
+// #include <GLUT/glut.h>
+#include <GL/glut.h>
 #include <cmath>
 
 #include "Renderer.h"
@@ -27,7 +27,7 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
     }
     else 
     {
-        std::cout << "aaa" << std::endl;
+        // std::cout << "aaa" << std::endl;
         DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
     }
 }

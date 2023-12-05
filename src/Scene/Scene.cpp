@@ -2,10 +2,11 @@
 
 #include "Render/Renderer.h"
 #include "Core/Input.h"
-// #include <GL/glut.h>
-#include <GLUT/glut.h>
+#include <GL/glut.h>
+// #include <GLUT/glut.h>
 #include <iostream>
 #include <cmath>
+// #include <GL/freeglut_std.h>
 
 Scene::Scene()
 {
@@ -33,7 +34,9 @@ void Scene::OnUpdate(double timestep)
     { Scene::OnUpdateBossfight2(timestep); }
 
     else if (m_CurrentStage == SceneStage::CONVERSATION3)
-    {exit(0);}
+    {Scene::OnUpdateSucceed(timestep);}
+    else if (m_CurrentStage == SceneStage::RESTART)
+    {Scene::OnUpdateRestart(timestep);}
 
 
 
@@ -41,6 +44,65 @@ void Scene::OnUpdate(double timestep)
     else if (m_CurrentStage == SceneStage::FAILED)
     { Scene::OnUpdateFailed(timestep); }
 }
+
+bool menuRemove = false;
+bool stage = false;
+
+void Scene::OnUpdateSucceed(double timestep) // Success and restart the game  
+{
+    std::cout << "SUCCESS" <<std::endl;
+    m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
+    m_Player = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f,  0.5f, vec3(0.0, 0.7, 0.1), 1, 0);
+    m_EntityList.push_back(m_Player);
+
+    // glRasterPos2i(0.5,0.5);
+    // glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+    // glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SUCCESS");
+
+    if (Input::isKeyPressed('c'))
+    {
+        m_CurrentStage = SceneStage::RESTART;
+    }    
+}
+
+void Scene::OnUpdateRestart(double timestep) // reset all data and restart the game 
+{
+    m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
+
+    Boss1HP = 100;
+    Boss1MaxMode = 3;
+    Boss1Mode = 0;
+    Boss1Wait = 0;  // Wait 
+    Boss1prevBigBulletTime = 0;
+    Boss1currentBigBulletTime = 0;
+    BOSS1DEAD = false;
+
+    Boss2HP = 100;
+    Boss2MaxMode = 3;
+    Boss2Mode = 0;
+    Boss2Wait = 0;  // Wait 
+    Boss2prevBigBulletTime = 0;
+    Boss2currentBigBulletTime = 0;
+    BOSS2DEAD = false;
+
+
+    PLAYERDEAD = false;
+    playerLives = 2;
+    playerATK = 100;
+    playerSpeed = 1.5;
+    prevBulletTime = 0;
+    currentBulletTime = 0;
+    flashUnit = 0;
+
+    BlackCoverTime = 0;
+    MaxBlackCoverTime = 400;
+    
+    stage = false;
+    menuRemove = false; 
+    m_CurrentStage = SceneStage::TITLE;
+    m_CurrentStageTime = 0;
+}
+
 
 
 void Scene::OnDisplay() 
@@ -92,28 +154,25 @@ void Scene::OnDisplay()
     Renderer::Flush();
 }
 
-bool menuRemove = false;
-bool stage = false;
 
-void Scene::OnUpdateTitle(double timestep)
+void Scene::OnUpdateTitle(double timestep) // start stage of the game press q to quit and w to continue
 {
     // std::cout << "running" << std::endl;
     if (m_CurrentStageTime == 0 && stage == false) {
         // std::cout << "yes" <<std::endl;
-        m_Player = std::make_shared<Entity>(vec2(0.0, 0.0), 0.0f, 0.5f, EntityType::MENU);
+        m_Player = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f,  0.5f, vec3(0.5, 0.5, 0.5), 1, 0);
         m_EntityList.push_back(m_Player);
 
         m_CurrentStageTime += timestep;
         stage = true;
     }
-    
-    if (Input::isKeyPressed('w'))
-    {
+        
+    if (Input::isKeyPressed('q')) {
+        exit(1);
+    }
+    else if (Input::isKeyPressed('w')) {
         m_CurrentStage = SceneStage::CHOOSE_CHARACTER;
         m_CurrentStageTime = 0;
-    }
-    else if (Input::isKeyPressed('q')) {
-        exit(1);
     }
 }
 
@@ -131,6 +190,7 @@ void Scene::OnUpdateChooseCharacter(double timestep)
 
 void Scene::OnUpdateConversation1(double timestep)
 {
+    // std::cout << "RUNNING" <<std::endl;
     // Boss1 Move in
     if (m_CurrentStageTime == 0)
     {
@@ -310,9 +370,11 @@ void Scene::OnUpdateBossfight1(double timestep)
         Boss1HPPanel = nullptr;
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::CONVERSATION2;
+        playerLives++;
     }
     else if (PLAYERDEAD)
     {
+        Boss1HPPanel = nullptr;
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::FAILED;
     }
@@ -321,7 +383,6 @@ void Scene::OnUpdateBossfight1(double timestep)
 void Scene::OnUpdateConversation2(double timestep)
 {
     // Add player's live by 1 as bonus
-    playerLives++;
     // Boss2 Move in
     if (m_CurrentStageTime == 0)
     {
@@ -497,6 +558,7 @@ void Scene::OnUpdateBossfight2(double timestep)
     }
     else if (PLAYERDEAD)
     {
+        Boss2HPPanel = nullptr;
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::FAILED;
     }
@@ -507,7 +569,18 @@ void Scene::OnUpdateBossfight2(double timestep)
 
 void Scene::OnUpdateFailed(double timestep)
 {
-    std::cout << "failed" << std::endl;
+    std::cout << "FAILED" << std::endl;
+    m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
+
+    m_Player = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f,  0.5f, vec3(0.7, 0.0, 0.0), 1, 0);
+    m_EntityList.push_back(m_Player);
+  
+    if (Input::isKeyPressed('c'))
+    {
+        m_CurrentStage = SceneStage::RESTART;
+        m_CurrentStageTime = 0;
+    }  
+    
     // exit(0);
 }
 
@@ -650,6 +723,9 @@ void Scene::Boss1Die(std::shared_ptr<Entity> boss1Entity, double timestep)
     }
 }
 
+// double boss2VelocityX = 0.1;
+// double boss2VelocityY = 0.1;
+
 
 void Scene::Boss2Move(std::shared_ptr<Entity> bossEntity, double timestep)
 {
@@ -658,6 +734,10 @@ void Scene::Boss2Move(std::shared_ptr<Entity> bossEntity, double timestep)
         float angleRadians = bossEntity->m_Angle * (M_PI / 180.0);
         bossEntity->m_Position.x += 1 * std::cos(angleRadians) * timestep;
         bossEntity->m_Position.y += 1 * std::sin(angleRadians) * timestep;
+        // boss2VelocityX -= 0.01 * std::pow(bossEntity->m_Position.x, 3);
+        // boss2VelocityY -= 0.01 * std::pow(bossEntity->m_Position.y, 3);
+        // bossEntity->m_Position.x += boss2VelocityX;
+        // bossEntity->m_Position.y += boss2VelocityY;
 
         if (bossEntity->m_Position.x >= 1.0)
         {

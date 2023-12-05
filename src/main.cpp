@@ -1,5 +1,5 @@
-#include <GLUT/glut.h>
-// #include <GL/glut.h>
+// #include <GLUT/glut.h>
+#include <GL/glut.h>
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -121,118 +121,118 @@ int main(int argc, char** argv) {
 
 
 
-void DrawBullet()
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-    glLoadIdentity();
-    glPointSize(10.0);
+// void DrawBullet()
+// {
+//     glClear(GL_COLOR_BUFFER_BIT);
+//     glLoadIdentity();
+//     glPointSize(10.0);
 
-    glBegin(GL_POINTS);
-    glColor3f(1, 1, 0); // Red
-    //   std::cout << xposition1 << " " <<xposition2 << " " <<xposition3 <<std::endl;
-    glVertex2f(xposition1, -0.5);
-    glVertex2f(xposition2, -0.3);
-    glVertex2f(xposition3, 0.7);
-    glVertex2f((xposition1 + xposition2 - xposition3)/2, yposition);
+//     glBegin(GL_POINTS);
+//     glColor3f(1, 1, 0); // Red
+//     //   std::cout << xposition1 << " " <<xposition2 << " " <<xposition3 <<std::endl;
+//     glVertex2f(xposition1, -0.5);
+//     glVertex2f(xposition2, -0.3);
+//     glVertex2f(xposition3, 0.7);
+//     glVertex2f((xposition1 + xposition2 - xposition3)/2, yposition);
    
 
-    glEnd();
+//     glEnd();
 
     
-    glutSwapBuffers();
-    glFlush();
-}
+//     glutSwapBuffers();
+//     glFlush();
+// }
 
-void timer(int )
-{
-    glutPostRedisplay();
-    glutTimerFunc(1000/60, timer, 0);
+// void timer(int )
+// {
+//     glutPostRedisplay();
+//     glutTimerFunc(1000/60, timer, 0);
 
-    // std::cout << direction1 << " " <<xposition2 << " " <<xposition3 <<std::endl;
-    switch(direction1)
-    {
-        case 1:
-            if (xposition1 < 1) 
-                // std::cout << "r" <<std::endl;
-                xposition1 += 0.05;
+//     // std::cout << direction1 << " " <<xposition2 << " " <<xposition3 <<std::endl;
+//     switch(direction1)
+//     {
+//         case 1:
+//             if (xposition1 < 1) 
+//                 // std::cout << "r" <<std::endl;
+//                 xposition1 += 0.05;
             
-            else 
-                // std::cout << "r" <<std::endl;
-                direction1 = -1;
+//             else 
+//                 // std::cout << "r" <<std::endl;
+//                 direction1 = -1;
             
-            break;
-        case -1:
-            if (xposition1 > -1) 
-                xposition1 -= 0.05;
+//             break;
+//         case -1:
+//             if (xposition1 > -1) 
+//                 xposition1 -= 0.05;
             
-            else 
-                direction1 = 1;
+//             else 
+//                 direction1 = 1;
             
-            break;
-    }
+//             break;
+//     }
 
-    switch(direction2)
-    {
-        case 1:
-            if (xposition2 < 1) {
-                // std::cout << "r" <<std::endl;
-                xposition2 += 0.05;
-            }
-            else {
-                direction2 = -1;
-            }
-            break;
-        case -1:
-            if (xposition2 > -1) {
-                xposition2 -= 0.05;
-            }
-            else {
-                direction2 = 1;
-            }
-            break;
-    }
+//     switch(direction2)
+//     {
+//         case 1:
+//             if (xposition2 < 1) {
+//                 // std::cout << "r" <<std::endl;
+//                 xposition2 += 0.05;
+//             }
+//             else {
+//                 direction2 = -1;
+//             }
+//             break;
+//         case -1:
+//             if (xposition2 > -1) {
+//                 xposition2 -= 0.05;
+//             }
+//             else {
+//                 direction2 = 1;
+//             }
+//             break;
+//     }
 
-    switch(direction3)
-    {
-        case 1:
-            if (xposition3 < 1) {
-                // std::cout << "r" <<std::endl;
-                xposition3 += 0.05;
-            }
-            else {
-                direction3 = -1;
-            }
-            break;
-        case -1:
-            if (xposition3 > -1) {
-                xposition3 -= 0.05;
-            }
-            else {
-                direction3 = 1;
-            }
-            break;
-    }
+//     switch(direction3)
+//     {
+//         case 1:
+//             if (xposition3 < 1) {
+//                 // std::cout << "r" <<std::endl;
+//                 xposition3 += 0.05;
+//             }
+//             else {
+//                 direction3 = -1;
+//             }
+//             break;
+//         case -1:
+//             if (xposition3 > -1) {
+//                 xposition3 -= 0.05;
+//             }
+//             else {
+//                 direction3 = 1;
+//             }
+//             break;
+//     }
 
-    switch(direction4)
-    {
-        case 1:
-            if (yposition < 1) {
-                // std::cout << "r" <<std::endl;
-                yposition += 0.05;
-            }
-            else {
-                direction4 = -1;
-            }
-            break;
-        case -1:
-            if (yposition > -1) {
-                yposition -= 0.05;
-            }
-            else {
-                direction4 = 1;
-            }
-            break;
-    }
+//     switch(direction4)
+//     {
+//         case 1:
+//             if (yposition < 1) {
+//                 // std::cout << "r" <<std::endl;
+//                 yposition += 0.05;
+//             }
+//             else {
+//                 direction4 = -1;
+//             }
+//             break;
+//         case -1:
+//             if (yposition > -1) {
+//                 yposition -= 0.05;
+//             }
+//             else {
+//                 direction4 = 1;
+//             }
+//             break;
+//     }
 
     
-}
+// }

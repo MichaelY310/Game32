@@ -25,6 +25,7 @@ enum class SceneStage
     VICTORY3,
 
     FAILED,
+    RESTART,
 
     BADEND,
     END
@@ -47,6 +48,8 @@ public:
     void OnUpdateBossfight1(double timestep);
     void OnUpdateConversation2(double timestep);
     void OnUpdateBossfight2(double timestep);
+    void OnUpdateSucceed(double timestep);
+    void OnUpdateRestart(double timestep);
 
     void OnUpdateVictory1(double timestep);
     void OnUpdateFailed(double timestep);
