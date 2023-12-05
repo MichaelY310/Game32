@@ -6,7 +6,7 @@
 // #include <GLUT/glut.h>
 #include <iostream>
 #include <cmath>
-// #include <GL/freeglut_std.h>
+#include <GL/freeglut.h>
 
 Scene::Scene()
 {
@@ -48,6 +48,14 @@ void Scene::OnUpdate(double timestep)
 bool menuRemove = false;
 bool stage = false;
 
+void Scene::DisplayS()
+{
+    glRasterPos2i(-0.5,-0.7);
+    glColor3f(0.2f, 0.7f, 0.0f); 
+    std::string SuccessMessage("SUCCESS");
+    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)SuccessMessage.c_str());
+}
+
 void Scene::OnUpdateSucceed(double timestep) // Success and restart the game  
 {
     std::cout << "SUCCESS" <<std::endl;
@@ -55,9 +63,7 @@ void Scene::OnUpdateSucceed(double timestep) // Success and restart the game
     m_Player = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f,  0.5f, vec3(0.0, 0.7, 0.1), 1, 0);
     m_EntityList.push_back(m_Player);
 
-    // glRasterPos2i(0.5,0.5);
-    // glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-    // glutBitmapString(GLUT_BITMAP_HELVETICA_18, "SUCCESS");
+    glutDisplayFunc(DisplayS);
 
     if (Input::isKeyPressed('c'))
     {

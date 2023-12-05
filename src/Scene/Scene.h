@@ -54,6 +54,8 @@ public:
     void OnUpdateVictory1(double timestep);
     void OnUpdateFailed(double timestep);
 
+    static void DisplayS();
+
     void PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep);
     void PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double timestep);
     void PlayerBulletMove(std::shared_ptr<Entity> playerBulletEntity, double timestep);

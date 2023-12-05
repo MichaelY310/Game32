@@ -6,6 +6,10 @@
 #include "Scene/Entity.h"
 #include <iostream>
 
+#include <string>
+
+#include <GL/freeglut.h>
+
 const float PI = 3.14159265359;
 
 void Renderer::Init()
@@ -59,6 +63,12 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, d
     glVertex3f(d.x, d.y, depth);
 
     glEnd();
+
+
+    glRasterPos2i(-0.5,-0.7);
+    glColor3f(0.2f, 0.7f, 0.0f); 
+    std::string SuccessMessage("SUCCESS");
+    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)SuccessMessage.c_str());
 }
 
 
