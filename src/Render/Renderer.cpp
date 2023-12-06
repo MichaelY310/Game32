@@ -27,6 +27,7 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
     {
         std::string Message = std::to_string(entity->Rank) + ":   ";
         Message += std::to_string(entity->time);
+        std::cout << entity->m_Position.x << " " << entity->m_Position.y <<std::endl;
         DrawLeaderBoard(entity->m_Position,Message);
         return;
     }
@@ -37,6 +38,8 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
     }
     else 
     {
+        // std::string Message = "Your Time: ";
+        // Message += std::to_string(entity->time);
         DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
     }
 }
@@ -71,7 +74,7 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, dou
 }
 
 
-void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture, double depth)
+void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture,  double depth )
 {
     
     // d c
@@ -109,6 +112,11 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> text
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glDisable(GL_TEXTURE_2D);
+
+
+    // glRasterPos2i(-0.8, 0.8);
+    // glColor3f(0.2f, 0.7f, 0.0f);
+    // glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_10, (const unsigned char*)Message.c_str());
 }
 
 void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, double depth, double angle)
@@ -137,7 +145,7 @@ void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, dou
 void Renderer::DrawLeaderBoard( vec2 position ,std::string Message)
 {
    DrawQuad(vec2(3,3), vec2(0.01,0.01), vec3(1.0, 1.0, 1.0), 1.0 , 0);
-   std::cout << position.x << " " << position.y <<std::endl;
+//    std::cout << position.x << " " << position.y <<std::endl;
    glRasterPos2i(position.x,position.y);
    glColor3f(0.2f, 0.7f, 0.0f);
    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)Message.c_str());

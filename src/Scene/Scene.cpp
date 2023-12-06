@@ -115,17 +115,24 @@ void Scene::OnUpdateTitle(double timestep)
 
         std::shared_ptr<Texture> startIcon = Texture::Create("Start.png");
         std::shared_ptr<Entity> menu1 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.6), 0.0f, vec2(1, 0.4), vec3(0.0, 0.7, 0.1), 1, 0, startIcon);
+        // menu1->time = Time;
+        
         m_EntityList.push_back(menu1);
 
         std::shared_ptr<Texture> How_To_Play_Icon = Texture::Create("How_To_Play.png");
         std::shared_ptr<Entity> menu2 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f, vec2(1, 0.4), vec3(0.0, 0.7, 0.1), 1, 0, How_To_Play_Icon);
+        // menu2->time = Time;
+        
         m_EntityList.push_back(menu2);
 
         std::shared_ptr<Texture> exitIcon = Texture::Create("Exit.png");
         std::shared_ptr<Entity> menu3 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, -0.6), 0.0f, vec2(1, 0.4), vec3(0.0, 0.7, 0.1), 1, 0, exitIcon);
+        // menu3->time = Time;
+        
         m_EntityList.push_back(menu3);
 
         std::shared_ptr<Entity> choice = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.4), 0.0f, vec2(1.2, 0.5), vec3(0.0, 0.0, 0.0), 1, -1);
+        // choice->time = Time;
         m_EntityList.push_back(choice);
     }
 
@@ -606,7 +613,7 @@ void Scene::OnUpdateLeaderBoard(double timestep)
 
 
         Leaders.push_back(Time);
-        std::sort(Leaders.begin(),Leaders.end(), std::greater<double>());
+        std::sort(Leaders.begin(),Leaders.end());
 
         std::shared_ptr<Texture> titleIcon = Texture::Create("Success.png");
         std::shared_ptr<Entity> menu1 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.4), 0.0f, vec2(1, 0.4), vec3(0.0, 0.7, 0.1), 0, 0, titleIcon);
