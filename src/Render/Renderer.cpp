@@ -1,12 +1,10 @@
-// #include <GLUT/glut.h>
 #include <GL/glut.h>
 #include <cmath>
 
 #include "Renderer.h"
 #include "Scene/Entity.h"
 #include <iostream>
-
-#include <string>
+#include <string.h>
 
 #include <GL/freeglut.h>
 
@@ -25,18 +23,25 @@ void Renderer::Flush()
 
 void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
 {
+    if (entity->m_EntityType== EntityType::LEADER)
+    {
+        std::string Message = std::to_string(entity->Rank) + ":   ";
+        Message += std::to_string(entity->time);
+        DrawLeaderBoard(entity->m_Position,Message);
+        return;
+    }
+
     if (!entity->m_Texture)
     {
         DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
     }
     else 
     {
-        // std::cout << "aaa" << std::endl;
         DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
     }
 }
 
-void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, double depth)
+void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, double depth)
 {
     // d c
     // a b
@@ -63,18 +68,12 @@ void Renderer::DrawQuad(vec2 position, double scale, vec3 color, double alpha, d
     glVertex3f(d.x, d.y, depth);
 
     glEnd();
-
-
-    glRasterPos2i(-0.5,-0.7);
-    glColor3f(0.2f, 0.7f, 0.0f); 
-    std::string SuccessMessage("SUCCESS");
-    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)SuccessMessage.c_str());
 }
 
 
-void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> texture, double depth)
+void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture, double depth)
 {
-    // std::cout << "running" <<std::endl;
+    
     // d c
     // a b
     vec2 a(-0.5, -0.5);
@@ -112,11 +111,11 @@ void Renderer::DrawQuad(vec2 position, double scale, std::shared_ptr<Texture> te
     glDisable(GL_TEXTURE_2D);
 }
 
-void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha, double depth, double angle)
+void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, double depth, double angle)
 {
     glColor4f(color.x, color.y, color.z, alpha);
 
-    const float radius = scale;
+    const float radius = scale.x;
     const float startAngle = angle;
     const float endAngle = 270;
 
@@ -134,3 +133,12 @@ void Renderer::DrawRing(vec2 position, double scale, vec3 color, double alpha, d
     glEnd();
 }
 
+
+void Renderer::DrawLeaderBoard( vec2 position ,std::string Message)
+{
+   DrawQuad(vec2(3,3), vec2(0.01,0.01), vec3(1.0, 1.0, 1.0), 1.0 , 0);
+   std::cout << position.x << " " << position.y <<std::endl;
+   glRasterPos2i(position.x,position.y);
+   glColor3f(0.2f, 0.7f, 0.0f);
+   glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)Message.c_str());
+}

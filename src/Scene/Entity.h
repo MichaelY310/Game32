@@ -11,6 +11,7 @@ enum class EntityType
     PLAYER_BULLET,
     BOSS_BIG_BULLET,
     BOSS_SMALL_BULLET,
+    LEADER,
 
 };
 
@@ -18,15 +19,18 @@ class Entity
 {
 public:
     Entity();
-    Entity(EntityType type, vec2 position, double angle, double size, vec3 color, double alpha, double depth, std::shared_ptr<Texture> texture = nullptr);
+    Entity(EntityType type, vec2 position, double angle, vec2 size, vec3 color, double alpha, double depth, std::shared_ptr<Texture> texture = nullptr);
 
     EntityType m_EntityType = EntityType::NONE;
 
     vec2 m_Position = vec2(0.0f, 0.0f);
     double m_Angle = 90.0f;
-    double m_Size = 0.1f;
+    vec2 m_Size = { 0.1, 0.1 };
     vec3 m_Color = { 1.0f, 1.0f, 1.0f };
     double m_Alpha = 1.0f;
     double m_Depth = 0.0f;
     std::shared_ptr<Texture> m_Texture;
+    double time = 0;
+    int Rank = 0;
+
 };

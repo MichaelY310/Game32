@@ -4,7 +4,7 @@ Entity::Entity()
 {
 }
 
-Entity::Entity(EntityType type, vec2 position, double angle, double size, vec3 color, double alpha, double depth, std::shared_ptr<Texture> texture)
+Entity::Entity(EntityType type, vec2 position, double angle, vec2 size, vec3 color, double alpha, double depth, std::shared_ptr<Texture> texture)
 {
     m_Position = position;
     m_Angle = angle;
