@@ -149,4 +149,6 @@ public:
     std::shared_ptr<Texture> BossBigBulletTexture;
     std::shared_ptr<Texture> BossSmallBulletTexture;
     std::shared_ptr<Texture> PlayerBulletTexture;
+
+    std::shared_ptr<Texture> PlayerLivesTexture;
 };

@@ -41,6 +41,9 @@ void Scene::Init()
     BossBigBulletTexture = Texture::Create("BossBigBullet.png");
     BossSmallBulletTexture = Texture::Create("wall.jpg");
     PlayerBulletTexture = Texture::Create("wall.jpg");
+
+
+    PlayerLivesTexture = Texture::Create("yan.jpg");
 }
 
 void Scene::OnUpdate(double timestep)
@@ -78,6 +81,15 @@ void Scene::OnDisplay()
 {
     Renderer::Init();
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+
+    // Player lives
+    if (m_CurrentStage == SceneStage::BOSSFIGHT1 || m_CurrentStage == SceneStage::BOSSFIGHT2 || m_CurrentStage == SceneStage::BOSSFIGHT3)
+    {
+        for (int i=0; i<playerLives; i++)
+        {
+            Renderer::DrawQuad(vec2(1.85 - 0.13 * i, 0.9), vec2(0.1, 0.1), vec3(1.0, 0.0, 0.0), PlayerLivesTexture, 1.0, 114.0);
+        }
+    }
 
     if (BlackCoverTime > 0)
     {
@@ -423,11 +435,11 @@ void Scene::OnUpdateBossfight1(double timestep)
 
 void Scene::OnUpdateConversation2(double timestep)
 {
-    // Add player's live by 1 as bonus
-    playerLives++;
     // Boss2 Move in
     if (m_CurrentStageTime == 0)
     {
+        playerLives++;
+        
         BlackCoverTime = MaxBlackCoverTime;
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
 
@@ -547,6 +559,41 @@ void Scene::OnUpdateBossfight2(double timestep)
                 // Cause damage if player is alive
                 if (playerEntity) {
                     if (playerEntity->m_Position.DistanceTo(entity->m_Position) < BOSS_BIG_BULLET_RADIUS + PLAYER_RADIUS)
+                    {
+                        // Ineffective time out     the last one should not flash
+                        if (flashUnit == 0)
+                        {
+                            playerLives -= 1;
+                            if (playerLives > 1) { flashUnit = 100; } 
+
+                            if (!deleted)
+                            {
+                                removeIndexList.push_back(i);
+                                deleted = true;
+                            }
+                        }
+                    }
+                }
+                Boss2BulletMove(entity, timestep);
+            }
+        }
+
+        // Boss Big Bullet Move
+        else if (entity->m_EntityType == EntityType::BOSS_SMALL_BULLET)
+        {
+            // Delete if Boss is dead
+            if (Boss2HP <= 0) {
+                if (!deleted)
+                {
+                    removeIndexList.push_back(i);
+                    deleted = true;
+                }
+            }
+            else 
+            {
+                // Cause damage if player is alive
+                if (playerEntity) {
+                    if (playerEntity->m_Position.DistanceTo(entity->m_Position) < BOSS_SMALL_BULLET_RADIUS + PLAYER_RADIUS)
                     {
                         // Ineffective time out     the last one should not flash
                         if (flashUnit == 0)
@@ -867,18 +914,30 @@ void Scene::Boss2Move(std::shared_ptr<Entity> bossEntity, double timestep)
     {
         float angleRadians = bossEntity->m_Angle * (M_PI / 180.0);
         bossEntity->m_Position.x += 1 * std::cos(angleRadians) * timestep;
-        bossEntity->m_Position.y += 1 * std::sin(angleRadians) * timestep;
+        bossEntity->m_Position.y += 0.5 * std::sin(angleRadians) * timestep;
 
         if (bossEntity->m_Position.x >= 1.0)
         {
             bossEntity->m_Position.x = 0.999;
-            bossEntity->m_Angle = 180;
+            bossEntity->m_Angle = 135;
+            Boss2Wait = 2;
+        }
+        else if (bossEntity->m_Position.y <= 0.0)
+        {
+            bossEntity->m_Position.y = 0.001;
+            bossEntity->m_Angle = 45;
             Boss2Wait = 2;
         }
         else if (bossEntity->m_Position.x <= -1.0)
         {
             bossEntity->m_Position.x = -0.999;
-            bossEntity->m_Angle = 0;
+            bossEntity->m_Angle = 315;
+            Boss2Wait = 2;
+        }
+        else if (bossEntity->m_Position.y >= 1.0)
+        {
+            bossEntity->m_Position.y = 0.999;
+            bossEntity->m_Angle = 225;
             Boss2Wait = 2;
         }
     }
@@ -893,13 +952,14 @@ void Scene::Boss2Move(std::shared_ptr<Entity> bossEntity, double timestep)
 void Scene::Boss2ShootBullet(std::shared_ptr<Entity> boss2Entity, double timestep)
 {
     Boss2currentBigBulletTime += timestep;
-    if (Boss2Wait > 0 && (Boss2prevBigBulletTime == 0 || Boss2currentBigBulletTime - Boss2prevBigBulletTime >= 0.5))
+    if (Boss2Wait > 0 && (Boss2prevBigBulletTime == 0 || Boss2currentBigBulletTime - Boss2prevBigBulletTime >= 0.1))
     {
-        int bulletCount = 9;
+        int bulletCount = 6;
         for (int i = 0; i < bulletCount; i++)
         {
-            std::shared_ptr<Entity> boss2BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss2Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, vec2(BOSS_BIG_BULLET_SIZE * 2, BOSS_BIG_BULLET_SIZE * 2), vec3(1.0, 1.0, 1.0), 1.0, 80.0);
-            m_EntityList.push_back(boss2BigBullet);
+            std::shared_ptr<Entity> boss2SmallBullet = std::make_shared<Entity>(EntityType::BOSS_SMALL_BULLET, boss2Entity->m_Position, getRandom() * 360.0f, 
+            vec2(BOSS_SMALL_BULLET_SIZE * 2, BOSS_SMALL_BULLET_SIZE * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);            
+            m_EntityList.push_back(boss2SmallBullet);
         }
         Boss2prevBigBulletTime = Boss2currentBigBulletTime;
     }
@@ -909,8 +969,8 @@ void Scene::Boss2BulletMove(std::shared_ptr<Entity> boss2BulletEntity, double ti
 {
     float angleRadians = boss2BulletEntity->m_Angle * (M_PI / 180.0);
 
-    boss2BulletEntity->m_Position.x += 2 * std::cos(angleRadians) * timestep;
-    boss2BulletEntity->m_Position.y += 2 * std::sin(angleRadians) * timestep;
+    boss2BulletEntity->m_Position.x += 1 * std::cos(angleRadians) * timestep;
+    boss2BulletEntity->m_Position.y += 1 * std::sin(angleRadians) * timestep;
 }
 
 void Scene::Boss2Die(std::shared_ptr<Entity> boss2Entity, double timestep)
