@@ -7,7 +7,8 @@ BossHPPanel::BossHPPanel(std::shared_ptr<Entity> linkedEntity)
 
 }
 
-void BossHPPanel::Display()
+void BossHPPanel::Display(double HP)
 {
-    Renderer::DrawRing({0.0, 0.0}, 0.5, { 1.0, 1.0, 1.0 }, 1.0);
+    double maxHP = 100;
+    Renderer::DrawRing(m_LinkedEntity->m_Position, vec2(0.3, 0.3), { 0.6, 0.3, 0.3 }, 0.5, -100, (maxHP - HP) / maxHP * 360 - 90);
 }   
