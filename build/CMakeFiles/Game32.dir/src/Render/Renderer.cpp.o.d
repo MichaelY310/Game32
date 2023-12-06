@@ -1,5 +1,5 @@
 CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
- /cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp \
+ /cs/student/ylin985/cs32/Game32/src/Render/Renderer.cpp \
  /usr/include/stdc-predef.h /usr/include/GL/glut.h \
  /usr/include/GL/freeglut_std.h /usr/include/GL/gl.h \
  /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
@@ -70,9 +70,9 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h \
- /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
- /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
+ /cs/student/ylin985/cs32/Game32/src/Render/Renderer.h \
+ /cs/student/ylin985/cs32/Game32/src/Render/DataTypes.h \
+ /cs/student/ylin985/cs32/Game32/src/Render/Texture.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/c++/13/bits/allocator.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++allocator.h \
@@ -124,7 +124,7 @@ CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
- /cs/student/yang335/Desktop/Game32/src/Scene/Entity.h \
+ /cs/student/ylin985/cs32/Game32/src/Scene/Entity.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/localefwd.h \

@@ -1,7 +1,7 @@
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: \
- /cs/student/yang335/Desktop/Game32/src/Scene/Scene.cpp \
+ /cs/student/ylin985/cs32/Game32/src/Scene/Scene.cpp \
  /usr/include/stdc-predef.h \
- /cs/student/yang335/Desktop/Game32/src/Scene/Scene.h \
+ /cs/student/ylin985/cs32/Game32/src/Scene/Scene.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
@@ -102,8 +102,8 @@ CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
- /cs/student/yang335/Desktop/Game32/src/Scene/Entity.h \
- /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
+ /cs/student/ylin985/cs32/Game32/src/Scene/Entity.h \
+ /cs/student/ylin985/cs32/Game32/src/Render/DataTypes.h \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -130,14 +130,14 @@ CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
+ /cs/student/ylin985/cs32/Game32/src/Render/Texture.h \
  /usr/include/GL/glut.h /usr/include/GL/freeglut_std.h \
  /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/KHR/khrplatform.h /usr/include/GL/glu.h \
  /usr/include/c++/13/stdlib.h /usr/include/c++/13/cstdlib \
- /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.h \
- /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h \
- /cs/student/yang335/Desktop/Game32/src/Core/Input.h \
+ /cs/student/ylin985/cs32/Game32/src/Scene/BossHPPanel.h \
+ /cs/student/ylin985/cs32/Game32/src/Render/Renderer.h \
+ /cs/student/ylin985/cs32/Game32/src/Core/Input.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h \

@@ -6,6 +6,11 @@
 #include <iostream>
 #include <cmath>
 
+double randomDouble()
+{
+    return (double)(rand()) / (double)(rand());
+}
+
 Scene::Scene()
 {
     PlayerBulletTexture = Texture::Create("wall.jpg");
@@ -398,7 +403,10 @@ void Scene::OnUpdateBossfight1(double timestep)
 void Scene::OnUpdateConversation2(double timestep)
 {
     // Add player's live by 1 as bonus
-    playerLives++;
+    if (bonus == 0){
+        bonus++;
+        playerLives++;
+    }
     // Boss2 Move in
     if (m_CurrentStageTime == 0)
     {
@@ -786,19 +794,31 @@ void Scene::Boss2Move(std::shared_ptr<Entity> bossEntity, double timestep)
     {
         float angleRadians = bossEntity->m_Angle * (M_PI / 180.0);
         bossEntity->m_Position.x += 1 * std::cos(angleRadians) * timestep;
-        bossEntity->m_Position.y += 1 * std::sin(angleRadians) * timestep;
+        bossEntity->m_Position.y += 0.5 * std::sin(angleRadians) * timestep;
 
         if (bossEntity->m_Position.x >= 1.0)
         {
             bossEntity->m_Position.x = 0.999;
-            bossEntity->m_Angle = 180;
-            Boss2Wait = 2;
+            bossEntity->m_Angle = 135;
+            Boss2Wait = 1;
+        }
+        else if (bossEntity->m_Position.y <= 0.0)
+        {
+            bossEntity->m_Position.y = 0.001;
+            bossEntity->m_Angle = 45;
+            Boss2Wait = 1;
         }
         else if (bossEntity->m_Position.x <= -1.0)
         {
             bossEntity->m_Position.x = -0.999;
-            bossEntity->m_Angle = 0;
-            Boss2Wait = 2;
+            bossEntity->m_Angle = 315;
+            Boss2Wait = 1;
+        }
+        else if (bossEntity->m_Position.y >= 1.0)
+        {
+            bossEntity->m_Position.y = 0.999;
+            bossEntity->m_Angle = 225;
+            Boss2Wait = 1;
         }
     }
     else 
@@ -813,12 +833,12 @@ void Scene::Boss2Move(std::shared_ptr<Entity> bossEntity, double timestep)
 void Scene::Boss2ShootBullet(std::shared_ptr<Entity> boss2Entity, double timestep)
 {
     Boss2currentBigBulletTime += timestep;
-    if (Boss2Wait > 0 && (Boss2prevBigBulletTime == 0 || Boss2currentBigBulletTime - Boss2prevBigBulletTime >= 0.5))
+    if (Boss2Wait > 0 && (Boss2prevBigBulletTime == 0 || Boss2currentBigBulletTime - Boss2prevBigBulletTime >= 0.333))
     {
-        int bulletCount = 9;
+        int bulletCount = 12;
         for (int i = 0; i < bulletCount; i++)
         {
-            std::shared_ptr<Entity> boss2BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss2Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, vec2(BOSS_BIG_BULLET_RADIUS * 2, BOSS_BIG_BULLET_RADIUS * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);
+            std::shared_ptr<Entity> boss2BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss2Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + randomDouble() * 5.0f, vec2(BOSS_BIG_BULLET_RADIUS * 2, BOSS_BIG_BULLET_RADIUS * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);
             m_EntityList.push_back(boss2BigBullet);
         }
         Boss2prevBigBulletTime = Boss2currentBigBulletTime;

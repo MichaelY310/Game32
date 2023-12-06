@@ -1,7 +1,7 @@
 CMakeFiles/Game32.dir/src/Core/Input.cpp.o: \
- /cs/student/yang335/Desktop/Game32/src/Core/Input.cpp \
+ /cs/student/ylin985/cs32/Game32/src/Core/Input.cpp \
  /usr/include/stdc-predef.h \
- /cs/student/yang335/Desktop/Game32/src/Core/Input.h \
+ /cs/student/ylin985/cs32/Game32/src/Core/Input.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \

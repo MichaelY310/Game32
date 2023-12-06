@@ -114,6 +114,7 @@ public:
     double prevBulletTime = 0;
     double currentBulletTime = 0;
     int flashUnit = 0;
+    int bonus = 0;
 
 
     // GameUI

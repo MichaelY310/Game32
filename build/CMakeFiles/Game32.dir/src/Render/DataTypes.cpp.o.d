@@ -1,7 +1,7 @@
 CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o: \
- /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.cpp \
+ /cs/student/ylin985/cs32/Game32/src/Render/DataTypes.cpp \
  /usr/include/stdc-predef.h \
- /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
+ /cs/student/ylin985/cs32/Game32/src/Render/DataTypes.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
