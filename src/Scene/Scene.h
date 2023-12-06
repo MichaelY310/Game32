@@ -21,6 +21,7 @@ enum class SceneStage
     CONVERSATION3,
     BOSSFIGHT3,
 
+    LEADERBOARD,
     SUCCEED,
     RESTART,
     FAILED,
@@ -48,6 +49,7 @@ public:
     void OnUpdateBossfight2(double timestep);
 
     void OnUpdateSucceed(double timestep);
+    void OnUpdateLeaderBoard(double timestep);
     void OnUpdateFailed(double timestep);
 
     void PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep);
@@ -124,4 +126,5 @@ public:
 
 
     std::shared_ptr<Texture> PlayerBulletTexture;
+
 };

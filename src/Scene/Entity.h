@@ -11,6 +11,7 @@ enum class EntityType
     PLAYER_BULLET,
     BOSS_BIG_BULLET,
     BOSS_SMALL_BULLET,
+    LEADER,
 
 };
 
@@ -29,4 +30,7 @@ public:
     double m_Alpha = 1.0f;
     double m_Depth = 0.0f;
     std::shared_ptr<Texture> m_Texture;
+    double time = 0;
+    int Rank = 0;
+
 };
