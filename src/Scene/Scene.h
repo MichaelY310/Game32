@@ -72,6 +72,12 @@ public:
     double BOSS_SMALL_BULLET_RADIUS = 0.02;
     double BOSS_BIG_BULLET_RADIUS = 0.05;
 
+    double PLAYER_SIZE = 0.04;
+    double BOSS_SIZE = 0.1;
+    double PLAYER_BULLET_SIZE = 0.02;
+    double BOSS_SMALL_BULLET_SIZE = 0.022;
+    double BOSS_BIG_BULLET_SIZE = 0.06;
+
 
 
     SceneStage m_CurrentStage = SceneStage::TITLE;
@@ -124,5 +130,15 @@ public:
     double MaxBlackCoverTime = 400;
 
 
+    std::shared_ptr<Texture> startIcon;
+    std::shared_ptr<Texture> How_To_Play_Icon;
+    std::shared_ptr<Texture> exitIcon;
+
+    std::shared_ptr<Texture> PlayerNormal;
+    std::shared_ptr<Texture> PlayerRight;
+    std::shared_ptr<Texture> PlayerLeft;
+
+    std::shared_ptr<Texture> BossBigBulletTexture;
+    std::shared_ptr<Texture> BossSmallBulletTexture;
     std::shared_ptr<Texture> PlayerBulletTexture;
 };

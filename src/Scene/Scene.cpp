@@ -7,9 +7,18 @@
 #include <cmath>
 
 Scene::Scene()
+    : startIcon(Texture::Create("Start.jpg")),
+      How_To_Play_Icon(Texture::Create("How_To_Play.jpg")),
+      exitIcon(Texture::Create("Exit.jpg")),
+
+      PlayerNormal(Texture::Create("wall.jpg")),
+      PlayerRight(Texture::Create("wall.jpg")),
+      PlayerLeft(Texture::Create("wall.jpg")),
+
+      BossBigBulletTexture(Texture::Create("wall.jpg")),
+      BossSmallBulletTexture(Texture::Create("wall.jpg")),
+      PlayerBulletTexture(Texture::Create("wall.jpg"))
 {
-    PlayerBulletTexture = Texture::Create("wall.jpg");
-    
 }
 
 void Scene::OnUpdate(double timestep)
@@ -86,24 +95,12 @@ void Scene::OnDisplay()
 
 void Scene::OnUpdateTitle(double timestep)
 {
-    // if (m_CurrentStageTime == 0)
-    // {
-    //     std::shared_ptr<Entity> choice = std::make_shared<Entity>(EntityType::MENU, vec2(-1.0, 0.0), 90.0f, vec2(0.5, 0.5), vec3(0.0, 0.0, 0.0), 1.0, -1);
-    //     m_EntityList.push_back(choice);
-
-    //     std::shared_ptr<Texture> texture = Texture::Create("Start.png");
-    //     std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, vec2(0.0, 0.0), 90.0f, vec2(0.5, 0.5), vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
-    //     m_EntityList.push_back(playerBullet);
-    // }
-    // m_CurrentStageTime += 1;
-    // return;
 
     if (m_CurrentStageTime == 0)
     {
         m_Choice = 0;
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
 
-        std::shared_ptr<Texture> startIcon = Texture::Create("Start.png");
         std::shared_ptr<Entity> menu1 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.6), 0.0f, vec2(1, 0.4), vec3(0.0, 0.7, 0.1), 1, 0, startIcon);
         m_EntityList.push_back(menu1);
 
@@ -217,10 +214,10 @@ void Scene::OnUpdateConversation1(double timestep)
     if (m_CurrentStageTime == 0)
     {
         BlackCoverTime = MaxBlackCoverTime;
-        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_RADIUS * 2, PLAYER_RADIUS * 2), vec3(1.0, 0.5, 0.5), 1.0, 100.0);
+        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 0.5, 0.5), 1.0, 100.0);
         m_EntityList.push_back(player);
         std::shared_ptr<Texture> texture = Texture::Create("wall.jpg");
-        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_RADIUS * 2, BOSS_RADIUS * 2), vec3(0.5, 1.0, 0.5), 1.0, 90.0, texture);
+        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2), vec3(0.5, 1.0, 0.5), 1.0, 90.0, texture);
         m_EntityList.push_back(m_Boss1);
     }
 
@@ -413,9 +410,9 @@ void Scene::OnUpdateConversation2(double timestep)
         BlackCoverTime = MaxBlackCoverTime;
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
 
-        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_RADIUS * 2, PLAYER_RADIUS * 2), vec3(1.0, 0.5, 0.5), 1.0, 100.0);
+        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 0.5, 0.5), 1.0, 100.0);
         m_EntityList.push_back(player);
-        m_Boss2 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_RADIUS * 2, BOSS_RADIUS * 2), vec3(0.5, 1.0, 0.5), 1.0, 90.0);
+        m_Boss2 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2), vec3(0.5, 1.0, 0.5), 1.0, 90.0);
         m_EntityList.push_back(m_Boss2);
     }
 
@@ -715,7 +712,7 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
 
                 double xOffset = (double)i - ((double)bulletCount - 1)/2;
                 pos = pos + vec2(xOffset * playerSpeed * 0.05, 0.05);
-                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, pos, 90.0f, vec2(PLAYER_BULLET_RADIUS * 2, PLAYER_BULLET_RADIUS * 2), vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
+                std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, pos, 90.0f, vec2(PLAYER_BULLET_SIZE * 2, PLAYER_BULLET_SIZE * 2), vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
                 m_EntityList.push_back(playerBullet);
             }
             prevBulletTime = currentBulletTime;
@@ -769,7 +766,7 @@ void Scene::Boss1ShootBullet(std::shared_ptr<Entity> boss1Entity, double timeste
         int bulletCount = 9;
         for (int i = 0; i < bulletCount; i++)
         {
-            std::shared_ptr<Entity> boss1BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss1Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, vec2(BOSS_BIG_BULLET_RADIUS * 2, BOSS_BIG_BULLET_RADIUS * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);
+            std::shared_ptr<Entity> boss1BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss1Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, vec2(BOSS_BIG_BULLET_SIZE * 2, BOSS_BIG_BULLET_SIZE * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);
             m_EntityList.push_back(boss1BigBullet);
         }
         Boss1prevBigBulletTime = Boss1currentBigBulletTime;
@@ -832,7 +829,7 @@ void Scene::Boss2ShootBullet(std::shared_ptr<Entity> boss2Entity, double timeste
         int bulletCount = 9;
         for (int i = 0; i < bulletCount; i++)
         {
-            std::shared_ptr<Entity> boss2BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss2Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, vec2(BOSS_BIG_BULLET_RADIUS * 2, BOSS_BIG_BULLET_RADIUS * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);
+            std::shared_ptr<Entity> boss2BigBullet = std::make_shared<Entity>(EntityType::BOSS_BIG_BULLET, boss2Entity->m_Position, ((double)i * 360.0f / (double)bulletCount) + Boss1currentBigBulletTime * 100000, vec2(BOSS_BIG_BULLET_SIZE * 2, BOSS_BIG_BULLET_SIZE * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);
             m_EntityList.push_back(boss2BigBullet);
         }
         Boss2prevBigBulletTime = Boss2currentBigBulletTime;
