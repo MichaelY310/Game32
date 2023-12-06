@@ -26,7 +26,7 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
     }
     else 
     {
-        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Alpha, entity->m_Depth);
+        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Texture, entity->m_Alpha, entity->m_Depth);
     }
 }
 
@@ -61,7 +61,7 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, dou
 }
 
 
-void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture, double alpha, double depth)
+void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, std::shared_ptr<Texture> texture, double alpha, double depth)
 {
     
     // d c
@@ -89,6 +89,8 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> text
     glVertex3f(3, 3.1, depth);
     glEnd();
 
+    DrawQuad(vec2(4, 4), vec2(0.001, 0.01), color, alpha, 0);
+
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture->m_RendererID);
     
@@ -107,6 +109,8 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> text
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glDisable(GL_TEXTURE_2D);
+
+    DrawQuad(vec2(4, 4), vec2(0.001, 0.01), color, alpha, 0);
 }
 
 void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, double depth, double angle)

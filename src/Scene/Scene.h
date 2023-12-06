@@ -34,6 +34,7 @@ class Scene
 public:
     Scene();
     ~Scene() = default;
+    void Init();
 
     void OnUpdate(double timestep);
     void OnDisplay();
@@ -70,13 +71,13 @@ public:
     double BOSS_RADIUS = 0.1;
     double PLAYER_BULLET_RADIUS = 0.02;
     double BOSS_SMALL_BULLET_RADIUS = 0.02;
-    double BOSS_BIG_BULLET_RADIUS = 0.05;
+    double BOSS_BIG_BULLET_RADIUS = 0.1;
 
     double PLAYER_SIZE = 0.04;
     double BOSS_SIZE = 0.1;
     double PLAYER_BULLET_SIZE = 0.02;
     double BOSS_SMALL_BULLET_SIZE = 0.022;
-    double BOSS_BIG_BULLET_SIZE = 0.06;
+    double BOSS_BIG_BULLET_SIZE = 0.12;
 
 
 
@@ -95,6 +96,7 @@ public:
     std::shared_ptr<Entity> m_Boss2;
     std::shared_ptr<BossHPPanel> Boss1HPPanel;
     std::shared_ptr<BossHPPanel> Boss2HPPanel;
+    std::shared_ptr<BossHPPanel> Boss3HPPanel;
 
     double Boss1HP = 100;
     int Boss1MaxMode = 3;
@@ -131,12 +133,18 @@ public:
 
 
     std::shared_ptr<Texture> startIcon;
+    std::shared_ptr<Texture> titleIcon;
     std::shared_ptr<Texture> How_To_Play_Icon;
     std::shared_ptr<Texture> exitIcon;
+    std::shared_ptr<Texture> FailTexture;
 
     std::shared_ptr<Texture> PlayerNormal;
     std::shared_ptr<Texture> PlayerRight;
     std::shared_ptr<Texture> PlayerLeft;
+
+    std::shared_ptr<Texture> Boss1Texture;
+    std::shared_ptr<Texture> Boss2Texture;
+    std::shared_ptr<Texture> Boss3Texture;
 
     std::shared_ptr<Texture> BossBigBulletTexture;
     std::shared_ptr<Texture> BossSmallBulletTexture;
