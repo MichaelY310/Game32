@@ -55,22 +55,13 @@ void Scene::OnDisplay()
         BlackCoverTime -= 1;
     }
 
-    if (flashUnit > 0)
-    {
-        flashUnit -= 1;
-    }
+    if (flashUnit > 0) { flashUnit -= 1; }
 
-    if (Boss1HPPanel)
-    {
-        Boss1HPPanel->Display(Boss1HP);
-    }
+    if (Boss1HPPanel) { Boss1HPPanel->Display(Boss1HP); }
+    if (Boss2HPPanel) { Boss2HPPanel->Display(Boss2HP); }
 
-    if (Boss2HPPanel)
-    {
-        Boss2HPPanel->Display(Boss2HP);
-    }
 
-    // Draw Player
+    // Draw
     for (int i=0; i<m_EntityList.size(); i++)
     {
         std::shared_ptr<Entity> entity = m_EntityList[i];
@@ -87,6 +78,7 @@ void Scene::OnDisplay()
         }
         Renderer::DrawQuad(entity);
     }
+
     Renderer::Flush();
 }
 
@@ -94,10 +86,21 @@ void Scene::OnDisplay()
 
 void Scene::OnUpdateTitle(double timestep)
 {
+    // if (m_CurrentStageTime == 0)
+    // {
+    //     std::shared_ptr<Entity> choice = std::make_shared<Entity>(EntityType::MENU, vec2(-1.0, 0.0), 90.0f, vec2(0.5, 0.5), vec3(0.0, 0.0, 0.0), 1.0, -1);
+    //     m_EntityList.push_back(choice);
+
+    //     std::shared_ptr<Texture> texture = Texture::Create("Start.png");
+    //     std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, vec2(0.0, 0.0), 90.0f, vec2(0.5, 0.5), vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
+    //     m_EntityList.push_back(playerBullet);
+    // }
+    // m_CurrentStageTime += 1;
+    // return;
+
     if (m_CurrentStageTime == 0)
     {
         m_Choice = 0;
-
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
 
         std::shared_ptr<Texture> startIcon = Texture::Create("Start.png");
@@ -149,9 +152,10 @@ void Scene::OnUpdateTitle(double timestep)
     }  
 
     if (lastClick >= 0) { lastClick -= timestep; }
+    if (lastSpacePress >= 0) { lastSpacePress -= timestep; }
 
 
-    if (Input::isKeyPressed(32))
+    if (Input::isKeyPressed(32) && lastSpacePress < 0)
     {
         if (m_Choice == 0)
         {
@@ -187,6 +191,7 @@ void Scene::OnUpdateTitle(double timestep)
 
             m_CurrentStage = SceneStage::CHOOSE_CHARACTER;
             m_CurrentStageTime = 0;
+            return;
         }
         else if (m_Choice == 1)
         {
@@ -235,6 +240,7 @@ void Scene::OnUpdateConversation1(double timestep)
     {
         m_CurrentStage = SceneStage::BOSSFIGHT1;
         m_CurrentStageTime = 0;
+        return;
     }
 }
 
@@ -387,11 +393,13 @@ void Scene::OnUpdateBossfight1(double timestep)
         Boss1HPPanel = nullptr;
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::CONVERSATION2;
+        return;
     }
     else if (PLAYERDEAD)
     {
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::FAILED;
+        return;
     }
 }
 
@@ -427,6 +435,7 @@ void Scene::OnUpdateConversation2(double timestep)
     {
         m_CurrentStage = SceneStage::BOSSFIGHT2;
         m_CurrentStageTime = 0;
+        return;
     }
 }
 
@@ -571,23 +580,26 @@ void Scene::OnUpdateBossfight2(double timestep)
         Boss2HPPanel = nullptr;
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::SUCCEED;
+        return;
     }
     else if (PLAYERDEAD)
     {
         m_CurrentStageTime = 0;
         m_CurrentStage = SceneStage::FAILED;
+        return;
     }
 }
 
 void Scene::OnUpdateSucceed(double timestep) // Success and restart the game  
 {
-
+    // std::cout << "SUCCESS" << std::endl;
     if (m_CurrentStageTime == 0)
     {
         m_Choice = 0;
 
         std::cout << "SUCCESS" << std::endl;
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
+        std::cout << "aaaa" << std::endl;
 
         std::shared_ptr<Texture> titleIcon = Texture::Create("Title.png");
         std::shared_ptr<Entity> menu1 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.4), 0.0f, vec2(1, 0.4), vec3(0.0, 0.7, 0.1), 1, 0, titleIcon);
@@ -621,10 +633,12 @@ void Scene::OnUpdateSucceed(double timestep) // Success and restart the game
 
     if (Input::isKeyPressed(32))
     {
+        lastSpacePress = 0.3;
         if (m_Choice == 0)
         {
             m_CurrentStage = SceneStage::TITLE;
             m_CurrentStageTime = 0;
+            return;
         }
         else {
             exit(0);
@@ -861,8 +875,9 @@ void Scene::OnUpdateTest(double timestep)
 {
     if (m_CurrentStageTime == 0)
     {
-        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_RADIUS * 2, BOSS_RADIUS * 2), vec3(1.0, 0.3, 0.3), 1.0, 70.0);
-        Boss1HPPanel = std::make_shared<BossHPPanel>(m_Boss1);
+        std::shared_ptr<Texture> texture = Texture::Create("Start.png");
+        std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, vec2(0.0, 0.0), 90.0f, vec2(0.5, 0.5), vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
+        m_EntityList.push_back(playerBullet);
     }
-    Boss1HP -= 0.1;
+    m_CurrentStageTime += 1;
 }

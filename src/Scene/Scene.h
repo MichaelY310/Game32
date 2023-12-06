@@ -119,6 +119,7 @@ public:
     // GameUI
     int m_Choice = 0;
     double lastClick = 0;
+    double lastSpacePress = 0;
     double BlackCoverTime = 0;
     double MaxBlackCoverTime = 400;
 

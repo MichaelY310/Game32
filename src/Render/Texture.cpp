@@ -52,7 +52,6 @@ Texture::Texture(const char* filePath)
 
     glTexImage2D(GL_TEXTURE_2D, 0, dataFormat, width, height, 0, dataFormat, GL_UNSIGNED_BYTE, image);
     stbi_image_free(image);
-
 }
 
 std::shared_ptr<Texture> Texture::Create(const char* filePath)

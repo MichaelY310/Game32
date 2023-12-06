@@ -26,7 +26,7 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
     }
     else 
     {
-        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
+        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Alpha, entity->m_Depth);
     }
 }
 
@@ -49,6 +49,7 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, dou
     c = c + position;
     d = d + position;
 
+
     glBegin(GL_QUADS);
     glColor4f(color.x, color.y, color.z, alpha);
     glVertex3f(a.x, a.y, depth);
@@ -60,7 +61,7 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, dou
 }
 
 
-void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture, double depth)
+void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture, double alpha, double depth)
 {
     
     // d c
@@ -79,6 +80,14 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> text
     b = b + position;
     c = c + position;
     d = d + position;
+
+    glBegin(GL_QUADS);
+    glColor4f(1.0, 1.0, 1.0, alpha);
+    glVertex3f(3, 3, depth);
+    glVertex3f(3.1, 3, depth);
+    glVertex3f(3.1, 3.1, depth);
+    glVertex3f(3, 3.1, depth);
+    glEnd();
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture->m_RendererID);

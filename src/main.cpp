@@ -32,9 +32,12 @@ void display() {
 
     // Renderer::Init();
     // glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    // std::shared_ptr<Texture> texture = Texture::Create("wall.jpg");
-    // std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, vec2(0.0, 0.0), 90.0f, 0.5, vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
+    // std::shared_ptr<Texture> texture = Texture::Create("Start.png");
+    // std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>(EntityType::PLAYER_BULLET, vec2(0.0, 0.0), 90.0f, vec2(0.5, 0.5), vec3(0.5, 0.5, 0.8), 1.0, 70.0, texture);
+
+    // std::shared_ptr<Entity> a = std::make_shared<Entity>(EntityType::PLAYER_BULLET, vec2(-1.0, 0.0), 90.0f, vec2(0.5, 0.5), vec3(0.5, 0.5, 0.8), 1.0, 70.0);
     // Renderer::DrawQuad(playerBullet);
+    // Renderer::DrawQuad(a);
     // Renderer::Flush();
 }
 
