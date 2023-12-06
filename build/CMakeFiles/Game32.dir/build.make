@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cs/student/yang335/Desktop/Game32
+CMAKE_SOURCE_DIR = /cs/student/ruitong/Desktop/CS32/Game32
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cs/student/yang335/Desktop/Game32/build
+CMAKE_BINARY_DIR = /cs/student/ruitong/Desktop/CS32/Game32/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Game32.dir/depend.make
@@ -70,130 +70,130 @@ include CMakeFiles/Game32.dir/progress.make
 include CMakeFiles/Game32.dir/flags.make
 
 CMakeFiles/Game32.dir/src/Core/Application.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Core/Application.cpp.o: /cs/student/yang335/Desktop/Game32/src/Core/Application.cpp
+CMakeFiles/Game32.dir/src/Core/Application.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Application.cpp
 CMakeFiles/Game32.dir/src/Core/Application.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Game32.dir/src/Core/Application.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Core/Application.cpp.o -MF CMakeFiles/Game32.dir/src/Core/Application.cpp.o.d -o CMakeFiles/Game32.dir/src/Core/Application.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Core/Application.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Game32.dir/src/Core/Application.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Core/Application.cpp.o -MF CMakeFiles/Game32.dir/src/Core/Application.cpp.o.d -o CMakeFiles/Game32.dir/src/Core/Application.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Application.cpp
 
 CMakeFiles/Game32.dir/src/Core/Application.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Core/Application.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Core/Application.cpp > CMakeFiles/Game32.dir/src/Core/Application.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Application.cpp > CMakeFiles/Game32.dir/src/Core/Application.cpp.i
 
 CMakeFiles/Game32.dir/src/Core/Application.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Core/Application.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Core/Application.cpp -o CMakeFiles/Game32.dir/src/Core/Application.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Application.cpp -o CMakeFiles/Game32.dir/src/Core/Application.cpp.s
 
 CMakeFiles/Game32.dir/src/Core/Input.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Core/Input.cpp.o: /cs/student/yang335/Desktop/Game32/src/Core/Input.cpp
+CMakeFiles/Game32.dir/src/Core/Input.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Input.cpp
 CMakeFiles/Game32.dir/src/Core/Input.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Game32.dir/src/Core/Input.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Core/Input.cpp.o -MF CMakeFiles/Game32.dir/src/Core/Input.cpp.o.d -o CMakeFiles/Game32.dir/src/Core/Input.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Core/Input.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Game32.dir/src/Core/Input.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Core/Input.cpp.o -MF CMakeFiles/Game32.dir/src/Core/Input.cpp.o.d -o CMakeFiles/Game32.dir/src/Core/Input.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Input.cpp
 
 CMakeFiles/Game32.dir/src/Core/Input.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Core/Input.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Core/Input.cpp > CMakeFiles/Game32.dir/src/Core/Input.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Input.cpp > CMakeFiles/Game32.dir/src/Core/Input.cpp.i
 
 CMakeFiles/Game32.dir/src/Core/Input.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Core/Input.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Core/Input.cpp -o CMakeFiles/Game32.dir/src/Core/Input.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Core/Input.cpp -o CMakeFiles/Game32.dir/src/Core/Input.cpp.s
 
 CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o: /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.cpp
+CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Render/DataTypes.cpp
 CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o -MF CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o.d -o CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o -MF CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o.d -o CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Render/DataTypes.cpp
 
 CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.cpp > CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Render/DataTypes.cpp > CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.i
 
 CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.cpp -o CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Render/DataTypes.cpp -o CMakeFiles/Game32.dir/src/Render/DataTypes.cpp.s
 
 CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: /cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp
+CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Renderer.cpp
 CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o -MF CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d -o CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o -MF CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o.d -o CMakeFiles/Game32.dir/src/Render/Renderer.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Renderer.cpp
 
 CMakeFiles/Game32.dir/src/Render/Renderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Render/Renderer.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp > CMakeFiles/Game32.dir/src/Render/Renderer.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Renderer.cpp > CMakeFiles/Game32.dir/src/Render/Renderer.cpp.i
 
 CMakeFiles/Game32.dir/src/Render/Renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Render/Renderer.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Render/Renderer.cpp -o CMakeFiles/Game32.dir/src/Render/Renderer.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Renderer.cpp -o CMakeFiles/Game32.dir/src/Render/Renderer.cpp.s
 
 CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: /cs/student/yang335/Desktop/Game32/src/Render/Texture.cpp
+CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Texture.cpp
 CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Game32.dir/src/Render/Texture.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Render/Texture.cpp.o -MF CMakeFiles/Game32.dir/src/Render/Texture.cpp.o.d -o CMakeFiles/Game32.dir/src/Render/Texture.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Render/Texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Game32.dir/src/Render/Texture.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Render/Texture.cpp.o -MF CMakeFiles/Game32.dir/src/Render/Texture.cpp.o.d -o CMakeFiles/Game32.dir/src/Render/Texture.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Texture.cpp
 
 CMakeFiles/Game32.dir/src/Render/Texture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Render/Texture.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Render/Texture.cpp > CMakeFiles/Game32.dir/src/Render/Texture.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Texture.cpp > CMakeFiles/Game32.dir/src/Render/Texture.cpp.i
 
 CMakeFiles/Game32.dir/src/Render/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Render/Texture.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Render/Texture.cpp -o CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Texture.cpp -o CMakeFiles/Game32.dir/src/Render/Texture.cpp.s
 
 CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.cpp
+CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/BossHPPanel.cpp
 CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/BossHPPanel.cpp
 
 CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.cpp > CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/BossHPPanel.cpp > CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.i
 
 CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.cpp -o CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/BossHPPanel.cpp -o CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.s
 
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: /cs/student/yang335/Desktop/Game32/src/Scene/Entity.cpp
+CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Entity.cpp
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Scene/Entity.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/Entity.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Entity.cpp
 
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Scene/Entity.cpp > CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Entity.cpp > CMakeFiles/Game32.dir/src/Scene/Entity.cpp.i
 
 CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Scene/Entity.cpp -o CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Entity.cpp -o CMakeFiles/Game32.dir/src/Scene/Entity.cpp.s
 
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: /cs/student/yang335/Desktop/Game32/src/Scene/Scene.cpp
+CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Scene.cpp
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o -c /cs/student/yang335/Desktop/Game32/src/Scene/Scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o -MF CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o.d -o CMakeFiles/Game32.dir/src/Scene/Scene.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Scene.cpp
 
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/Scene/Scene.cpp > CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Scene.cpp > CMakeFiles/Game32.dir/src/Scene/Scene.cpp.i
 
 CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/Scene/Scene.cpp -o CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Scene.cpp -o CMakeFiles/Game32.dir/src/Scene/Scene.cpp.s
 
 CMakeFiles/Game32.dir/src/main.cpp.o: CMakeFiles/Game32.dir/flags.make
-CMakeFiles/Game32.dir/src/main.cpp.o: /cs/student/yang335/Desktop/Game32/src/main.cpp
+CMakeFiles/Game32.dir/src/main.cpp.o: /cs/student/ruitong/Desktop/CS32/Game32/src/main.cpp
 CMakeFiles/Game32.dir/src/main.cpp.o: CMakeFiles/Game32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Game32.dir/src/main.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/main.cpp.o -MF CMakeFiles/Game32.dir/src/main.cpp.o.d -o CMakeFiles/Game32.dir/src/main.cpp.o -c /cs/student/yang335/Desktop/Game32/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Game32.dir/src/main.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Game32.dir/src/main.cpp.o -MF CMakeFiles/Game32.dir/src/main.cpp.o.d -o CMakeFiles/Game32.dir/src/main.cpp.o -c /cs/student/ruitong/Desktop/CS32/Game32/src/main.cpp
 
 CMakeFiles/Game32.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Game32.dir/src/main.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/yang335/Desktop/Game32/src/main.cpp > CMakeFiles/Game32.dir/src/main.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cs/student/ruitong/Desktop/CS32/Game32/src/main.cpp > CMakeFiles/Game32.dir/src/main.cpp.i
 
 CMakeFiles/Game32.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Game32.dir/src/main.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/yang335/Desktop/Game32/src/main.cpp -o CMakeFiles/Game32.dir/src/main.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cs/student/ruitong/Desktop/CS32/Game32/src/main.cpp -o CMakeFiles/Game32.dir/src/main.cpp.s
 
 # Object files for target Game32
 Game32_OBJECTS = \
@@ -224,7 +224,7 @@ Game32: /usr/lib64/libGL.so
 Game32: /usr/lib64/libGLU.so
 Game32: /usr/lib64/libglut.so
 Game32: CMakeFiles/Game32.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/cs/student/yang335/Desktop/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Game32"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Game32"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Game32.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -236,6 +236,6 @@ CMakeFiles/Game32.dir/clean:
 .PHONY : CMakeFiles/Game32.dir/clean
 
 CMakeFiles/Game32.dir/depend:
-	cd /cs/student/yang335/Desktop/Game32/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cs/student/yang335/Desktop/Game32 /cs/student/yang335/Desktop/Game32 /cs/student/yang335/Desktop/Game32/build /cs/student/yang335/Desktop/Game32/build /cs/student/yang335/Desktop/Game32/build/CMakeFiles/Game32.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /cs/student/ruitong/Desktop/CS32/Game32/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cs/student/ruitong/Desktop/CS32/Game32 /cs/student/ruitong/Desktop/CS32/Game32 /cs/student/ruitong/Desktop/CS32/Game32/build /cs/student/ruitong/Desktop/CS32/Game32/build /cs/student/ruitong/Desktop/CS32/Game32/build/CMakeFiles/Game32.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/Game32.dir/depend
 

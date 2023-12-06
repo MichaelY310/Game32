@@ -1,9 +1,9 @@
 CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: \
- /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.cpp \
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/BossHPPanel.cpp \
  /usr/include/stdc-predef.h \
- /cs/student/yang335/Desktop/Game32/src/Scene/BossHPPanel.h \
- /cs/student/yang335/Desktop/Game32/src/Scene/Entity.h \
- /cs/student/yang335/Desktop/Game32/src/Render/DataTypes.h \
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/BossHPPanel.h \
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Scene/Entity.h \
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Render/DataTypes.h \
  /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
@@ -69,7 +69,7 @@ CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Texture.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/c++/13/bits/allocator.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++allocator.h \
@@ -128,4 +128,4 @@ CMakeFiles/Game32.dir/src/Scene/BossHPPanel.cpp.o: \
  /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
  /usr/include/GL/glu.h /usr/include/c++/13/stdlib.h \
  /usr/include/c++/13/cstdlib \
- /cs/student/yang335/Desktop/Game32/src/Render/Renderer.h
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Renderer.h

@@ -1,5 +1,5 @@
 CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: \
- /cs/student/yang335/Desktop/Game32/src/Render/Texture.cpp \
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Texture.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
@@ -150,7 +150,7 @@ CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: \
  /usr/include/c++/13/bits/unique_ptr.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /cs/student/yang335/Desktop/Game32/Dependencies/stb_image.h \
+ /cs/student/ruitong/Desktop/CS32/Game32/Dependencies/stb_image.h \
  /usr/include/c++/13/stdlib.h /usr/include/string.h \
  /usr/include/strings.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/limits.h \
@@ -182,7 +182,7 @@ CMakeFiles/Game32.dir/src/Render/Texture.cpp.o: \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/mmintrin.h \
  /usr/lib/gcc/x86_64-redhat-linux/13/include/mm_malloc.h \
- /cs/student/yang335/Desktop/Game32/src/Render/Texture.h \
+ /cs/student/ruitong/Desktop/CS32/Game32/src/Render/Texture.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \

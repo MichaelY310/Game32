@@ -4,7 +4,7 @@
 # compile CXX with /usr/lib64/ccache/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/cs/student/yang335/Desktop/Game32/Dependencies -I/cs/student/yang335/Desktop/Game32/Dependencies/Glad -I/cs/student/yang335/Desktop/Game32/src
+CXX_INCLUDES = -I/cs/student/ruitong/Desktop/CS32/Game32/Dependencies -I/cs/student/ruitong/Desktop/CS32/Game32/Dependencies/Glad -I/cs/student/ruitong/Desktop/CS32/Game32/src
 
 CXX_FLAGS = -std=gnu++17
 
