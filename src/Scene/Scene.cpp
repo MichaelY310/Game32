@@ -43,7 +43,7 @@ void Scene::Init()
 
     BossBigBulletTexture = Texture::Create("BossBigBullet.png");
     BossSmallBulletTexture = Texture::Create("BossSmallBullet.png");
-    PlayerBulletTexture = Texture::Create("PlayerBullet.png");
+    PlayerBulletTexture = Texture::Create("PlayerBullet2.png");
 
 
     PlayerLivesTexture = Texture::Create("PlayerLives.png");
@@ -214,7 +214,6 @@ void Scene::OnUpdateTitle(double timestep)
 
             PLAYERDEAD = false;
             playerLives = 2;
-            playerATK = 100;
             playerSpeed = 1.5;
             prevBulletTime = 0;
             currentBulletTime = 0;
@@ -250,6 +249,7 @@ void Scene::OnUpdateConversation1(double timestep)
     // Boss1 Move in
     if (m_CurrentStageTime == 0)
     {
+        playerLives += 1;
         BlackCoverTime = MaxBlackCoverTime;
         std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 1.0, 1.0), 1.0, 100.0, PlayerNormal);
         m_EntityList.push_back(player);
