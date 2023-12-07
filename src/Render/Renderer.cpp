@@ -32,19 +32,20 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
         return;
     }
 
+    std::string Message = "Your Time: ";
+    Message += std::to_string(entity->time);
+
     if (!entity->m_Texture)
     {
-        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
+        DrawQuad(Message, entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha ,entity->m_Depth);
     }
     else 
     {
-        // std::string Message = "Your Time: ";
-        // Message += std::to_string(entity->time);
-        DrawQuad(entity->m_Position, entity->m_Size, entity->m_Texture, entity->m_Depth);
+        DrawQuad(Message, entity->m_Position, entity->m_Size, entity->m_Texture ,entity->m_Depth);
     }
 }
 
-void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, double depth)
+void Renderer::DrawQuad(std::string Message, vec2 position, vec2 scale, vec3 color, double alpha, double depth)
 {
     // d c
     // a b
@@ -71,10 +72,14 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, vec3 color, double alpha, dou
     glVertex3f(d.x, d.y, depth);
 
     glEnd();
+
+    glRasterPos2i(-1.2, 1);
+    glColor3f(0.2f, 0.7f, 0.0f);
+    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_10, (const unsigned char*)Message.c_str());
 }
 
 
-void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> texture,  double depth )
+void Renderer::DrawQuad(std::string Message, vec2 position, vec2 scale, std::shared_ptr<Texture> texture,  double depth )
 {
     
     // d c
@@ -114,9 +119,9 @@ void Renderer::DrawQuad(vec2 position, vec2 scale, std::shared_ptr<Texture> text
     glDisable(GL_TEXTURE_2D);
 
 
-    // glRasterPos2i(-0.8, 0.8);
-    // glColor3f(0.2f, 0.7f, 0.0f);
-    // glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_10, (const unsigned char*)Message.c_str());
+    glRasterPos2i(-1.2, 1);
+    glColor3f(0.2f, 0.7f, 0.0f);
+    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_10, (const unsigned char*)Message.c_str());
 }
 
 void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, double depth, double angle)

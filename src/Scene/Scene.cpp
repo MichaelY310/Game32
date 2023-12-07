@@ -26,19 +26,33 @@ void Scene::OnUpdate(double timestep)
     // return;
 
     if (m_CurrentStage == SceneStage::TITLE)
-    { Scene::OnUpdateTitle(timestep); }
+    { Scene::OnUpdateTitle(timestep);}
     else if (m_CurrentStage == SceneStage::CHOOSE_CHARACTER)
-    { Scene::OnUpdateChooseCharacter(timestep); }
+    { 
+        Scene::OnUpdateChooseCharacter(timestep); 
+        Time = 0;
+    }
 
     else if (m_CurrentStage == SceneStage::CONVERSATION1)
-    { Scene::OnUpdateConversation1(timestep); }
+    {   Scene::OnUpdateConversation1(timestep); 
+        Time += timestep;
+    }
     else if (m_CurrentStage == SceneStage::BOSSFIGHT1)
-    { Scene::OnUpdateBossfight1(timestep); }
+    { 
+        Scene::OnUpdateBossfight1(timestep); 
+        Time += timestep;
+    }
 
     else if (m_CurrentStage == SceneStage::CONVERSATION2)
-    { Scene::OnUpdateConversation2(timestep); }
+    { 
+        Scene::OnUpdateConversation2(timestep); 
+        Time += timestep;
+    }
     else if (m_CurrentStage == SceneStage::BOSSFIGHT2)
-    { Scene::OnUpdateBossfight2(timestep); }
+    {   
+        Scene::OnUpdateBossfight2(timestep);
+        Time += timestep;
+     }
 
     else if (m_CurrentStage == SceneStage::SUCCEED)
     {Scene::OnUpdateSucceed(timestep);}
@@ -50,7 +64,7 @@ void Scene::OnUpdate(double timestep)
     else if (m_CurrentStage == SceneStage::FAILED)
     { Scene::OnUpdateFailed(timestep); }
 
-    Time += timestep;
+
 }
 
 
@@ -233,9 +247,11 @@ void Scene::OnUpdateConversation1(double timestep)
     {
         BlackCoverTime = MaxBlackCoverTime;
         std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_RADIUS * 2, PLAYER_RADIUS * 2), vec3(1.0, 0.5, 0.5), 1.0, 100.0);
+        player->time = Time;
         m_EntityList.push_back(player);
         std::shared_ptr<Texture> texture = Texture::Create("wall.jpg");
         m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_RADIUS * 2, BOSS_RADIUS * 2), vec3(0.5, 1.0, 0.5), 1.0, 90.0, texture);
+        boss->time = Time;
         m_EntityList.push_back(m_Boss1);
     }
 
@@ -376,6 +392,9 @@ void Scene::OnUpdateBossfight1(double timestep)
                 deleted = true;
             }
         }
+
+        playerEntity->time = Time;
+        bossEntity->time = Time;
     }
 
     // Add Bullet
@@ -427,8 +446,10 @@ void Scene::OnUpdateConversation2(double timestep)
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
 
         std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_RADIUS * 2, PLAYER_RADIUS * 2), vec3(1.0, 0.5, 0.5), 1.0, 100.0);
+        player->time = Time;
         m_EntityList.push_back(player);
         m_Boss2 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_RADIUS * 2, BOSS_RADIUS * 2), vec3(0.5, 1.0, 0.5), 1.0, 90.0);
+        m_Boss2->time = Time;
         m_EntityList.push_back(m_Boss2);
     }
 
@@ -569,6 +590,9 @@ void Scene::OnUpdateBossfight2(double timestep)
                 deleted = true;
             }
         }
+
+        playerEntity->time = Time;
+        bossEntity->time = Time;    
     }
 
     // Add Bullet
