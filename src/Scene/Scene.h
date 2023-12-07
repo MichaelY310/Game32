@@ -70,10 +70,10 @@ public:
     double PLAYER_RADIUS = 0.02;
     double BOSS_RADIUS = 0.1;
     double PLAYER_BULLET_RADIUS = 0.02;
-    double BOSS_SMALL_BULLET_RADIUS = 0.02;
+    double BOSS_SMALL_BULLET_RADIUS = 0.015;
     double BOSS_BIG_BULLET_RADIUS = 0.1;
 
-    double PLAYER_SIZE = 0.04;
+    double PLAYER_SIZE = 0.08;
     double BOSS_SIZE = 0.1;
     double PLAYER_BULLET_SIZE = 0.02;
     double BOSS_SMALL_BULLET_SIZE = 0.022;
@@ -138,9 +138,20 @@ public:
     std::shared_ptr<Texture> exitIcon;
     std::shared_ptr<Texture> FailTexture;
 
+
+    double prevChangeState = 0;
+    int moveState = 0;
+
     std::shared_ptr<Texture> PlayerNormal;
+    std::vector<std::shared_ptr<Texture>> PlayerNormalArray;
+    int NormalPointer = 0;
+    double prevChangePlayerTexture = 0;
+
     std::shared_ptr<Texture> PlayerRight;
+    std::vector<std::shared_ptr<Texture>> PlayerLeftArray;
+
     std::shared_ptr<Texture> PlayerLeft;
+    std::vector<std::shared_ptr<Texture>> PlayerRightArray;
 
     std::shared_ptr<Texture> Boss1Texture;
     std::shared_ptr<Texture> Boss2Texture;

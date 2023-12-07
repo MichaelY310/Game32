@@ -30,20 +30,23 @@ void Scene::Init()
     exitIcon = Texture::Create("Exit.png");
     FailTexture = Texture::Create("Fail.png");
 
-    PlayerNormal = Texture::Create("wall.jpg");
-    PlayerRight = Texture::Create("wall.jpg");
-    PlayerLeft = Texture::Create("wall.jpg");
+    PlayerNormal = Texture::Create("PlayerNormal0.png");
+    PlayerNormalArray = { Texture::Create("PlayerNormal0.png"), Texture::Create("PlayerNormal1.png"), Texture::Create("PlayerNormal2.png"), Texture::Create("PlayerNormal3.png"), Texture::Create("PlayerNormal4.png"), Texture::Create("PlayerNormal5.png"), Texture::Create("PlayerNormal6.png"), Texture::Create("PlayerNormal7.png"), Texture::Create("PlayerNormal6.png"), Texture::Create("PlayerNormal5.png"), Texture::Create("PlayerNormal4.png"), Texture::Create("PlayerNormal3.png"), Texture::Create("PlayerNormal2.png"), Texture::Create("PlayerNormal1.png") };
+    PlayerRight = Texture::Create("PlayerLeft0.png");
+    PlayerLeftArray = { Texture::Create("PlayerLeft0.png"), Texture::Create("PlayerLeft1.png"), Texture::Create("PlayerLeft2.png"), Texture::Create("PlayerLeft3.png"), Texture::Create("PlayerLeft4.png"), Texture::Create("PlayerLeft5.png"), Texture::Create("PlayerLeft6.png"), Texture::Create("PlayerLeft7.png")};
+    PlayerLeft = Texture::Create("PlayerRight0.png");
+    PlayerRightArray = { Texture::Create("PlayerRight0.png"), Texture::Create("PlayerRight1.png"), Texture::Create("PlayerRight2.png"), Texture::Create("PlayerRight3.png"), Texture::Create("PlayerRight4.png"), Texture::Create("PlayerRight5.png"), Texture::Create("PlayerRight6.png"), Texture::Create("PlayerRight7.png")};
 
-    Boss1Texture = Texture::Create("wall.jpg");
-    Boss2Texture = Texture::Create("wall.jpg");
-    Boss3Texture = Texture::Create("wall.jpg");
+    Boss1Texture = Texture::Create("Boss1.png");
+    Boss2Texture = Texture::Create("Boss2.png");
+    Boss3Texture = Texture::Create("Boss3.png");
 
     BossBigBulletTexture = Texture::Create("BossBigBullet.png");
-    BossSmallBulletTexture = Texture::Create("wall.jpg");
-    PlayerBulletTexture = Texture::Create("wall.jpg");
+    BossSmallBulletTexture = Texture::Create("BossSmallBullet.png");
+    PlayerBulletTexture = Texture::Create("PlayerBullet.png");
 
 
-    PlayerLivesTexture = Texture::Create("yan.jpg");
+    PlayerLivesTexture = Texture::Create("PlayerLives.png");
 }
 
 void Scene::OnUpdate(double timestep)
@@ -248,9 +251,9 @@ void Scene::OnUpdateConversation1(double timestep)
     if (m_CurrentStageTime == 0)
     {
         BlackCoverTime = MaxBlackCoverTime;
-        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 0.5, 0.5), 1.0, 100.0, PlayerNormal);
+        std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 1.0, 1.0), 1.0, 100.0, PlayerNormal);
         m_EntityList.push_back(player);
-        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2), vec3(vec3(1.0, 1.0, 1.0)), 1.0, 90.0, Boss1Texture);
+        m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2 * 2), vec3(vec3(1.0, 1.0, 1.0)), 1.0, 90.0, Boss1Texture);
         m_EntityList.push_back(m_Boss1);
     }
 
@@ -445,7 +448,7 @@ void Scene::OnUpdateConversation2(double timestep)
 
         std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 1.0, 1.0), 1.0, 100.0, PlayerNormal);
         m_EntityList.push_back(player);
-        m_Boss2 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2), vec3(1.0, 1.0, 1.0), 1.0, 90.0, Boss2Texture);
+        m_Boss2 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2 * 2), vec3(1.0, 1.0, 1.0), 1.0, 90.0, Boss2Texture);
         m_EntityList.push_back(m_Boss2);
     }
 
@@ -774,6 +777,59 @@ void Scene::OnUpdateFailed(double timestep)
 
 void Scene::PlayerMove(std::shared_ptr<Entity> playerEntity, double timestep)
 {
+    prevChangeState += timestep;
+    if (prevChangePlayerTexture < 0)
+    {
+        prevChangePlayerTexture = 0.1;
+        // Update Player Texture
+        if (Input::isKeyPressed(GLUT_KEY_LEFT))
+        {
+            if (moveState != 1) { NormalPointer = -1; }
+            moveState = 1;
+            NormalPointer += 1;
+            if (NormalPointer >= PlayerLeftArray.size()) { NormalPointer -= 1; }
+            playerEntity->m_Texture = PlayerLeftArray[NormalPointer];
+        }
+        else if (Input::isKeyPressed(GLUT_KEY_RIGHT))
+        {
+            if (moveState != 2) { NormalPointer = -1; }
+            moveState = 2;
+            NormalPointer += 1;
+            if (NormalPointer >= PlayerRightArray.size()) { NormalPointer -= 1; }
+            playerEntity->m_Texture = PlayerRightArray[NormalPointer];
+        }
+        else
+        {
+            if (moveState == 1)
+            {
+                NormalPointer -= 1;
+                if (NormalPointer < 0) { NormalPointer = 0; moveState = -1; }
+                playerEntity->m_Texture = PlayerLeftArray[NormalPointer];
+            }
+            if (moveState == 2)
+            {
+                NormalPointer -= 1;
+                if (NormalPointer < 0) { NormalPointer = 0; moveState = -1; }
+                playerEntity->m_Texture = PlayerRightArray[NormalPointer];
+            }
+            else {
+                moveState = 0;
+                NormalPointer += 1;
+                if (NormalPointer >= PlayerNormalArray.size()) { NormalPointer = 0; }
+                playerEntity->m_Texture = PlayerNormalArray[NormalPointer];
+            }
+        }
+
+    }
+    if (prevChangePlayerTexture >= 0) { 
+        if (moveState == 0) {
+            prevChangePlayerTexture -= timestep; 
+        } else {
+            prevChangePlayerTexture -= 2 * timestep;
+        }
+    }
+
+
     if (Input::isKeyPressed('z')) { 
         playerSpeed = 0.75; 
     }
@@ -958,7 +1014,7 @@ void Scene::Boss2ShootBullet(std::shared_ptr<Entity> boss2Entity, double timeste
         for (int i = 0; i < bulletCount; i++)
         {
             std::shared_ptr<Entity> boss2SmallBullet = std::make_shared<Entity>(EntityType::BOSS_SMALL_BULLET, boss2Entity->m_Position, getRandom() * 360.0f, 
-            vec2(BOSS_SMALL_BULLET_SIZE * 2, BOSS_SMALL_BULLET_SIZE * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0);            
+            vec2(BOSS_SMALL_BULLET_SIZE * 2, BOSS_SMALL_BULLET_SIZE * 2), vec3(0.8, 0.8, 0.5), 1.0, 80.0, BossSmallBulletTexture);            
             m_EntityList.push_back(boss2SmallBullet);
         }
         Boss2prevBigBulletTime = Boss2currentBigBulletTime;
