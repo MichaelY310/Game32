@@ -91,7 +91,6 @@ public:
 
 
     SceneStage m_CurrentStage = SceneStage::TITLE;
-    // SceneStage m_CurrentStage = SceneStage::SUCCEED;
 
     double m_CurrentStageTime = 0;
 
@@ -149,7 +148,7 @@ public:
     double lastClick = 0;
     double lastSpacePress = 0;
     double BlackCoverTime = 0;
-    double MaxBlackCoverTime = 400;
+    double MaxBlackCoverTime = 300;
 
 
     std::shared_ptr<Texture> startIcon;
@@ -185,10 +184,17 @@ public:
     std::shared_ptr<Texture> PlayerLivesTexture;
     std::shared_ptr<Texture> HowToPlayTexture;
 
+    std::shared_ptr<Texture> Background1;
+    std::shared_ptr<Texture> Background2;
+    std::shared_ptr<Texture> Background3;
+
     double TimeUsed = 0;
     std::vector<double> Leaders;
 
 
     bool IsDisplayHowToPlay = false;
     int tempFollow = 0;
+
+    vec2 background2Pos = vec2(0, 0);
+    vec2 background3Pos = vec2(0, -2);
 };

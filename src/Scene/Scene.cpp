@@ -26,6 +26,10 @@ Scene::Scene()
 
 void Scene::Init()
 {
+    Background1 = Texture::Create("Background1.png");
+    Background2 = Texture::Create("Background2.png");
+    Background3 = Texture::Create("Background3.png");
+
     startIcon = Texture::Create("Start.png");
     titleIcon = Texture::Create("Title.png");
     How_To_Play_Icon = Texture::Create("How_To_Play.png");
@@ -96,6 +100,34 @@ void Scene::OnDisplay()
 {
     Renderer::Init();
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+
+    if (m_CurrentStage == SceneStage::TITLE || 
+    m_CurrentStage == SceneStage::CHOOSE_CHARACTER || 
+    m_CurrentStage == SceneStage::SUCCEED || 
+    m_CurrentStage == SceneStage::RESTART || 
+    m_CurrentStage == SceneStage::FAILED || 
+    m_CurrentStage == SceneStage::LEADERBOARD)
+    {
+        Renderer::DrawQuad(vec2(0, 0), vec2(4, 2), vec3(1.0, 1.0, 1.0), Background1, 1.0, -114);
+    }
+
+    double BackgroundSpeed = 0.075;
+    background2Pos.y -= BackgroundSpeed;
+    background3Pos.y -= BackgroundSpeed;
+    if (background2Pos.y <= -2) { background2Pos.y = 2; }
+    if (background3Pos.y <= -2) { background3Pos.y = 2; }
+
+    if (m_CurrentStage == SceneStage::CONVERSATION1 || 
+    m_CurrentStage == SceneStage::BOSSFIGHT1 || 
+    m_CurrentStage == SceneStage::CONVERSATION2 || 
+    m_CurrentStage == SceneStage::BOSSFIGHT2 || 
+    m_CurrentStage == SceneStage::CONVERSATION3 || 
+    m_CurrentStage == SceneStage::BOSSFIGHT3)
+    {
+        Renderer::DrawQuad(background2Pos, vec2(4, 2.1), vec3(1.0, 1.0, 1.0), Background2, 1.0, -113);
+        Renderer::DrawQuad(background3Pos, vec2(4, 2.1), vec3(1.0, 1.0, 1.0), Background3, 1.0, -112);
+    }
+
 
     // Player lives
     if (m_CurrentStage == SceneStage::BOSSFIGHT1 || m_CurrentStage == SceneStage::BOSSFIGHT2 || m_CurrentStage == SceneStage::BOSSFIGHT3)
@@ -228,7 +260,7 @@ void Scene::OnUpdateTitle(double timestep)
         if (tempFollow == 0)
         {
             tempFollow = 1;
-            std::shared_ptr<Entity> HowToPlay = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f, vec2(2.5, 2), vec3(1.0, 1.0, 1.0), 1, 10, HowToPlayTexture);
+            std::shared_ptr<Entity> HowToPlay = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f, vec2(3.9, 2), vec3(1.0, 1.0, 1.0), 1, 10, HowToPlayTexture);
             m_EntityList.push_back(HowToPlay);
         }
 
@@ -954,15 +986,9 @@ void Scene::OnUpdateLeaderBoard(double timestep)
         std::shared_ptr<Entity> SUCCESS = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.4), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0, SuccessIcon);
         m_EntityList.push_back(SUCCESS);
 
-        // std::shared_ptr<Entity> leaderBorad = std::make_shared<Entity>(EntityType::LEADERBOARD, vec2(-1.0, -0.4), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0);
-        // m_EntityList.push_back(leaderBorad);
-
-        // std::shared_ptr<Entity> choice = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.4), 0.0f, vec2(1.2, 0.5), vec3(0.0, 0.0, 0.0), 1, -1);
-        // m_EntityList.push_back(choice);
-
-
-        double PosY = 0.0;
-        int R = 1;
+        BlackCoverTime = MaxBlackCoverTime;
+        m_CurrentStageTime += timestep;
+        return;
     }
 
     if (m_Choice == 0)
@@ -1002,6 +1028,13 @@ void Scene::OnUpdateLeaderBoard(double timestep)
 
 void Scene::OnUpdateSucceed(double timestep) // Success and restart the game  
 {
+    if (m_CurrentStageTime == 0)
+    {
+        BlackCoverTime = MaxBlackCoverTime;
+        m_CurrentStageTime += timestep;
+        return;
+    }
+
     if (m_CurrentStageTime == 0)
     {
         m_Choice = 0;
@@ -1055,6 +1088,7 @@ void Scene::OnUpdateSucceed(double timestep) // Success and restart the game
 
 void Scene::OnUpdateFailed(double timestep)
 {
+
     if (m_CurrentStageTime == 0)
     {
         Boss1HPPanel = nullptr;
@@ -1072,11 +1106,15 @@ void Scene::OnUpdateFailed(double timestep)
         std::shared_ptr<Entity> menu1 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, -0.0), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0, titleIcon);
         m_EntityList.push_back(menu1);
 
-        std::shared_ptr<Entity> menu2 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, -0.4), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0, exitIcon);
+        std::shared_ptr<Entity> menu2 = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, -0.5), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0, exitIcon);
         m_EntityList.push_back(menu2);
 
-        std::shared_ptr<Entity> choice = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f, vec2(1.2, 0.5), vec3(0.0, 0.0, 0.0), 1, -1);
+        std::shared_ptr<Entity> choice = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.0), 0.0f, vec2(1.1, 0.5), vec3(0.0, 0.0, 0.0), 1, -1);
         m_EntityList.push_back(choice);
+
+        BlackCoverTime = MaxBlackCoverTime;
+        m_CurrentStageTime += timestep;
+        return;
     }
 
     if (m_Choice == 0)
@@ -1085,7 +1123,7 @@ void Scene::OnUpdateFailed(double timestep)
     }
     else
     {
-        m_EntityList[3]->m_Position = vec2(0.0, -0.4);
+        m_EntityList[3]->m_Position = vec2(0.0, -0.5);
     }
 
     if (Input::isKeyPressed(GLUT_KEY_UP))
