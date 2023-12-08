@@ -111,7 +111,7 @@ void Scene::OnDisplay()
         Renderer::DrawQuad(vec2(0, 0), vec2(4, 2), vec3(1.0, 1.0, 1.0), Background1, 1.0, -114);
     }
 
-    double BackgroundSpeed = 0.075;
+    double BackgroundSpeed = 0.01;
     background2Pos.y -= BackgroundSpeed;
     background3Pos.y -= BackgroundSpeed;
     if (background2Pos.y <= -2) { background2Pos.y = 2; }
