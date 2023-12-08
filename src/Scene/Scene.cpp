@@ -626,6 +626,7 @@ void Scene::OnUpdateBossfight2(double timestep)
             }
         }
     }
+    playerLives ++;
 
     // Add Bullet
     if (playerEntity) {
@@ -880,7 +881,7 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
     {
         if (prevBulletTime == 0 || currentBulletTime - prevBulletTime >= 0.3)
         {
-            int bulletCount = 4;
+            int bulletCount = 14;
             for (int i = 0; i < bulletCount; i++)
             {
                 vec2 pos = playerEntity->m_Position;
