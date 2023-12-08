@@ -1460,7 +1460,7 @@ void Scene::Boss3ShootBullet(std::shared_ptr<Entity> boss3Entity, double timeste
     Boss3currentBigBulletTime += timestep;
     if (Boss3Mode == 0)
     {
-        if (getRandom() > 0.001)
+        if (getRandom() > 0.0001)
         {
             std::shared_ptr<Entity> boss3SmallBullet = std::make_shared<Entity>(EntityType::BOSS_SMALL_BULLET, boss3Entity->m_Position, -90 + 360 * (getRandom()-0.5), 
             vec2(BOSS_SMALL_BULLET_SIZE * 2, BOSS_SMALL_BULLET_SIZE * 2), vec3(0.0, 1.0, 0.0), 1.0, 80.0, BossSmallBulletTexture);            

@@ -137,7 +137,7 @@ public:
 
     bool PLAYERDEAD = false;
     int playerLives = 2;
-    int playerATK = 2;
+    int playerATK = 10;
     double playerSpeed = 1.5;
     double prevBulletTime = 0;
     double currentBulletTime = 0;
