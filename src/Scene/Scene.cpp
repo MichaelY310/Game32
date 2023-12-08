@@ -6,6 +6,8 @@
 #include <iostream>
 #include <cmath>
 #include <random>
+#include <vector>
+#include <algorithm>
 
 double getRandom() {
     std::random_device rd;
@@ -29,6 +31,7 @@ void Scene::Init()
     How_To_Play_Icon = Texture::Create("How_To_Play.png");
     exitIcon = Texture::Create("Exit.png");
     FailTexture = Texture::Create("Fail.png");
+    SuccessIcon = Texture::Create("Success.png");
 
     PlayerNormal = Texture::Create("PlayerNormal0.png");
     PlayerNormalArray = { Texture::Create("PlayerNormal0.png"), Texture::Create("PlayerNormal1.png"), Texture::Create("PlayerNormal2.png"), Texture::Create("PlayerNormal3.png"), Texture::Create("PlayerNormal4.png"), Texture::Create("PlayerNormal5.png"), Texture::Create("PlayerNormal6.png"), Texture::Create("PlayerNormal7.png"), Texture::Create("PlayerNormal6.png"), Texture::Create("PlayerNormal5.png"), Texture::Create("PlayerNormal4.png"), Texture::Create("PlayerNormal3.png"), Texture::Create("PlayerNormal2.png"), Texture::Create("PlayerNormal1.png") };
@@ -49,6 +52,9 @@ void Scene::Init()
     PlayerLivesTexture = Texture::Create("PlayerLives.png");
 }
 
+double Time = 0;
+std::vector<double> Leaders;
+
 void Scene::OnUpdate(double timestep)
 {
     // Scene::OnUpdateTest(timestep); 
@@ -57,19 +63,22 @@ void Scene::OnUpdate(double timestep)
     if (startIcon->m_RendererID == 0) { Init(); }
 
     if (m_CurrentStage == SceneStage::TITLE)
-    { Scene::OnUpdateTitle(timestep); }
+    { Scene::OnUpdateTitle(timestep); Time = 0;}
     else if (m_CurrentStage == SceneStage::CHOOSE_CHARACTER)
     { Scene::OnUpdateChooseCharacter(timestep); }
 
     else if (m_CurrentStage == SceneStage::CONVERSATION1)
-    { Scene::OnUpdateConversation1(timestep); }
+    { Scene::OnUpdateConversation1(timestep); Time += timestep;}
     else if (m_CurrentStage == SceneStage::BOSSFIGHT1)
-    { Scene::OnUpdateBossfight1(timestep); }
+    { Scene::OnUpdateBossfight1(timestep); Time += timestep;}
 
     else if (m_CurrentStage == SceneStage::CONVERSATION2)
-    { Scene::OnUpdateConversation2(timestep); }
+    { Scene::OnUpdateConversation2(timestep); Time += timestep;}
     else if (m_CurrentStage == SceneStage::BOSSFIGHT2)
-    { Scene::OnUpdateBossfight2(timestep); }
+    { Scene::OnUpdateBossfight2(timestep); Time += timestep;}
+
+    else if (m_CurrentStage == SceneStage::LEADERBOARD)
+    {Scene::OnUpdateLeaderBoard(timestep);}
 
     else if (m_CurrentStage == SceneStage::SUCCEED)
     {Scene::OnUpdateSucceed(timestep);}
@@ -626,7 +635,6 @@ void Scene::OnUpdateBossfight2(double timestep)
             }
         }
     }
-    playerLives ++;
 
     // Add Bullet
     if (playerEntity) {
@@ -648,7 +656,7 @@ void Scene::OnUpdateBossfight2(double timestep)
     {
         Boss2HPPanel = nullptr;
         m_CurrentStageTime = 0;
-        m_CurrentStage = SceneStage::SUCCEED;
+        m_CurrentStage = SceneStage::LEADERBOARD;
         return;
     }
     else if (PLAYERDEAD)
@@ -658,6 +666,84 @@ void Scene::OnUpdateBossfight2(double timestep)
         return;
     }
 }
+
+void Scene::OnUpdateLeaderBoard(double timestep)
+{
+
+    // std::cout << "SUCCESS" << std::endl;
+    if (m_CurrentStageTime == 0)
+    {
+        m_Choice = 0;
+
+        Leaders.push_back(Time);
+        std::sort(Leaders.begin(), Leaders.end());
+
+        std::cout << "SUCCESS" << std::endl;
+        m_EntityList.erase(m_EntityList.begin(), m_EntityList.end()); 
+
+        std::shared_ptr<Entity> SUCCESS = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.4), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0, SuccessIcon);
+        m_EntityList.push_back(SUCCESS);
+
+        // std::shared_ptr<Entity> leaderBorad = std::make_shared<Entity>(EntityType::LEADERBOARD, vec2(-1.0, -0.4), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0);
+        // m_EntityList.push_back(leaderBorad);
+
+        // std::shared_ptr<Entity> choice = std::make_shared<Entity>(EntityType::MENU, vec2(0.0, 0.4), 0.0f, vec2(1.2, 0.5), vec3(0.0, 0.0, 0.0), 1, -1);
+        // m_EntityList.push_back(choice);
+
+
+        double PosY = -0.4;
+        int R = 1;
+
+        for (double ele : Leaders) 
+        {
+            std::shared_ptr<Entity> leaderBorad = std::make_shared<Entity>(EntityType::LEADERBOARD, vec2(-1.0, PosY), 0.0f, vec2(1, 0.4), vec3(1.0, 1.0, 1.0), 1, 0);
+            
+            leaderBorad->time = ele;
+            leaderBorad->Rank = R;
+
+            m_EntityList.push_back(leaderBorad);
+
+            PosY -= 0.3;
+            R += 1;
+        }
+
+
+    }
+
+    if (m_Choice == 0)
+    {
+        m_EntityList[2]->m_Position = vec2(0.0, 0.4);
+    }
+    else
+    {
+        m_EntityList[2]->m_Position = vec2(0.0, -0.4);
+    }
+
+    if (Input::isKeyPressed(GLUT_KEY_UP))
+    {
+        m_Choice = 0;
+    }    
+    if (Input::isKeyPressed(GLUT_KEY_DOWN))
+    {
+        m_Choice = 1;
+    }  
+
+    if (Input::isKeyPressed(32))
+    {
+        lastSpacePress = 0.3;
+        if (m_Choice == 0)
+        {
+            m_CurrentStage = SceneStage::SUCCEED;
+            m_CurrentStageTime = 0;
+            return;
+        }
+        else {
+            exit(0);
+        }
+    }
+    m_CurrentStageTime += timestep;
+}
+
 
 void Scene::OnUpdateSucceed(double timestep) // Success and restart the game  
 {

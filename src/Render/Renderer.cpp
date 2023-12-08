@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "Scene/Entity.h"
 #include <iostream>
+#include <GL/freeglut.h>
 
 const float PI = 3.14159265359;
 
@@ -20,6 +21,14 @@ void Renderer::Flush()
 
 void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
 {
+    if (entity->m_EntityType == EntityType::LEADERBOARD)
+    {
+        std::string Message = std::to_string(entity->Rank) + ":  ";
+        Message += std::to_string(entity->time);
+        DrawLeader(entity->m_Position, Message);
+        return;
+    }
+
     if (!entity->m_Texture)
     {
         DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
@@ -133,4 +142,12 @@ void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, dou
     }
 
     glEnd();
+}
+
+void Renderer::DrawLeader(vec2 position, std::string Message)
+{
+    DrawQuad(vec2(3,3),vec2(0.01,0.01), vec3(1.0, 1.0, 1.0), 1.0, 1.0);
+    glRasterPos2i(position.x, position.y);
+    glColor3f(0.2f, 0.7f, 0.0f);
+    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)Message.c_str());
 }

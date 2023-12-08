@@ -24,6 +24,7 @@ enum class SceneStage
     SUCCEED,
     RESTART,
     FAILED,
+    LEADERBOARD,
 
     BADEND,
     END
@@ -47,6 +48,7 @@ public:
     void OnUpdateBossfight1(double timestep);
     void OnUpdateConversation2(double timestep);
     void OnUpdateBossfight2(double timestep);
+    void OnUpdateLeaderBoard(double timestep);
 
     void OnUpdateSucceed(double timestep);
     void OnUpdateFailed(double timestep);
@@ -117,7 +119,7 @@ public:
 
     bool PLAYERDEAD = false;
     int playerLives = 2;
-    int playerATK = 1;
+    int playerATK = 100;
     double playerSpeed = 1.5;
     double prevBulletTime = 0;
     double currentBulletTime = 0;
@@ -137,6 +139,7 @@ public:
     std::shared_ptr<Texture> How_To_Play_Icon;
     std::shared_ptr<Texture> exitIcon;
     std::shared_ptr<Texture> FailTexture;
+    std::shared_ptr<Texture>  SuccessIcon;
 
 
     double prevChangeState = 0;
