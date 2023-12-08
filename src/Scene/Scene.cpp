@@ -261,8 +261,11 @@ void Scene::OnUpdateConversation1(double timestep)
         playerLives += 1;
         BlackCoverTime = MaxBlackCoverTime;
         std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 1.0, 1.0), 1.0, 100.0, PlayerNormal);
+        player->time = Time;
         m_EntityList.push_back(player);
+
         m_Boss1 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2 * 2), vec3(vec3(1.0, 1.0, 1.0)), 1.0, 90.0, Boss1Texture);
+        m_Boss1->time = Time;
         m_EntityList.push_back(m_Boss1);
     }
 
@@ -404,6 +407,7 @@ void Scene::OnUpdateBossfight1(double timestep)
                 deleted = true;
             }
         }
+        entity->time = Time;
     }
 
     // Add Bullet
@@ -456,8 +460,10 @@ void Scene::OnUpdateConversation2(double timestep)
         m_EntityList.erase(m_EntityList.begin(), m_EntityList.end());
 
         std::shared_ptr<Entity> player = std::make_shared<Entity>(EntityType::PLAYER, vec2(0.0, -0.5), 0.0f, vec2(PLAYER_SIZE * 2, PLAYER_SIZE * 2), vec3(1.0, 1.0, 1.0), 1.0, 100.0, PlayerNormal);
+        player->time = Time;
         m_EntityList.push_back(player);
         m_Boss2 = std::make_shared<Entity>(EntityType::BOSS, vec2(2.0, 1.0), 0.0f, vec2(BOSS_SIZE * 2, BOSS_SIZE * 2 * 2), vec3(1.0, 1.0, 1.0), 1.0, 90.0, Boss2Texture);
+        m_Boss2->time = Time;
         m_EntityList.push_back(m_Boss2);
     }
 
@@ -634,6 +640,7 @@ void Scene::OnUpdateBossfight2(double timestep)
                 deleted = true;
             }
         }
+        entity->time = Time;
     }
 
     // Add Bullet
@@ -967,7 +974,7 @@ void Scene::PlayerShootBullet(std::shared_ptr<Entity> playerEntity, double times
     {
         if (prevBulletTime == 0 || currentBulletTime - prevBulletTime >= 0.3)
         {
-            int bulletCount = 14;
+            int bulletCount = 4;
             for (int i = 0; i < bulletCount; i++)
             {
                 vec2 pos = playerEntity->m_Position;

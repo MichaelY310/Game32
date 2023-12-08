@@ -21,6 +21,8 @@ void Renderer::Flush()
 
 void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
 {
+
+
     if (entity->m_EntityType == EntityType::LEADERBOARD)
     {
         std::string Message = std::to_string(entity->Rank) + ":  ";
@@ -28,6 +30,8 @@ void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
         DrawLeader(entity->m_Position, Message);
         return;
     }
+
+    // if (entity->m_EntityType == EntityType:)
 
     if (!entity->m_Texture)
     {
