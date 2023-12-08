@@ -73,7 +73,7 @@ void Scene::OnUpdate(double timestep)
     { Scene::OnUpdateBossfight1(timestep); Time += timestep;}
 
     else if (m_CurrentStage == SceneStage::CONVERSATION2)
-    { Scene::OnUpdateConversation2(timestep); Time += timestep;}
+    { Scene::OnUpdateConversation2(timestep); }
     else if (m_CurrentStage == SceneStage::BOSSFIGHT2)
     { Scene::OnUpdateBossfight2(timestep); Time += timestep;}
 
