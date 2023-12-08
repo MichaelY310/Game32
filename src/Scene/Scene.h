@@ -48,6 +48,8 @@ public:
     void OnUpdateBossfight1(double timestep);
     void OnUpdateConversation2(double timestep);
     void OnUpdateBossfight2(double timestep);
+    void OnUpdateConversation3(double timestep);
+    void OnUpdateBossfight3(double timestep);
     void OnUpdateLeaderBoard(double timestep);
 
     void OnUpdateSucceed(double timestep);
@@ -68,17 +70,22 @@ public:
     void Boss2BulletMove(std::shared_ptr<Entity> boss2BulletEntity, double timestep);
     void Boss2Die(std::shared_ptr<Entity> boss2BulletEntity, double timestep);
 
+    void Boss3Move(std::shared_ptr<Entity> bossEntity, std::shared_ptr<Entity> playerEntity, double timestep);
+    void Boss3ShootBullet(std::shared_ptr<Entity> boss3Entity, double timestep);
+    void Boss3BulletMove(std::shared_ptr<Entity> boss3BulletEntity, double timestep);
+    void Boss3Die(std::shared_ptr<Entity> boss3BulletEntity, double timestep);
+
     // Collision volume
     double PLAYER_RADIUS = 0.02;
     double BOSS_RADIUS = 0.1;
     double PLAYER_BULLET_RADIUS = 0.02;
-    double BOSS_SMALL_BULLET_RADIUS = 0.015;
+    double BOSS_SMALL_BULLET_RADIUS = 0.02;
     double BOSS_BIG_BULLET_RADIUS = 0.1;
 
     double PLAYER_SIZE = 0.08;
     double BOSS_SIZE = 0.1;
     double PLAYER_BULLET_SIZE = 0.02;
-    double BOSS_SMALL_BULLET_SIZE = 0.022;
+    double BOSS_SMALL_BULLET_SIZE = 0.03;
     double BOSS_BIG_BULLET_SIZE = 0.12;
 
 
@@ -96,6 +103,7 @@ public:
 
     std::shared_ptr<Entity> m_Boss1;
     std::shared_ptr<Entity> m_Boss2;
+    std::shared_ptr<Entity> m_Boss3;
     std::shared_ptr<BossHPPanel> Boss1HPPanel;
     std::shared_ptr<BossHPPanel> Boss2HPPanel;
     std::shared_ptr<BossHPPanel> Boss3HPPanel;
@@ -116,10 +124,20 @@ public:
     double Boss2currentBigBulletTime = 0;
     bool BOSS2DEAD = false;
 
+    double Boss3HP = 100;
+    int Boss3MaxMode = 3;
+    int Boss3Mode = 0; // Move: 0, Shoot: 1, Wait: 2
+    double Boss3MoveTime = 0;
+    double Boss3ShootTime = 0;
+    double Boss3WaitTime = 0;  // Wait 
+    double Boss3prevBigBulletTime = 0;
+    double Boss3currentBigBulletTime = 0;
+    bool BOSS3DEAD = false;
+
 
     bool PLAYERDEAD = false;
     int playerLives = 2;
-    int playerATK = 1;
+    int playerATK = 2;
     double playerSpeed = 1.5;
     double prevBulletTime = 0;
     double currentBulletTime = 0;
@@ -165,4 +183,12 @@ public:
     std::shared_ptr<Texture> PlayerBulletTexture;
 
     std::shared_ptr<Texture> PlayerLivesTexture;
+    std::shared_ptr<Texture> HowToPlayTexture;
+
+    double TimeUsed = 0;
+    std::vector<double> Leaders;
+
+
+    bool IsDisplayHowToPlay = false;
+    int tempFollow = 0;
 };

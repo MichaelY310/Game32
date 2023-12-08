@@ -21,26 +21,6 @@ void Renderer::Flush()
 
 void Renderer::DrawQuad(std::shared_ptr<Entity> entity)
 {
-
-
-    if (entity->m_EntityType == EntityType::LEADERBOARD)
-    {
-        std::string Message = std::to_string(entity->Rank) + ": ";
-        Message += std::to_string(entity->time);
-        DrawLeader(entity->m_Position, Message);
-        return;
-    }
-
-    if (entity->m_EntityType == EntityType::BOSS || entity->m_EntityType == EntityType::PLAYER)
-    {
-        std::string Message ="Your Time: ";
-        Message += std::to_string(entity->time);
-        // glRasterPos2i(entity->m_Position.x, entity->m_Position.y);
-        glRasterPos2i(-1.0,0.9);
-        glColor3f(1.0f, 1.0f, 1.0f);
-        glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_10, (const unsigned char*)Message.c_str());
-    }
-
     if (!entity->m_Texture)
     {
         DrawQuad(entity->m_Position, entity->m_Size, entity->m_Color, entity->m_Alpha, entity->m_Depth);
@@ -158,8 +138,10 @@ void Renderer::DrawRing(vec2 position, vec2 scale, vec3 color, double alpha, dou
 
 void Renderer::DrawLeader(vec2 position, std::string Message)
 {
-    // DrawQuad(vec2(3,3),vec2(0.01,0.01), vec3(1.0, 1.0, 1.0), 1.0, 1.0);
-    glRasterPos2i(position.x, position.y);
-    glColor3f(0.2f, 0.7f, 0.0f);
+    DrawQuad(position, vec2(0.001, 0.01), vec3(1.0, 1.0, 1.0), 1.0, 0);
+
+    glRasterPos2f(position.x, position.y);
     glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)Message.c_str());
+
+    DrawQuad(position, vec2(0.001, 0.01), vec3(1.0, 1.0, 1.0), 1.0, 0);
 }

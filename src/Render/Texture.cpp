@@ -15,16 +15,11 @@ Texture::Texture(const char* filePath)
     modifiedPath = modifiedPath.substr(0, modifiedPath.size() - 5);
     std::string finalPath = modifiedPath + "src/Asset/" + filePath;
 
-    std::cout << finalPath << std::endl;
-
 
 
     int width, height, channels;
     // unsigned char* image = stbi_load(filePath, &width, &height, &channels, 0);
     stbi_uc* image = stbi_load(finalPath.c_str(), &width, &height, &channels, 0);
-
-    if (!image) { std::cout << "failed to create texture" << std::endl; }
-    if (image) { std::cout << "create texture" << std::endl; }
 
     GLenum internalFormat;
     GLenum dataFormat;
