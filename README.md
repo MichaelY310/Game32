@@ -4,6 +4,8 @@
 
 Game32 is a bullet hell shoot 'em up video game. Player need to control the character to elude bullets while defeating the boss by shooting bullets.
 
+![屏幕截图 2023-12-08 003512](https://github.com/MichaelY310/Game32/assets/95990939/7115eec3-d0c3-4bd9-b227-05a10fd2115d)
+
 ## Control
 
 - → ↑ ↓ ←: Movement
