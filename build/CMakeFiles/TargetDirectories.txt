@@ -1,0 +1,3 @@
+/cs/student/yang335/Desktop/Game32/build/CMakeFiles/Game32.dir
+/cs/student/yang335/Desktop/Game32/build/CMakeFiles/edit_cache.dir
+/cs/student/yang335/Desktop/Game32/build/CMakeFiles/rebuild_cache.dir
